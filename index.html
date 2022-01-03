@@ -487,7 +487,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/24/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记1:基本数据类型</a>
+      <a class="article-title" href="/2020/04/24/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记1:基本数据类型及逻辑运算</a>
     </h1>
   
 
@@ -519,7 +519,7 @@
 <ul>
 <li> 5种基本数据类型String、Number(整数和浮点数)、Boolean(true和false)、Null(null)、Undefined(undefined) 和1种引用数据类型Object</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">NaN</span>); <span class="comment">//返回number</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">null</span>);<span class="comment">//null类型进行typeof操作符后，结果是object，原因在于，null类型被当做一个空对象引用。</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="keyword">typeof</span> <span class="literal">null</span>); <span class="comment">//返回string</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">NaN</span>); <span class="comment">//返回number</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">null</span>);<span class="comment">//null类型进行typeof操作符后，结果是object，原因在于，null类型被当做一个空对象引用。</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="keyword">typeof</span> <span class="literal">null</span>); <span class="comment">//返回string</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -528,28 +528,28 @@
 <ul>
 <li>String()转换为String类型</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">213</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">String</span>(a);  <span class="comment">// 此时String(a)等价于a.toString()，底层调用是一样的</span></span><br><span class="line"></span><br><span class="line">a = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">String</span>(a);  <span class="comment">// 无 a.toString() 方法</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">213</span>;</span><br><span class="line"><span class="built_in">String</span>(a);  <span class="comment">// 此时String(a)等价于a.toString()，底层调用是一样的</span></span><br><span class="line"></span><br><span class="line">a = <span class="literal">null</span>;</span><br><span class="line"><span class="built_in">String</span>(a);  <span class="comment">// 无 a.toString() 方法</span></span><br></pre></td></tr></table></figure>
 
 
 
 <ul>
 <li>Number()转化为Number类型</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;0.123&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="string">&quot;123k&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> d = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> e = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> f = <span class="literal">undefined</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(a)); <span class="comment">//转化为相应的number类型数据</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(b)); <span class="comment">//空串 --&gt; 0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(c)); <span class="comment">//NaN</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(d)); <span class="comment">//true --&gt; 1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(e)); <span class="comment">//null --&gt; 0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(f)); <span class="comment">//undefined --&gt; NaN</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;0.123&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(a)); <span class="comment">//转化为相应的number类型数据</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(b)); <span class="comment">//空串 --&gt; 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="string">&quot;123k&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(c)); <span class="comment">//NaN</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> d = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(d)); <span class="comment">//true --&gt; 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> e = <span class="literal">null</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(e)); <span class="comment">//null --&gt; 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> f = <span class="literal">undefined</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(f)); <span class="comment">//undefined --&gt; NaN</span></span><br></pre></td></tr></table></figure>
 
 
 
 <ul>
 <li>parseInt(string: string, radix?: number)</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;010&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(a,<span class="number">8</span>)); <span class="comment">//指定进制radix转化为number</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;010&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(a,<span class="number">8</span>)); <span class="comment">// 指定进制radix转化为number</span></span><br></pre></td></tr></table></figure>
 
 
 
 <ul>
 <li>Boolean()转化为Boolean类型</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Booleanl(a)); <span class="comment">//除了 0、NaN、null、空串&quot;&quot; 外，其余的Boolean()都返回true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Booleanl(a)); <span class="comment">// 除了 0、NaN、null、空串&quot;&quot; 外，其余的Boolean()都返回true</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -558,9 +558,33 @@
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">NaN</span> + <span class="string">&quot;1&quot;</span>); <span class="comment">// &quot;NaN1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span> + <span class="literal">null</span>);  <span class="comment">// 3</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span> + <span class="literal">undefined</span>);  <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">100</span> - <span class="string">&quot;1&quot;</span>); <span class="comment">// 99</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span> * <span class="literal">null</span>);  <span class="comment">// 0 </span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<!--more-->逻辑运算
 
+<ul>
+<li><p>根据“短路原则”。</p>
+<p>两值相与时，第一个值为true，则返回第二个值；第一个值为false，则返回第一个值。</p>
+<p>两值相或时，第一个值为true，则返回第一个值；第一个值为false，则返回第二个值。</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span> &amp;&amp; <span class="number">5</span>);	<span class="comment">// 5</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">NaN</span> &amp;&amp; <span class="number">0</span>);	<span class="comment">// NaN</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span> || <span class="number">5</span>);	<span class="comment">// 3</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;&quot;</span> || <span class="number">0</span>);	<span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
 
+<ul>
+<li>比较运算时，自动转化为number类型。任何值与NaN进行比较运算，都返回fasle</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> &gt; <span class="string">&quot;&quot;</span>);	<span class="comment">// 等价于1 &gt; 0，返回true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> &lt;= <span class="string">&quot;hello&quot;</span>); <span class="comment">// 等价于 0 &lt;= NaN，返回false</span></span><br></pre></td></tr></table></figure>
 
+<p>​    特别地，当两字符串相比较时，即比较Unicode码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;2.a&quot;</span> &gt; <span class="string">&quot;2.b&quot;</span>);	<span class="comment">// false，因为a为97，b为98</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;1a&quot;</span> &gt; <span class="string">&quot;10asd&quot;</span>);<span class="comment">// true，因为a为97，0为48</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>进行 == 比较运算时</p>
+<p>（1）如果两个值类型相同，再进行三个等号(===)的比较</p>
+<p>（2）如果两个值类型不同，也有可能相等，需根据以下规则进行类型转换在比较：</p>
+<p>​        1）如果一个是null，一个是undefined，那么相等</p>
+<p>​        2）如果一个是字符串，一个是数值，把字符串转换成数值之后再进行比较</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> == <span class="string">&quot;1&quot;</span>);	<span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> == <span class="string">&quot;1a&quot;</span>);	<span class="comment">// false，等价于1 == NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="literal">undefined</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>​    特别地，NaN不与任何值相同（包括它自己），用isNaN()来判断</p>
 
       
 
