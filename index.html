@@ -55,8 +55,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -111,8 +109,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -133,9 +129,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -401,6 +395,16 @@
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> middle = left + ((right - left) / <span class="number">2</span>);<span class="comment">// 防止溢出 等同于(left + right)/2</span></span><br></pre></td></tr></table></figure>
 
+<ul>
+<li>在一般单链表中删除指定节点</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">RemoveNode</span><span class="params">(LinkedList &amp;l, <span class="keyword">int</span> target)</span> </span>&#123;	<span class="comment">// 假设包含头节点</span></span><br><span class="line">    <span class="keyword">if</span> (l-&gt;next == null) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    LNode pre = l, p = pre-&gt;next;</span><br><span class="line">    <span class="keyword">while</span> (p-&gt;next != null) &#123;</span><br><span class="line">        <span class="keyword">if</span> (p-&gt;data == target) &#123; <span class="comment">// 满足删除条件时</span></span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在一般数组中删除指定元素</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">RemoveA</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -454,19 +458,19 @@
 
 
   
-    <article id="post-JS学习笔记3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-JS学习笔记3：对象与函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/25/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03/">JS学习笔记3</a>
+      <a class="article-title" href="/2019/04/25/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%87%BD%E6%95%B0/">JS学习笔记3:对象与函数</a>
     </h1>
   
 
         
-        <a href="/2019/04/25/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03/" class="archive-article-date">
+        <a href="/2019/04/25/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%87%BD%E6%95%B0/" class="archive-article-date">
   	<time datetime="2019-04-25T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
 </a>
         
@@ -475,22 +479,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ul>
-<li><p>JS中的对象包括内建对象、宿主对象、自定义对象</p>
-<p>— 内建对象：由ES标准中定义的对象，在任何的ES的实现中都可以使用。比如：Math String Number Boolean Function Object.</p>
-<p>— 宿主对象：由JS的运行环境提供的对象,主要指由浏览器提供的对象。比如 BOM DOM</p>
-<p>— 自定义对象：自己创建的对象。</p>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="keyword">let</span> a = <span class="string">&quot;age&quot;</span>;</span><br><span class="line">obj.name = <span class="string">&quot;Zhangsan&quot;</span>; <span class="comment">// 直接用 对象名.属性名 添加或访问属性</span></span><br><span class="line">obj[a] = <span class="number">22</span>; <span class="comment">// 也可用 对象名[&quot;属性名&quot;] 添加或访问属性</span></span><br><span class="line"><span class="keyword">delete</span> obj.name; <span class="comment">// delete删除对象属性</span></span><br><span class="line"><span class="comment">// obj: Object &#123; age: 22 &#125;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>in运算符：检查对象中是否含有指定属性</p>
-<p>“属性名” in 对象</p>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;age&quot;</span> <span class="keyword">in</span> obj);</span><br></pre></td></tr></table></figure>
-
-
+<li><p>JS中的对象包括内建对象、宿主对象、自定义对象
+        
       
 
       
@@ -513,7 +503,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/25/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/25/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%87%BD%E6%95%B0/">展开全文 >></a>
         </p>
       
 
