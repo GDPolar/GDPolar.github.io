@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://GDPolar.github.io">
   <title>JS学习笔记2:比较 | GDPolar&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="内部相等性运算算法   11.9.3 The Abstract Equality Comparison AlgorithmThe comparison x &#x3D;&#x3D; y, where x and y are values, produces true or false. Such a comparison is performed as follows:   If Type(x) is diffe">
+  <meta name="description" content="123null &gt; 0   &#x2F;&#x2F; null 尝试转型为number，则为0，所以结果为 falsenull &gt;&#x3D; 0  &#x2F;&#x2F; null 尝试转为number，则为0，结果为 truenull &#x3D;&#x3D; 0  &#x2F;&#x2F; null在设计上，在此处不尝试转型，所以结果为 false">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS学习笔记2:比较">
 <meta property="og:url" content="https://gdpolar.github.io/2019/04/24/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E6%AF%94%E8%BE%83/index.html">
 <meta property="og:site_name" content="GDPolar&#39;s Blog">
-<meta property="og:description" content="内部相等性运算算法   11.9.3 The Abstract Equality Comparison AlgorithmThe comparison x &#x3D;&#x3D; y, where x and y are values, produces true or false. Such a comparison is performed as follows:   If Type(x) is diffe">
+<meta property="og:description" content="123null &gt; 0   &#x2F;&#x2F; null 尝试转型为number，则为0，所以结果为 falsenull &gt;&#x3D; 0  &#x2F;&#x2F; null 尝试转为number，则为0，结果为 truenull &#x3D;&#x3D; 0  &#x2F;&#x2F; null在设计上，在此处不尝试转型，所以结果为 false">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-04-24T12:24:59.000Z">
-<meta property="article:modified_time" content="2022-01-04T13:37:11.074Z">
+<meta property="article:modified_time" content="2022-01-07T05:51:54.546Z">
 <meta property="article:author" content="GDPolar">
 <meta property="article:tag" content="JS学习">
 <meta name="twitter:card" content="summary">
@@ -169,7 +169,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">null</span> &gt; <span class="number">0</span>   <span class="comment">// null 尝试转型为number，则为0，所以结果为 false</span></span><br><span class="line"><span class="literal">null</span> &gt;= <span class="number">0</span>  <span class="comment">// null 尝试转为number，则为0，结果为 true</span></span><br><span class="line"><span class="literal">null</span> == <span class="number">0</span>  <span class="comment">// null在设计上，在此处不尝试转型，所以结果为 false</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<ul>
 <li> 内部相等性运算算法</li>
 </ul>
 <blockquote>
