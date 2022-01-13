@@ -6,38 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://GDPolar.github.io">
-  <title>计组期末复习 | GDPolar&#39;s Blog</title>
+  <title>操作系统学习笔记1:引导扇区 | GDPolar&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题型包括：选择、填空、名词解释、简答、大题">
+  <meta name="description" content="x86 PC开机过程 x86 PC刚开机时CPU处于实模式 开机时，CS＝0xFFFF；IP＝0x0000 寻址0xFFFF0（ROM BIOS映射区） 检查RAM，键盘，显示器，软硬磁盘 将磁盘0磁道0扇区（引导扇区）读入0x7c00处 设置cs＝0x07c0，ip＝0x0000  引导扇区代码:bootsect.s​​    rep：重复执行该语句直至寄存器CX为0 ​    movw：将DS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计组期末复习">
-<meta property="og:url" content="https://gdpolar.github.io/2021/01/12/%E8%AE%A1%E7%BB%84%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:title" content="操作系统学习笔记1:引导扇区">
+<meta property="og:url" content="https://gdpolar.github.io/2020/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="GDPolar&#39;s Blog">
-<meta property="og:description" content="题型包括：选择、填空、名词解释、简答、大题">
+<meta property="og:description" content="x86 PC开机过程 x86 PC刚开机时CPU处于实模式 开机时，CS＝0xFFFF；IP＝0x0000 寻址0xFFFF0（ROM BIOS映射区） 检查RAM，键盘，显示器，软硬磁盘 将磁盘0磁道0扇区（引导扇区）读入0x7c00处 设置cs＝0x07c0，ip＝0x0000  引导扇区代码:bootsect.s​​    rep：重复执行该语句直至寄存器CX为0 ​    movw：将DS">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2021/12/31/uK6I7SNQiPs1UBj.png">
-<meta property="og:image" content="https://s2.loli.net/2021/12/31/QNgry9k45tCIlmJ.png">
-<meta property="og:image" content="https://s2.loli.net/2021/12/31/TntEPAIMxXbJpDG.png">
-<meta property="og:image" content="https://s2.loli.net/2021/12/31/DCF7Hyxip26lXsd.png">
-<meta property="og:image" content="https://s2.loli.net/2021/12/31/46ROwd2CN9JZS3Y.png">
-<meta property="og:image" content="https://s2.loli.net/2021/12/31/u6mDqJb9lkopOE1.png">
-<meta property="og:image" content="https://s2.loli.net/2021/12/31/1hLvaICrzFHDymV.png">
-<meta property="og:image" content="https://s2.loli.net/2021/12/31/QNgry9k45tCIlmJ.png">
-<meta property="og:image" content="https://s2.loli.net/2021/12/31/24FLqetolOCrS1v.png">
-<meta property="og:image" content="https://s2.loli.net/2021/12/31/wF7lZQSjKxyub6V.png">
-<meta property="og:image" content="https://s2.loli.net/2021/12/31/pmqhTldNPjGAw7D.png">
-<meta property="og:image" content="https://s2.loli.net/2021/12/31/D7dC3LocA5INhZm.png">
-<meta property="og:image" content="https://s2.loli.net/2021/12/31/vHyaRPkxqLzdS12.png">
-<meta property="og:image" content="https://s2.loli.net/2021/12/31/rmailCSYFbJczyp.png">
-<meta property="og:image" content="https://s2.loli.net/2021/12/31/iHVkKrNsqzL1atU.png">
-<meta property="og:image" content="https://s2.loli.net/2021/12/31/Vbk5FB8qUOcxS73.png">
-<meta property="og:image" content="https://s2.loli.net/2021/12/31/SngGi6TftxpeDwB.png">
-<meta property="article:published_time" content="2021-01-12T07:33:45.000Z">
-<meta property="article:modified_time" content="2022-01-07T06:42:18.709Z">
+<meta property="og:image" content="https://s2.loli.net/2022/01/13/2vMXcrkiAzCW8yD.png">
+<meta property="article:published_time" content="2020-04-26T12:24:59.000Z">
+<meta property="article:modified_time" content="2022-01-13T03:50:12.663Z">
 <meta property="article:author" content="GDPolar">
-<meta property="article:tag" content="期末复习">
+<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.loli.net/2021/12/31/uK6I7SNQiPs1UBj.png">
+<meta name="twitter:image" content="https://s2.loli.net/2022/01/13/2vMXcrkiAzCW8yD.png">
   
     <link rel="alternative" href="/atom.xml" title="GDPolar&#39;s Blog" type="application/atom+xml">
   
@@ -167,125 +151,51 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-计组期末复习" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-操作系统学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         <!-- 
   
     <h1 class="article-title" itemprop="name">
-      计组期末复习
+      操作系统学习笔记1:引导扇区
     </h1>
   
  -->
         <center><p>
   
     <h1 class="article-title_my" itemprop="name">
-      计组期末复习
+      操作系统学习笔记1:引导扇区
     </h1>
   
 </p></center>
         
-        <a href="/2021/01/12/%E8%AE%A1%E7%BB%84%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2021-01-12T07:33:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
+        <a href="/2020/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2020-04-26T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<h3 id="题型包括：选择、填空、名词解释、简答、大题"><a href="#题型包括：选择、填空、名词解释、简答、大题" class="headerlink" title="题型包括：选择、填空、名词解释、简答、大题 "></a>题型包括：选择、填空、名词解释、简答、大题 <span id="more"></span></h3><h1 id="选择题"><a href="#选择题" class="headerlink" title="选择题"></a>选择题</h1><p><img src="https://s2.loli.net/2021/12/31/uK6I7SNQiPs1UBj.png" alt="image-20210112165853849"></p>
-<ol>
-<li><p>相斥性微命令：同一微周期中不能同时出现的微命令。如控制ALU操作的各种微命令ADD、SUB等。<br>相容性微命令：同一微周期中可以同时出现的微命令。</p>
-<p>控制字段分为若干小字段，<strong>把相斥性微命令组合在同一字段中，而把相容性微命令组合在不同字段中</strong>。</p>
-</li>
-<li><p><img src="https://s2.loli.net/2021/12/31/QNgry9k45tCIlmJ.png" alt="image-20210112171607078"></p>
-</li>
-<li><p>CPU内部总线 数据总线 地址总线 控制总线</p>
-</li>
-<li></li>
-<li><p>[+0]原码=0000 0000，   [-0]原码=1000 0000；<br>[+0]反码=0000 0000，   [-0]反码=1111 1111；<br>[+0]补码和 [-0]补码=0000 0000</p>
-</li>
-<li><p><img src="https://s2.loli.net/2021/12/31/TntEPAIMxXbJpDG.png" alt="image-20210112203900402"></p>
-</li>
-<li><p><img src="https://s2.loli.net/2021/12/31/DCF7Hyxip26lXsd.png" alt="image-20210112204016038"></p>
-<p><img src="https://s2.loli.net/2021/12/31/46ROwd2CN9JZS3Y.png" alt="image-20210112204028565"></p>
-<p><img src="https://s2.loli.net/2021/12/31/u6mDqJb9lkopOE1.png" alt="image-20210112204036971"></p>
-</li>
-<li><p>常用寻址方式：</p>
-<p><strong>立即寻址</strong>：指令中直接给出操作数</p>
-<p><strong>直接寻址</strong>：指令中直接给出操作数所在主存单元的地址，即有效地址。</p>
-<p><strong>寄存器直接寻址</strong>：指令中地址码部分给出某一通用寄存器地址，所指定的寄存器中存放着操作数。</p>
-<p>**间接寻址(间址)**：指令中给出的是存放操作数地址的主存单元地址(操作数地址的地址)。</p>
-<p><strong>寄存器间接寻址（间址）</strong>：指令中给出寄存器号，指定的寄存器中存放操作数的有效地址。</p>
-<p><strong>变址寻址</strong>：指令中指定一变址寄存器，并在地址码部分给出一形式地址，变址寄存器的内容(称为变址值)与形式地址相加得操作数的有效地址。</p>
-<p><strong>基址寻址</strong>：</p>
-<p><strong>相对寻址</strong></p>
-<p><strong>页面寻址</strong></p>
-<p><strong>堆栈寻址</strong></p>
-</li>
-<li></li>
-<li><p>补码 定点整数的表示范围：-2^n ～(2^n -1)</p>
-<p>​        定点小数的表示范围：-1 ～(1- 2^-n)</p>
-</li>
+        <h2 id="x86-PC开机过程"><a href="#x86-PC开机过程" class="headerlink" title="x86 PC开机过程"></a>x86 PC开机过程</h2><ol>
+<li>x86 PC刚开机时CPU处于实模式</li>
+<li>开机时，CS＝0xFFFF；IP＝0x0000</li>
+<li>寻址0xFFFF0（ROM BIOS映射区）</li>
+<li>检查RAM，键盘，显示器，软硬磁盘</li>
+<li>将磁盘0磁道0扇区（引导扇区）读入0x7c00处</li>
+<li>设置cs＝0x07c0，ip＝0x0000</li>
 </ol>
-<hr>
-<h1 id="填空题"><a href="#填空题" class="headerlink" title="填空题"></a>填空题</h1><p><img src="https://s2.loli.net/2021/12/31/1hLvaICrzFHDymV.png" alt="image-20210112192609976"></p>
-<ol>
-<li><p>原码 定点整数表示范围：-(2^n -1) ～(2^n -1)</p>
-<p>​        定点小数表示范围：-(1- 2^-n) ～(1- 2^-n)</p>
-<p>补码 定点整数的表示范围：-2^n ～(2^n -1)</p>
-<p>​        定点小数的表示范围：-1 ～(1- 2^-n)</p>
-</li>
-<li><p><img src="https://s2.loli.net/2021/12/31/QNgry9k45tCIlmJ.png" alt="image-20210112171607078"></p>
-</li>
-<li><p>一个较完善的指令系统应包含<strong>数据传送</strong>类指令，<strong>算术运算类</strong>指令，<strong>逻辑运算类</strong>指令，<strong>程序控制类</strong>指令，<strong>I/O类</strong>指令，<strong>字符串类</strong>指令，<strong>系统控制类</strong>指令。</p>
-</li>
-<li><p>计算机的机器指令一般由<strong>操作码</strong>和<strong>操作数</strong>两部分组成。</p>
-</li>
-<li><p>DMA 控制器按其组成结构，分为<strong>多路型</strong>和<strong>选择型</strong>两种</p>
-</li>
-</ol>
-<hr>
-<h1 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h1><p><img src="https://s2.loli.net/2021/12/31/24FLqetolOCrS1v.png" alt="image-20210112195213299"></p>
-<ol>
-<li><p>汇编编程：使用汇编语言进行编程。</p>
-</li>
-<li><p>微操作命令：<strong>构成控制信号序列的最小单位</strong>。例如，打开或关闭某个控制门的电位信号，某个寄存器的打入脉冲等。微命令由控制器        通过控制线向有关部件发出。</p>
-<p>微操作：<strong>由微命令控制实现的最基本操作</strong>。</p>
-</li>
-<li><p>周期挪用：利用CPU不访问存储器的周期来实现DMA操作，此时DMA可以使用总线而不用通知CPU也不会妨碍CPU的工作。                                    </p>
-</li>
-<li><p>高速缓冲存储器：位于主存与CPU之间的一级存储器， 由静态存储芯片(SRAM)组成，容量比较小但速度比主存高得多， 接近于CPU的速度</p>
-</li>
-<li><p>基址寻址：<strong>操作数的有效地址等于指令中形式地址与基址寄存器内容之和。</strong>操作数的有效地址等于指令中形式地址与基址寄存器内容之和。</p>
-</li>
-<li><p>流水线中的多发技术：为了提高流水线的性能，设法在一个时钟周期（机器主频的倒数）内产生更多条指令的结果</p>
-</li>
-<li><p>指令字长：机器指令中二进制代码的总位数</p>
-</li>
-<li><p>伪指令：<strong>用于对汇编过程进行控制的指令</strong>。该类指令并不是可执行指令，没有机器代码，只用于汇编过程中为汇编程序提供汇编信息。</p>
-</li>
-</ol>
-<hr>
-<h1 id="简答"><a href="#简答" class="headerlink" title="简答"></a>简答</h1><p><img src="https://s2.loli.net/2021/12/31/wF7lZQSjKxyub6V.png" alt="image-20210112202411762"></p>
-<ol>
-<li><img src="https://s2.loli.net/2021/12/31/pmqhTldNPjGAw7D.png" alt="image-20210112202631107"></li>
-</ol>
-<p><img src="https://s2.loli.net/2021/12/31/D7dC3LocA5INhZm.png" alt="image-20210112202634822"></p>
-<p><img src="https://s2.loli.net/2021/12/31/vHyaRPkxqLzdS12.png" alt="image-20210112202637748"></p>
-<p>2.</p>
-<hr>
-<h1 id="大题"><a href="#大题" class="headerlink" title="大题"></a>大题</h1><p><img src="https://s2.loli.net/2021/12/31/rmailCSYFbJczyp.png" alt="image-20210112202735823"></p>
-<p>1.<img src="https://s2.loli.net/2021/12/31/iHVkKrNsqzL1atU.png" alt="image-20210112202850809"></p>
-<p><img src="https://s2.loli.net/2021/12/31/Vbk5FB8qUOcxS73.png" alt="image-20210112202908101"></p>
-<p><img src="https://s2.loli.net/2021/12/31/SngGi6TftxpeDwB.png" alt="image-20210112202925886"></p>
-<p>2.书P82</p>
-<p>3.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">assume cs:codesg</span><br><span class="line">codesg segment</span><br><span class="line">    dw 0123h,0456h,0789h,0abch,0defh,0fedh,0cbah,0987h</span><br><span class="line">  start:mov bx,0</span><br><span class="line">     	mov ax,0</span><br><span class="line">	mov cx,8</span><br><span class="line">        s: add ax,cs:[bx]</span><br><span class="line">	add bx,2</span><br><span class="line">     	loop s</span><br><span class="line">	mov ax,4c00h</span><br><span class="line">     	int 21h</span><br><span class="line">codesg ends</span><br><span class="line">end start</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="引导扇区代码-bootsect-s​"><a href="#引导扇区代码-bootsect-s​" class="headerlink" title="引导扇区代码:bootsect.s​"></a>引导扇区代码:bootsect.s​</h2><p>​    rep：重复执行该语句直至寄存器CX为0</p>
+<p>​    movw：将DS：SI的数据复制一个字到ES：DI</p>
+<p>​    jmpi a, b: 间接寻址。CS设为b，IP设为a</p>
+<p>​    BOOTSEG = 0x07C0</p>
+<p>​    INITSEG = 0x9000</p>
+<p>​    SETUPSEG 0x9020</p>
+<p><img src="https://s2.loli.net/2022/01/13/2vMXcrkiAzCW8yD.png" alt="image-20220113112826914"></p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">.globl</span> begtext,begdata,begbss,endtext,enddata,endbss</span><br><span class="line"><span class="meta">.text</span>                  <span class="comment">;文本段</span></span><br><span class="line"><span class="symbol">begtext:</span></span><br><span class="line"><span class="meta">.data</span>                  <span class="comment">;数据段</span></span><br><span class="line"><span class="symbol">begdata:</span></span><br><span class="line"><span class="meta">.bss</span>                   <span class="comment">;未初始化数据段</span></span><br><span class="line"><span class="symbol">begbss:</span>				   <span class="comment">;此处的.text、.data、.bss表明这3个段重叠，不分段</span></span><br><span class="line">entry start            <span class="comment">;关键字entry告诉链接器“程序入口”</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>, #BOOTSEG   <span class="comment">;此条语句就是0x7C00处存放的语句</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ds</span>, <span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>, #INITSEG   </span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>, <span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>, #<span class="number">256</span></span><br><span class="line">	<span class="keyword">sub</span> <span class="built_in">si</span>, <span class="built_in">si</span></span><br><span class="line">	<span class="keyword">sub</span> <span class="built_in">di</span>, <span class="built_in">di</span></span><br><span class="line">	<span class="keyword">rep</span> movw		   <span class="comment">;将0x07C0:0x0000处的256个字复制到0x9000:0x0000处</span></span><br><span class="line">	jmpi go, INITSEG   <span class="comment">;跳转到0x9000:go的位置</span></span><br><span class="line"><span class="symbol">go:</span> </span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>, <span class="built_in">cs</span>		   <span class="comment">;cs = 0x9000</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ds</span>, <span class="built_in">ax</span>	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>, <span class="built_in">ax</span>	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ss</span>, <span class="built_in">ax</span> 	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">sp</span>, #<span class="number">0xff00</span></span><br><span class="line"><span class="symbol">load_setup:</span>	    	   <span class="comment">;载入setup模块</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">dx</span>, #<span class="number">0x0000</span> </span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>, #<span class="number">0x0002</span>    <span class="comment">;boot占了第一个扇区，故从第二个扇区继续读取</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>, #<span class="number">0x0200</span>	   <span class="comment">;boot读入到0x90000处，占256B，之后setup读入到0x92000处</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>, #<span class="number">0x0200</span>+SETUPLEN </span><br><span class="line">	<span class="keyword">int</span> <span class="number">0x13</span>           <span class="comment">;0x13是BIOS读磁盘扇区的中断。ah＝0x02-读磁盘，al＝扇区数量（SETUPLEN＝4），ch＝柱面号，cl＝开						始扇区，dh＝磁头号，dl＝驱动器号，es：bx＝内存地址</span></span><br><span class="line">	<span class="keyword">jnc</span> ok_load_setup</span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">dx</span>, #<span class="number">0x0000</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">ax</span>, #0xoooo    <span class="comment">;复位</span></span><br><span class="line">    <span class="keyword">int</span> <span class="number">0x13</span></span><br><span class="line">    j load_setup       <span class="comment">;重读</span></span><br><span class="line"><span class="symbol">ok_load_setup:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">dl</span>, #<span class="number">0x00</span> </span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>, #<span class="number">0x0800</span>    <span class="comment">;ah=8获得磁盘参数</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">0x13</span> </span><br><span class="line">	<span class="keyword">mov</span> <span class="number">ch</span>,#<span class="number">0x00</span> </span><br><span class="line">	<span class="keyword">mov</span> sectors,<span class="built_in">cx</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="number">ah</span>, #<span class="number">0x03</span></span><br><span class="line">	<span class="keyword">xor</span> <span class="number">bh</span>，<span class="number">bh</span> </span><br><span class="line">	<span class="keyword">int</span> <span class="number">0x10</span>           <span class="comment">;读光标</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>, #<span class="number">24</span>		   <span class="comment">;待显示字符串长度</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>, #<span class="number">0x0007</span>	   <span class="comment">;设置显示属性</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bp</span>, #msg1 </span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>, #<span class="number">1301</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">0x10</span>           <span class="comment">;0x10号中断，显示字符</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>, #SYSSEG    <span class="comment">;SYSSEG=0x1000</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>, <span class="built_in">ax</span> </span><br><span class="line">	<span class="keyword">call</span> read_it       <span class="comment">;读入system模块</span></span><br><span class="line">	jmpi <span class="number">0</span>, SETUPSEG   <span class="comment">;控制权交给setup，转入0x9020:0x0000执行setup.s</span></span><br><span class="line"><span class="symbol">read_it:</span>               <span class="comment">;system模块很大，可能跨越磁道，故额外定义一个函数</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="built_in">es</span> </span><br><span class="line">	<span class="keyword">cmp</span> <span class="built_in">ax</span>,#ENDSEG </span><br><span class="line">	<span class="keyword">jb</span> ok1_read</span><br><span class="line">	<span class="keyword">ret</span></span><br><span class="line"><span class="symbol">ok1_read:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>, sectors</span><br><span class="line">	<span class="keyword">sub</span> <span class="built_in">ax</span>,sread       <span class="comment">;sread是当前磁道已读扇区数, ax未读扇区数</span></span><br><span class="line">	<span class="keyword">call</span> read_track    <span class="comment">;读磁道</span></span><br><span class="line">......</span><br></pre></td></tr></table></figure>
 
-
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;在文件末尾bootsect.s中的数据</span></span><br><span class="line"><span class="symbol">sectors:</span> .word <span class="number">0</span><span class="comment">;      ;磁道扇区数</span></span><br><span class="line"><span class="symbol">msg1:</span> .byte <span class="number">13</span>,<span class="number">10</span></span><br><span class="line"><span class="meta">	  .ascii</span> <span class="string">&quot;Loading system...&quot;</span></span><br><span class="line"><span class="meta">	  .byte</span> <span class="number">13</span>,<span class="number">10</span>,<span class="number">13</span>,<span class="number">10</span></span><br></pre></td></tr></table></figure>
 
 
       
@@ -301,7 +211,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">期末复习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
         		</li>
       		
 		</ul>
@@ -357,7 +267,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://gdpolar.github.io/2021/01/12/%E8%AE%A1%E7%BB%84%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://gdpolar.github.io/2020/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -371,18 +281,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/04/24/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/06/12/C%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          微机原理期末复习
+          C刷题笔记
         
       </div>
     </a>
   
   
-    <a href="/2020/06/12/C%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">C刷题笔记</div>
+    <a href="/2019/04/28/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06%EF%BC%9A%E5%86%85%E5%BB%BA%E5%AF%B9%E8%B1%A1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS学习笔记6：内建对象</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -409,7 +319,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E5%9E%8B%E5%8C%85%E6%8B%AC%EF%BC%9A%E9%80%89%E6%8B%A9%E3%80%81%E5%A1%AB%E7%A9%BA%E3%80%81%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E3%80%81%E7%AE%80%E7%AD%94%E3%80%81%E5%A4%A7%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">题型包括：选择、填空、名词解释、简答、大题 </span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E9%A2%98"><span class="toc-number"></span> <span class="toc-text">选择题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A1%AB%E7%A9%BA%E9%A2%98"><span class="toc-number"></span> <span class="toc-text">填空题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A"><span class="toc-number"></span> <span class="toc-text">名词解释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E7%AD%94"><span class="toc-number"></span> <span class="toc-text">简答</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E9%A2%98"><span class="toc-number"></span> <span class="toc-text">大题</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#x86-PC%E5%BC%80%E6%9C%BA%E8%BF%87%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">x86 PC开机过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E5%AF%BC%E6%89%87%E5%8C%BA%E4%BB%A3%E7%A0%81-bootsect-s%E2%80%8B"><span class="toc-number">2.</span> <span class="toc-text">引导扇区代码:bootsect.s​</span></a></li></ol>
                     </div>
                 </span>
             </div>

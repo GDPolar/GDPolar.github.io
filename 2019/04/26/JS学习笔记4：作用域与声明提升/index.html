@@ -16,7 +16,7 @@
 <meta property="og:description" content="全局作用域中有一个全局对象window，代表一个浏览器的窗口，由浏览器创建。在全局作用域中声明变量实际是为window对象添加属性。因此可把全局作用域理解为特殊的最大的函数作用域。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-04-26T12:24:59.000Z">
-<meta property="article:modified_time" content="2022-01-07T09:33:06.826Z">
+<meta property="article:modified_time" content="2022-01-09T11:07:54.273Z">
 <meta property="article:author" content="GDPolar">
 <meta property="article:tag" content="JS学习">
 <meta name="twitter:card" content="summary">
@@ -189,7 +189,7 @@
 <ul>
 <li>在每次函数调用时都会将this作为一个隐含的参数传入，this指向函数执行的上下文对象</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">&quot;Lisi&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name);	<span class="comment">// 此处相当于window.name</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);	</span><br><span class="line">&#125;</span><br><span class="line">fun1();	<span class="comment">// &quot;Lisi&quot;</span></span><br><span class="line">fun2();</span><br><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">    <span class="attr">name</span> : <span class="string">&quot;San&quot;</span>,</span><br><span class="line">    <span class="attr">sayName1</span> : fun1,</span><br><span class="line">    <span class="attr">sayName2</span> : fun2</span><br><span class="line">&#125;;</span><br><span class="line">obj1.sayName1(); <span class="comment">// &quot;Lisi&quot;</span></span><br><span class="line">obj1.sayName2(); <span class="comment">// &quot;San&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;Lisi&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name);	<span class="comment">// 此处相当于window.name</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);	</span><br><span class="line">&#125;</span><br><span class="line">fun1();	<span class="comment">// &quot;Lisi&quot;</span></span><br><span class="line">fun2(); <span class="comment">// &quot;Lisi&quot;</span></span><br><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">    <span class="attr">name</span> : <span class="string">&quot;San&quot;</span>,</span><br><span class="line">    <span class="attr">sayName1</span> : fun1,</span><br><span class="line">    <span class="attr">sayName2</span> : fun2</span><br><span class="line">&#125;;</span><br><span class="line">obj1.sayName1(); <span class="comment">// &quot;Lisi&quot;</span></span><br><span class="line">obj1.sayName2(); <span class="comment">// &quot;San&quot;</span></span><br></pre></td></tr></table></figure>
 
 
       
@@ -279,14 +279,14 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          JS学习笔记5:let与var
+          JS学习笔记5：let与var
         
       </div>
     </a>
   
   
     <a href="/2019/04/25/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%87%BD%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JS学习笔记3:对象与函数</div>
+      <div class="article-nav-title">JS学习笔记3：对象、函数与原型</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -426,11 +426,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
+                <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
+                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -439,6 +439,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">期末复习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
             
             <div class="clearfix"></div>
