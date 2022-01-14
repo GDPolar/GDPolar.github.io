@@ -426,7 +426,7 @@
 <h2 id="c-调用C语言头文件"><a href="#c-调用C语言头文件" class="headerlink" title="c++调用C语言头文件"></a>c++调用C语言头文件</h2><p>​    去掉 .h 然后前面加上 c</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span> <span class="comment">// 相当于C语⾔⾥⾯的#include &lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span> <span class="comment">// 相当于C语⾔⾥⾯的#include &lt;stdib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span> <span class="comment">// 相当于C语⾔⾥⾯的#include &lt;ctype.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span> <span class="comment">// 相当于C语⾔⾥⾯的#include &lt;string.h&gt;</span></span></span><br></pre></td></tr></table></figure>
 
-<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>​    刷题时候都是为了方便，所以使用 using namespace std;</p>
+<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>​    刷题时候都是为了方便，所以使用 <strong>using namespace std;</strong></p>
 <h2 id="cout输出控制"><a href="#cout输出控制" class="headerlink" title="cout输出控制"></a>cout输出控制</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> t = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">// bool类型数据输出时要加 boolalpha</span></span><br><span class="line">    cout &lt;&lt; t &lt;&lt; endl; <span class="comment">// 1</span></span><br><span class="line">    cout &lt;&lt; boolalpha &lt;&lt; t &lt;&lt; endl; <span class="comment">// true</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
@@ -789,7 +789,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Array是JS的一个内建对象
+        <p>JS的常用对象包括Array、Date、Math、String等
         
       
 
@@ -1109,11 +1109,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
+                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
+                <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1121,11 +1121,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">期末复习</a>
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+                <a href="javascript:void(0)" class="js-tag color5">期末复习</a>
               </li>
             
             <div class="clearfix"></div>
