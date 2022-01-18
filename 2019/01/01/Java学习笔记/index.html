@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://GDPolar.github.io">
-  <title>JS学习笔记2：比较 | GDPolar&#39;s Blog</title>
+  <title>Java学习笔记 | GDPolar&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="123null &gt; 0   &#x2F;&#x2F; null 尝试转型为number，则为0，所以结果为 falsenull &gt;&#x3D; 0  &#x2F;&#x2F; null 尝试转为number，则为0，结果为 truenull &#x3D;&#x3D; 0  &#x2F;&#x2F; null在设计上，在此处不尝试转型，所以结果为 false">
+  <meta name="description" content="[toc]">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS学习笔记2：比较">
-<meta property="og:url" content="https://gdpolar.github.io/2019/04/24/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E6%AF%94%E8%BE%83/index.html">
+<meta property="og:title" content="Java学习笔记">
+<meta property="og:url" content="https://gdpolar.github.io/2019/01/01/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="GDPolar&#39;s Blog">
-<meta property="og:description" content="123null &gt; 0   &#x2F;&#x2F; null 尝试转型为number，则为0，所以结果为 falsenull &gt;&#x3D; 0  &#x2F;&#x2F; null 尝试转为number，则为0，结果为 truenull &#x3D;&#x3D; 0  &#x2F;&#x2F; null在设计上，在此处不尝试转型，所以结果为 false">
+<meta property="og:description" content="[toc]">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-04-24T12:24:59.000Z">
-<meta property="article:modified_time" content="2022-01-07T15:03:09.738Z">
+<meta property="og:image" content="https://s2.loli.net/2022/01/15/PpbkrqwomleKFCj.png">
+<meta property="article:published_time" content="2019-01-01T12:24:59.000Z">
+<meta property="article:modified_time" content="2022-01-15T08:22:23.156Z">
 <meta property="article:author" content="GDPolar">
-<meta property="article:tag" content="JS学习">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/01/15/PpbkrqwomleKFCj.png">
   
     <link rel="alternative" href="/atom.xml" title="GDPolar&#39;s Blog" type="application/atom+xml">
   
@@ -149,148 +151,287 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JS学习笔记2：比较" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         <!-- 
   
     <h1 class="article-title" itemprop="name">
-      JS学习笔记2：比较
+      Java学习笔记
     </h1>
   
  -->
         <center><p>
   
     <h1 class="article-title_my" itemprop="name">
-      JS学习笔记2：比较
+      Java学习笔记
     </h1>
   
 </p></center>
         
-        <a href="/2019/04/24/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E6%AF%94%E8%BE%83/" class="archive-article-date">
-  	<time datetime="2019-04-24T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-24</time>
+        <a href="/2019/01/01/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2019-01-01T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">null</span> &gt; <span class="number">0</span>   <span class="comment">// null 尝试转型为number，则为0，所以结果为 false</span></span><br><span class="line"><span class="literal">null</span> &gt;= <span class="number">0</span>  <span class="comment">// null 尝试转为number，则为0，结果为 true</span></span><br><span class="line"><span class="literal">null</span> == <span class="number">0</span>  <span class="comment">// null在设计上，在此处不尝试转型，所以结果为 false</span></span><br></pre></td></tr></table></figure>
+        <p>[toc]</p>
 <span id="more"></span>
 
-<ul>
-<li> 内部相等性运算算法</li>
-</ul>
-<blockquote>
-<p>11.9.3 The Abstract Equality Comparison Algorithm<br>The comparison x == y, where x and y are values, produces true or false. Such a comparison is performed as follows: </p>
-<ol>
-<li>If Type(x) is different from Type(y), Go to step 14. </li>
-<li>If Type(x) is Undefined, return true. </li>
-<li>If Type(x) is Null, return true. </li>
-<li>If Type(x) is not Number, go to step 11. </li>
-<li>If x is NaN, return false. </li>
-<li>If y is NaN, return false. </li>
-<li>If x is the same number value as y, return true. </li>
-<li>If x is +0 and y is -0, return true. </li>
-<li>If x is -0 and y is +0, return true. </li>
-<li>Return false. </li>
-<li>If Type(x) is String, then return true if x and y are exactly the same sequence of characters (same length and same characters in corresponding positions). Otherwise, return false. </li>
-<li>If Type(x) is Boolean, return true if x and y are both true or both false. Otherwise, return false. </li>
-<li>Return true if x and y refer to the same object or if they refer to objects joined to each other (see 13.1.2). Otherwise, return false. </li>
-<li>If x is null and y is undefined, return true.  </li>
-<li>If x is undefined and y is null, return true. </li>
-<li>If Type(x) is Number and Type(y) is String, return the result of the comparison x == ToNumber(y). </li>
-<li>If Type(x) is String and Type(y) is Number, return the result of the comparison ToNumber(x)== y. </li>
-<li>If Type(x) is Boolean, return the result of the comparison ToNumber(x)== y. </li>
-<li>If Type(y) is Boolean, return the result of the comparison x == ToNumber(y). </li>
-<li>If Type(x) is either String or Number and Type(y) is Object, return the result of the comparison x == ToPrimitive(y). </li>
-<li>If Type(x) is Object and Type(y) is either String or Number, return the result of the comparison ToPrimitive(x)== y. </li>
-<li>Return false.</li>
-</ol>
-</blockquote>
-<hr>
-<ul>
-<li>内部关系运算算法</li>
-</ul>
-<blockquote>
-<p>11.8.5 The Abstract Relational Comparison Algorithm<br>The comparison x &lt; y, where x and y are values, produces true, false, or undefined (which indicates that at least one operand is NaN). Such a comparison is performed as follows: </p>
-<ol>
-<li>Call ToPrimitive(x, hint Number). </li>
-<li>Call ToPrimitive(y, hint Number). </li>
-<li>If Type(Result(1)) is String and Type(Result(2)) is String, go to step 16. (Note that this step differs from step 7 in the algorithm for the addition operator **+ *  in<code> </code>using *and instead of or.) </li>
-<li>Call ToNumber(Result(1)). </li>
-<li>Call ToNumber(Result(2)). </li>
-<li>If Result(4) is NaN, return undefined. </li>
-<li>If Result(5) is NaN, return undefined. </li>
-<li>If Result(4) and Result(5) are the same number value, return false. </li>
-<li>If Result(4) is +0 and Result(5) is -0, return false. </li>
-<li>If Result(4) is -0 and Result(5) is +0, return false. </li>
-<li>If Result(4) is +∞, return false. </li>
-<li>If Result(5) is +∞, return true. </li>
-<li>If Result(5) is -∞, return false. </li>
-<li>If Result(4) is -∞, return true. </li>
-<li>If the mathematical value of Result(4) is less than the mathematical value of Result(5) — note that these mathematical values are both finite and not both zero — return true. Otherwise, return false. </li>
-<li>If Result(2) is a prefix of Result(1), return false. (A string value p is a prefix of string value q if q can be the result of concatenating p and some other string<em>r</em>. Note that any string is a prefix of itself, because r may be the empty string.) </li>
-<li>If Result(1) is a prefix of Result(2), return true. </li>
-<li>Let k be the smallest nonnegative integer such that the character at position k within Result(1) is different from the character at position k within Result(2). (There must be such a k, for neither string is a prefix of the other.) </li>
-<li>Let m be the integer that is the code point value for the character at position k within Result(1). </li>
-<li>Let n be the integer that is the code point value for the character at position k within Result(2). </li>
-<li>If m &lt; n, return true. Otherwise, return false.</li>
-</ol>
-</blockquote>
-<ul>
-<li> “&gt;” 运算符</li>
-</ul>
-<blockquote>
-<p>The Greater-than Operator ( &gt; )<br>The production RelationalExpression :<br>RelationalExpression &gt; ShiftExpression is evaluated as follows: </p>
-<ol>
-<li>Evaluate RelationalExpression. </li>
-<li>Call GetValue(Result(1)). </li>
-<li>Evaluate ShiftExpression. </li>
-<li>Call GetValue(Result(3)). </li>
-<li>Perform the comparison Result(4) &lt; Result(2). </li>
-<li>If Result(5) is undefined, return false. Otherwise, return Result(5).</li>
-</ol>
-</blockquote>
-<ul>
-<li>”&gt;=” 运算符</li>
-</ul>
-<blockquote>
-<p>The Greater-than-or-equal Operator ( &gt;= )<br>The production RelationalExpression :<br>RelationalExpression &gt;= ShiftExpression is evaluated as follows: </p>
-<ol>
-<li>Evaluate RelationalExpression. </li>
-<li>Call GetValue(Result(1)). </li>
-<li>Evaluate ShiftExpression. </li>
-<li>Call GetValue(Result(3)). </li>
-<li>Perform the comparison Result(2) &lt; Result(4). (see 11.8.5). </li>
-<li>If Result(5) is true or undefined, return false. Otherwise, return true.</li>
-</ol>
-</blockquote>
-<ul>
-<li> “==” 运算符</li>
-</ul>
-<blockquote>
-<p>The Equals Operator ( == )<br>The production EqualityExpression :<br>EqualityExpression == RelationalExpression is evaluated as<br>follows: </p>
-<ol>
-<li>Evaluate EqualityExpression. </li>
-<li>Call GetValue(Result(1)). </li>
-<li>Evaluate RelationalExpression. </li>
-<li>Call GetValue(Result(3)). </li>
-<li>Perform the comparison Result(4) == Result(2). (see 11.9.3). </li>
-<li>Return Result(5).</li>
-</ol>
-</blockquote>
-<hr>
-<p>根据以上ES3的实现，得出以下结论：</p>
-<ol>
-<li>关系运算符 和 相等运算符 并不是一个类别的.</li>
-<li>关系运算符,在设计上,总是需要运算元尝试转为一个number . 而相等运算符在设计上,则没有这方面的考虑.</li>
-<li>最重要的一点, 不要把 拿 a &gt; b , a == b 的结果 想当然的去和 a &gt;= b 建立联系.  正确的符合最初设计思想的关系是 a &gt; b 与 a &gt;= b是一组 . a == b 和其他相等运算符才是一组. 比如 a === b , a != b, a !== b .</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">null</span> &gt; <span class="number">0</span>   <span class="comment">// null 尝试转型为number，则为0，所以结果为 false</span></span><br><span class="line"><span class="literal">null</span> &gt;= <span class="number">0</span>  <span class="comment">// null 尝试转为number，则为0，结果为 true</span></span><br><span class="line"><span class="literal">null</span> == <span class="number">0</span>  <span class="comment">// null在设计上，在此处不尝试转型，所以结果为 false</span></span><br></pre></td></tr></table></figure>
+<h2 id="Interface"><a href="#Interface" class="headerlink" title="Interface"></a>Interface</h2><p>接口内所有方法不可在接口实现</p>
+<p>接口中的变量默认是常量,即 public static final</p>
+<p>代码块执行顺序(Derived extends Base)：<br>Base static –&gt; Derived static –&gt; Base anonyous –&gt;<br>Base constructor –&gt; Derived anonyous –&gt; Derived constructor</p>
+<h2 id="cast转型"><a href="#cast转型" class="headerlink" title="cast转型"></a>cast转型</h2><p>以下代码可行(Man extends Human)：</p>
+<pre><code>Human obj1 = new Man();
+Man obj2 = (Man)obj1;
+</code></pre>
+<h2 id="静态方法使用静态变量或方法内的临时变量"><a href="#静态方法使用静态变量或方法内的临时变量" class="headerlink" title="静态方法使用静态变量或方法内的临时变量"></a>静态方法使用静态变量或方法内的临时变量</h2><h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><p>final修饰的变量不可修改其值</p>
+<p>final修饰的对象实例不可修改其指向,可修改对象内部的值</p>
+<p>final修饰的类不可被继承</p>
+<p>//java中将const作为关键字保留,但没有功能</p>
+<h2 id="常量池"><a href="#常量池" class="headerlink" title="常量池"></a>常量池</h2><p>常量式(字面量)赋值创建,位于栈,将被常量化</p>
+<p>new对象进行创建,位于堆,不会常量化</p>
+<p>Boolen :true,false</p>
+<p>Byte: 0-127</p>
+<p>Character :0-127</p>
+<p>Short:-128-127</p>
+<p>Integer:-128-127</p>
+<p>Long:-128-127</p>
+<p>Float,Double 无常量池</p>
+<p>常量池编译器自动优化 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">String s0 = <span class="string">&quot;abcdef&quot;</span>;</span><br><span class="line">String s1 = <span class="string">&quot;a&quot;</span>+<span class="string">&quot;b&quot;</span>+<span class="string">&quot;c&quot;</span>;</span><br><span class="line">String s2 = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line">String s3 = <span class="keyword">new</span> String(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">String s4 = <span class="keyword">new</span> String(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">String s5 = s1 + <span class="string">&quot;def&quot;</span>;    <span class="comment">//表达式涉及到变量，故编译器不优化</span></span><br><span class="line">String s6 = <span class="string">&quot;abc&quot;</span> + <span class="string">&quot;def&quot;</span>; <span class="comment">//都是常量，编译器会自动优化成abcdef</span></span><br><span class="line">String s7 = <span class="string">&quot;abc&quot;</span> + <span class="keyword">new</span> String (<span class="string">&quot;def&quot;</span>);<span class="comment">//涉及到new对象，编译器不优化</span></span><br><span class="line">String s8 = s3 + <span class="string">&quot;def&quot;</span>;<span class="comment">//涉及到new对象，编译器不优化</span></span><br><span class="line"><span class="comment">//s1 == s2, s0 == s6</span></span><br></pre></td></tr></table></figure>
 
-<p>ps:这设计真是令人无语</p>
+<h2 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h2><p>基本类型赋值给包装类对象，自动装箱</p>
+<p>基本类型和包装类进行比较，包装类自动拆箱</p>
+<p>包装类运算自动拆箱为基本类型并运算</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i1 = <span class="number">10</span>;</span><br><span class="line">Integer i2 = <span class="number">10</span>;                <span class="comment">// 自动装箱</span></span><br><span class="line">System.out.println(i1 == i2);   <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">Integer i3 = <span class="keyword">new</span> Integer(<span class="number">10</span>);</span><br><span class="line">System.out.println(i1 == i3);  <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">System.out.println(i2 == i3); <span class="comment">//false</span></span><br><span class="line">	</span><br><span class="line">Integer i4 = <span class="keyword">new</span> Integer(<span class="number">5</span>);</span><br><span class="line">Integer i5 = <span class="keyword">new</span> Integer(<span class="number">5</span>);</span><br><span class="line">System.out.println(i1 == (i4+i5));   <span class="comment">//true</span></span><br><span class="line">System.out.println(i2 == (i4+i5));   <span class="comment">//true</span></span><br><span class="line">System.out.println(i3 == (i4+i5));   <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="BigInteger大数类"><a href="#BigInteger大数类" class="headerlink" title="BigInteger大数类"></a>BigInteger大数类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">bi1.add(bi2));</span><br><span class="line">bi1.subtract(bi2));</span><br><span class="line">bi1.multiply(bi2));</span><br><span class="line">bi1.divide(bi2));</span><br><span class="line">bi1.remainder(bi2));</span><br><span class="line">bi1.min(bi2));</span><br><span class="line">bi1.max(bi2));</span><br><span class="line">bi1.equals(bi2));</span><br><span class="line">BigInteger []divideAndReminder = bi1.divideAndRemainder(bi2);</span><br></pre></td></tr></table></figure>
+
+<h2 id="生成随机数三种方法"><a href="#生成随机数三种方法" class="headerlink" title="生成随机数三种方法"></a>生成随机数三种方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//生成0-10的随机数	</span></span><br><span class="line">Math.random()*<span class="number">9</span>+<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<pre><code> //用Random类生成随机数
+Random rd = new Random();
+System.out.println(rd.nextBoolean());
+System.out.println(rd.nextInt());
+System.out.println(rd.nextLong());
+System.out.println(rd.nextInt(10)); // 0--10的随机数
+System.out.println(rd.nextDouble());
+</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//jdk8.0新增方法</span></span><br><span class="line">rd.ints(); <span class="comment">//生成无限个int随机数</span></span><br><span class="line"><span class="keyword">int</span>[] arr = rd.ints(<span class="number">10</span>).toArray(); <span class="comment">//取10个随机数组成数组</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="String类常用方法"><a href="#String类常用方法" class="headerlink" title="String类常用方法"></a>String类常用方法</h2><p>String方法都只是返回一个修改后的新串,而不改变原字符串</p>
+<p>charAt(int);indexOf(char);concat(String);contains(String);endsWith(String);<br>equals(String);equalsIgnoreCase(String)</p>
+<p>trim();//返回去除前后空格的新字符串</p>
+<p>split(char c);//返回以c为分隔符的字符串数组</p>
+<p>substring(int begin,int end);//返回从begin到end的新串,此处的substring均小写</p>
+<p>replace();replaceAll();二者都是返回全部替换的新串，但是replaceAll支持正则表达式</p>
+<h2 id="StringBuffer"><a href="#StringBuffer" class="headerlink" title="StringBuffer"></a>StringBuffer</h2><p>字符串拼接速度StringBuilder &gt; StringBuffer &gt;&gt;&gt; String</p>
+<p>StringBuffer原地修改,可变对象</p>
+<p>StringBuffer的的初始大小为（16+初始字符串长度）即capacity=16+初始字符串长度</p>
+<p>length:实际长度  capacity:存储空间大小</p>
+<p>一旦length大于capacity时，capacity便在前一次的基础上加1后翻倍</p>
+<p>如果append的对象很长，超过(加1再2倍数额)，将以最新的长度更换</p>
+<h2 id="DecimalFormat数字格式"><a href="#DecimalFormat数字格式" class="headerlink" title="DecimalFormat数字格式"></a>DecimalFormat数字格式</h2><p>Decimal实例对象的构造函数传入格式规则字符串</p>
+<p>调用DecimalFormat实例对象的format方法返回格式要求的字符串</p>
+<p>“#”代表尽可能省去0，“0”表示不可省去</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> DecimalFormat(<span class="string">&quot;#.00&quot;</span>).format(<span class="number">0.654</span>);  			<span class="comment">//返回&quot;.65&quot;</span></span><br><span class="line"><span class="keyword">new</span> DecimalFormat(<span class="string">&quot;0.00&quot;</span>).format(<span class="number">0.654</span>);  			<span class="comment">//返回&quot;0.65&quot;</span></span><br><span class="line"><span class="keyword">new</span> DecimalFormat(<span class="string">&quot;,000.00&quot;</span>).format(<span class="number">123456789.401</span>);	<span class="comment">//返回&quot;123,456,789.40&quot;</span></span><br><span class="line"><span class="keyword">new</span> DecimalFormat(<span class="string">&quot;,000.##&quot;</span>).format(<span class="number">123456789.401</span>);	<span class="comment">//返回&quot;123,456,789.4&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="MessageFormat文本格式"><a href="#MessageFormat文本格式" class="headerlink" title="MessageFormat文本格式"></a>MessageFormat文本格式</h2><pre><code>    String pattern的格式：
+     &#123; ArgumentIndex , FormatType , FormatStyle &#125;
+     -- ArgumentIndex
+     -- FormatType:
+             number
+             date
+             time
+             choice（需要使用ChoiceFormat）
+     -- FormatStyle:
+             short
+             medium
+             long
+             full
+             integer
+             currency
+             percent
+             SubformatPattern
+</code></pre>
+<p>通过    调用MessageFormat类的静态方法实现</p>
+<p>MessageFormat.format(String pattern,Object[] args)    //返回格式化后的字符串</p>
+<pre><code>eg:
+MessageFormat.format(&quot;Oh,&#123;0,number,,###.##&#125; is a &#123;1&#125; good!!&quot;,new Object&#123;6456456.135465,&quot;good&quot;&#125;);            //返回&quot;Oh,6,456,456.14 is a good number!!&quot;
+</code></pre>
+<h2 id="ArratList-lt-gt-和LinkedList-lt-gt-及Vector-lt-gt"><a href="#ArratList-lt-gt-和LinkedList-lt-gt-及Vector-lt-gt" class="headerlink" title="ArratList&lt;&gt;和LinkedList&lt;&gt;及Vector&lt;&gt;"></a>ArratList&lt;&gt;和LinkedList&lt;&gt;及Vector&lt;&gt;</h2><p>泛型使用包装类</p>
+<p>add();remove();size();</p>
+<p>List可用addFirst()之类的方法</p>
+<p>Vector和ArrayList类似，非同步情况下用ArrayList</p>
+<h2 id="HashSet-lt-gt-和TreeSet-lt-gt-及LinkedHashSet-lt-gt"><a href="#HashSet-lt-gt-和TreeSet-lt-gt-及LinkedHashSet-lt-gt" class="headerlink" title="HashSet&lt;&gt; 和TreeSet&lt;&gt;及LinkedHashSet&lt;&gt;##"></a>HashSet&lt;&gt; 和TreeSet&lt;&gt;及LinkedHashSet&lt;&gt;##</h2><h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><p>HashSet装的是HashMap,其不重复且无顺序可言,可容纳null</p>
+<p>size();contains(Element);</p>
+<p>clear()        //清除集合内元素</p>
+<p>retainAll(hs)    //取交集    </p>
+<pre><code>判断重复的方法：
+    1.先判断int HashCode()返回值是否相同
+    2.再判断boolean equals(obj2)返回值是否为true
+</code></pre>
+<p>hashCode(),equals()和toString()方法三位一体,最好同时修改</p>
+<hr>
+<h3 id="LinkedHashSet保留顺序"><a href="#LinkedHashSet保留顺序" class="headerlink" title="LinkedHashSet保留顺序"></a>LinkedHashSet保留顺序</h3><hr>
+<h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><p></p>
+不可容纳null
+
+<pre><code>判断重复的方法：
+    1.判断数据类的int compareTo()返回值与0比较
+
+
+自定义排序方法：
+    无参构造函数默认CompareTo自然排序
+    自定义Comparator对象作为构造参数传入
+</code></pre>
+<p>自定义Comparator重写int compare(ElemType a,ElemType b)方法</p>
+<h2 id="HashMapM-lt-K-V-gt-和Hashtable-lt-K-V-gt"><a href="#HashMapM-lt-K-V-gt-和Hashtable-lt-K-V-gt" class="headerlink" title="HashMapM&lt;K,V&gt;和Hashtable&lt;K,V&gt;"></a>HashMapM&lt;K,V&gt;和Hashtable&lt;K,V&gt;</h2><h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p></p>
+K-V对允许为null
+
+<p>1K对应1V</p>
+<hr>
+<h3 id="Hashtable"><a href="#Hashtable" class="headerlink" title="Hashtable"></a>Hashtable</h3><p></p>
+多线程同步
+
+<p>K-V对不允许为null</p>
+<p>contains();等价于containsValue();</p>
+<p>containsKey();get();</p>
+<p>clear();清除元素</p>
+<hr>
+<h3 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h3><p></p>
+保留顺序,允许有null
+
+<h2 id="Properties以文件形式读取K-V对"><a href="#Properties以文件形式读取K-V对" class="headerlink" title="Properties以文件形式读取K-V对"></a>Properties以文件形式读取K-V对</h2><p>Properties继承于Hashtable</p>
+<p>将K-V对保存在文件中</p>
+<p>load(InputStream)加载流中原有的K-V对</p>
+<p>store(OutputStream,String)写入所有K-V对到流</p>
+<p>getProperty()获取K对应的V</p>
+<p>setProperty()插入一个K-V对</p>
+<h2 id="TreeMap-lt-K-V-gt"><a href="#TreeMap-lt-K-V-gt" class="headerlink" title="TreeMap&lt;K,V&gt;"></a>TreeMap&lt;K,V&gt;</h2><p>基于红黑树</p>
+<p>K不可为null</p>
+<p>按照Key大小或compareTo()方法排序</p>
+<h2 id="Arrays工具类"><a href="#Arrays工具类" class="headerlink" title="Arrays工具类"></a>Arrays工具类</h2><p>–sort()</p>
+<p>–binarySearch()    //二分法检索</p>
+<p>–copyOf()</p>
+<p>–fill()<br>  fill(int[],fromIndex,toIndex+1,value)</p>
+<p>–equals()</p>
+<h2 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList<E></h2><p>与Arrays大致类似,处理List</p>
+<h2 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h2><p>–exists()</p>
+<p>–mkdir()创造单级目录,mkdirs()</p>
+<p>–isDirectory()</p>
+<p>–isFile()</p>
+<p>–creatNewFile() throws IOException</p>
+<p>–delete()</p>
+<p>–getName()</p>
+<p>–getPath(),getParent()返回上级目录</p>
+<p>–File[] listFiles() 返回当前目录文件的数组,不递归列出子目录文件</p>
+<hr>
+<h3 id="Path类-jdk7-0"><a href="#Path类-jdk7-0" class="headerlink" title="Path类(jdk7.0++)"></a>Path类(jdk7.0++)</h3><p>可由File类对象的toPath()转化    </br><br>eg:                            </br><br>File a = new File(“D:/a.txt”);<br>Path pa = a.toPath();</p>
+<p>可用Paths工具类的get(“FilePath”)方法返回Path的实例对象 </br><br>Paths.get(“FilePath”);</p>
+<p>–resolve() 可以理解成cd指令</p>
+<h2 id="BufferReader-amp-amp-BufferWriter"><a href="#BufferReader-amp-amp-BufferWriter" class="headerlink" title="BufferReader &amp;&amp; BufferWriter"></a>BufferReader &amp;&amp; BufferWriter</h2><h3 id="BufferReader"><a href="#BufferReader" class="headerlink" title="BufferReader:"></a>BufferReader:</h3><p></p>
+new BufferReader(new InputStreamReader(new FileInputStream(File or String)))    
+
+<p>–readLine()</p>
+<p>–close()</p>
+<h3 id="BufferWriter"><a href="#BufferWriter" class="headerlink" title="BufferWriter"></a>BufferWriter</h3><p></p>
+
+<p>new BufferWriter(new OutputStreamWriter(new FileOutputStream(String or File),StandardCharsets.UTF_8))</p>
+<p>–write()</p>
+<p>–newLine()</p>
+<p>–close()</p>
+<h2 id="try-source-jdk7"><a href="#try-source-jdk7" class="headerlink" title="try-source(jdk7++)"></a>try-source(jdk7++)</h2><p>try结束后自动关闭资源</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>(Coding here)&#123;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="properties文件"><a href="#properties文件" class="headerlink" title="properties文件"></a>properties文件</h2><h3 id="文件命名格式"><a href="#文件命名格式" class="headerlink" title="文件命名格式"></a>文件命名格式</h3><p>baseName_language_country.properties</p>
+<h3 id="文件内容"><a href="#文件内容" class="headerlink" title="文件内容"></a>文件内容</h3><p>Key = Value</p>
+<hr>
+<h3 id="Charset类"><a href="#Charset类" class="headerlink" title="Charset类"></a>Charset类</h3><p></p>
+Charset.defaultCharset()
+
+<p>–name()</p>
+<hr>
+<h3 id="Locale类"><a href="#Locale类" class="headerlink" title="Locale类"></a>Locale类</h3><p></p>
+Locale(language,country)
+
+<p>Locale.getDefault()</p>
+<p>Locale.getAvailableLocales()</p>
+<hr>
+<h3 id="ResourceBundles类"><a href="#ResourceBundles类" class="headerlink" title="ResourceBundles类"></a>ResourceBundles类</h3><p></p>
+根据Locale要求加载对应的properties文件
+
+<p>Resource.getBundle(“baseName”,Locale)</p>
+<p>–getString(“Key”)</p>
+<p>—–properties文件匹配优先顺序中,自定义传入的Locale参数优先级最高,国家优先级高于语言</p>
+<p>—–eg:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Locale myLocale = <span class="keyword">new</span> Locale(<span class="string">&quot;en&quot;</span>,<span class="string">&quot;US&quot;</span>);</span><br><span class="line">ResourceBundle myBundle = ResourceBundle.getBundle(<span class="string">&quot;msg&quot;</span>,myLocale);</span><br><span class="line"><span class="comment">//会依次匹配以下文件</span></span><br><span class="line"><span class="comment">//msg_en_US.properties</span></span><br><span class="line"><span class="comment">//msg_en.properties</span></span><br><span class="line"><span class="comment">//msg_zh_CN.properties	/*默认的Loacle*/</span></span><br><span class="line"><span class="comment">//msg_zh.properties</span></span><br><span class="line"><span class="comment">//msg.properties</span></span><br><span class="line"></span><br><span class="line">## RegExp正则表达式 ##</span><br></pre></td></tr></table></figure>
+
+<h3 id="Pattern类"><a href="#Pattern类" class="headerlink" title="Pattern类"></a>Pattern类</h3><p>–compile(reg)返回一个将正则表达式字符串编译成的Pattern对象</p>
+<p>–matcher(input)返回一个Matcher类的对象</p>
+<h3 id="Matcher类"><a href="#Matcher类" class="headerlink" title="Matcher类"></a>Matcher类</h3><p>–start()返回index</p>
+<p>–end()返回index</p>
+<p>–boolean lookingAt()部分匹配</p>
+<p>–boolean matches()完全匹配</p>
+<p><strong>appendReplacement和appendTail:</strong></p>
+<p>–appendReplacement(StringBuffer,replacement)</p>
+<p>–appendTail(StringBuffer)</p>
+<p>(1)替换所有replaceAll()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(matcher.find())&#123;</span><br><span class="line">	matcher.appendReplacement(sb,replacement);	</span><br><span class="line">&#125;</span><br><span class="line">matcher.appendTail(sb);	</span><br></pre></td></tr></table></figure>
+
+<p>(2)替换第一个</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(matcher.find())&#123;</span><br><span class="line">	matcher.appendReplacement(sb,replacement);</span><br><span class="line">&#125;	</span><br></pre></td></tr></table></figure>
+<pre><code>  matcher.appendTail(sb);
+</code></pre>
+<h2 id="DomReader"><a href="#DomReader" class="headerlink" title="DomReader"></a>DomReader</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();</span><br><span class="line">DocumentBuilder db = dbf.newDocumentBuilder();</span><br><span class="line">Document d = (Document) db.parse(<span class="string">&quot;file.xml&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h2><p>子类重写父类方法时，不可抛出比父类多的异常或不在父类抛出的异常的下继承链的异常，<br>因为继承必须满足里氏代换原则，即子类必须可以在任何场合替换父类</p>
+<p>自定义异常类继承Exception,则默认为编译期异常</p>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><h4 id="尽量使用Runnable接口创建多线程程序，降低耦合性，增强扩展性"><a href="#尽量使用Runnable接口创建多线程程序，降低耦合性，增强扩展性" class="headerlink" title="尽量使用Runnable接口创建多线程程序，降低耦合性，增强扩展性"></a>尽量使用Runnable接口创建多线程程序，降低耦合性，增强扩展性</h4><h3 id="Thread类实现"><a href="#Thread类实现" class="headerlink" title="Thread类实现"></a>Thread类实现</h3><p></p>
+创建的Thread子类重写run()方法
+
+<p>通过调用子类对象的start()方法，开辟新的栈空间并将run()中的代码压栈执行</p>
+<p>Thread.sleep()，使当前的进程暂停指定的毫秒</p>
+<h3 id="Runnable接口实现"><a href="#Runnable接口实现" class="headerlink" title="Runnable接口实现"></a>Runnable接口实现</h3><p></p>
+实现类中重写Runnable的run()方法
+
+<p>创建Thread类对象，向其构造方法传入实现类对象，通过调用该Thread类对象的start()开启</p>
+<h2 id="线程安全问题"><a href="#线程安全问题" class="headerlink" title="线程安全问题"></a>线程安全问题</h2><h3 id="同步代码块："><a href="#同步代码块：" class="headerlink" title="同步代码块："></a>同步代码块：</h3><pre><code>synchronized(obj)&#123;
+
+  可能出现线程安全问题的代码
+
+&#125;
+</code></pre>
+<h3 id="同步方法"><a href="#同步方法" class="headerlink" title="同步方法"></a>同步方法</h3></p>
+
+<p>在方法前加修饰关键字synchronized</p>
+<p>锁对象默认是实现类对象,也就是this</p>
+<p>（静态方法的锁对象是本类的class属性）</p>
+<h3 id="Lock接口-jdk1-5"><a href="#Lock接口-jdk1-5" class="headerlink" title="Lock接口 (jdk1.5+)"></a>Lock接口 (jdk1.5+)</h3></p>
+在成员位置创建一个ReentranLock对象
+    
+<p>在可能出问题的代码前调用对象的lock()方法获取锁，在代码后调用unlock()释放锁</p>
+<h2 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h2><p><img src="https://s2.loli.net/2022/01/15/PpbkrqwomleKFCj.png" alt="在这里插入图片描述"></p>
+<h3 id="wait-amp-notify"><a href="#wait-amp-notify" class="headerlink" title="wait()&amp;notify()"></a>wait()&amp;notify()</h3><p>
+调用wait()或者notify()之前，必须使用synchronized语义绑定住被wait/notify的对象。
+
+<p>wait(long timeout),在waiting状态的最大时间限度,逾时自动唤醒</p>
+<p>notify()唤醒随机的一个等待线程</p>
+<p>notifyAll()全唤醒</p>
+<h2 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h2><p>要求使用的接口有且只有一个抽象方法</p>
+<p>可简化匿名内部类的书写</p>
+<p><strong>格式:(参数列表)-&gt;{重写的代码}</strong></p>
+<p><strong>可推导即可省略：</strong></p>
+<p>&nbsp;&nbsp;1.参数类型可省略</p>
+<p>&nbsp;&nbsp;2.参数只有一个时,小括号可省略</p>
+<p>&nbsp;&nbsp;3.大括号只有一句代码语句时,{}和return和;可同时省略    
+     </p>
 
       
 
@@ -305,7 +446,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -361,7 +502,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://gdpolar.github.io/2019/04/24/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E6%AF%94%E8%BE%83/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://gdpolar.github.io/2019/01/01/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -375,20 +516,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/04/25/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%87%BD%E6%95%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/01/01/%E5%9F%BA%E4%BA%8Ehexo%E4%B8%8Egithub%E7%9A%84%E5%8D%9A%E5%AE%A2/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          JS学习笔记3：对象、函数与原型
+          基于hexo与github的个人博客
         
       </div>
     </a>
   
-  
-    <a href="/2019/04/23/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JS学习笔记1：基本数据类型及逻辑运算</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
@@ -413,7 +549,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Interface"><span class="toc-number">1.</span> <span class="toc-text">Interface</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cast%E8%BD%AC%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">cast转型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E6%88%96%E6%96%B9%E6%B3%95%E5%86%85%E7%9A%84%E4%B8%B4%E6%97%B6%E5%8F%98%E9%87%8F"><span class="toc-number">3.</span> <span class="toc-text">静态方法使用静态变量或方法内的临时变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#final"><span class="toc-number">4.</span> <span class="toc-text">final</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E6%B1%A0"><span class="toc-number">5.</span> <span class="toc-text">常量池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%85%E8%A3%85%E7%B1%BB"><span class="toc-number">6.</span> <span class="toc-text">包装类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BigInteger%E5%A4%A7%E6%95%B0%E7%B1%BB"><span class="toc-number">7.</span> <span class="toc-text">BigInteger大数类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%95%B0%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="toc-number">8.</span> <span class="toc-text">生成随机数三种方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String%E7%B1%BB%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">9.</span> <span class="toc-text">String类常用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#StringBuffer"><span class="toc-number">10.</span> <span class="toc-text">StringBuffer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DecimalFormat%E6%95%B0%E5%AD%97%E6%A0%BC%E5%BC%8F"><span class="toc-number">11.</span> <span class="toc-text">DecimalFormat数字格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MessageFormat%E6%96%87%E6%9C%AC%E6%A0%BC%E5%BC%8F"><span class="toc-number">12.</span> <span class="toc-text">MessageFormat文本格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArratList-lt-gt-%E5%92%8CLinkedList-lt-gt-%E5%8F%8AVector-lt-gt"><span class="toc-number">13.</span> <span class="toc-text">ArratList&lt;&gt;和LinkedList&lt;&gt;及Vector&lt;&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashSet-lt-gt-%E5%92%8CTreeSet-lt-gt-%E5%8F%8ALinkedHashSet-lt-gt"><span class="toc-number">14.</span> <span class="toc-text">HashSet&lt;&gt; 和TreeSet&lt;&gt;及LinkedHashSet&lt;&gt;##</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HashSet"><span class="toc-number">14.1.</span> <span class="toc-text">HashSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedHashSet%E4%BF%9D%E7%95%99%E9%A1%BA%E5%BA%8F"><span class="toc-number">14.2.</span> <span class="toc-text">LinkedHashSet保留顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TreeSet"><span class="toc-number">14.3.</span> <span class="toc-text">TreeSet</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMapM-lt-K-V-gt-%E5%92%8CHashtable-lt-K-V-gt"><span class="toc-number">15.</span> <span class="toc-text">HashMapM&lt;K,V&gt;和Hashtable&lt;K,V&gt;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HashMap"><span class="toc-number">15.1.</span> <span class="toc-text">HashMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hashtable"><span class="toc-number">15.2.</span> <span class="toc-text">Hashtable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedHashMap"><span class="toc-number">15.3.</span> <span class="toc-text">LinkedHashMap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Properties%E4%BB%A5%E6%96%87%E4%BB%B6%E5%BD%A2%E5%BC%8F%E8%AF%BB%E5%8F%96K-V%E5%AF%B9"><span class="toc-number">16.</span> <span class="toc-text">Properties以文件形式读取K-V对</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TreeMap-lt-K-V-gt"><span class="toc-number">17.</span> <span class="toc-text">TreeMap&lt;K,V&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arrays%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-number">18.</span> <span class="toc-text">Arrays工具类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArrayList"><span class="toc-number">19.</span> <span class="toc-text">ArrayList</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#File%E7%B1%BB"><span class="toc-number">20.</span> <span class="toc-text">File类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Path%E7%B1%BB-jdk7-0"><span class="toc-number">20.1.</span> <span class="toc-text">Path类(jdk7.0++)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BufferReader-amp-amp-BufferWriter"><span class="toc-number">21.</span> <span class="toc-text">BufferReader &amp;&amp; BufferWriter</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BufferReader"><span class="toc-number">21.1.</span> <span class="toc-text">BufferReader:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BufferWriter"><span class="toc-number">21.2.</span> <span class="toc-text">BufferWriter</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#try-source-jdk7"><span class="toc-number">22.</span> <span class="toc-text">try-source(jdk7++)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#properties%E6%96%87%E4%BB%B6"><span class="toc-number">23.</span> <span class="toc-text">properties文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E6%A0%BC%E5%BC%8F"><span class="toc-number">23.1.</span> <span class="toc-text">文件命名格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="toc-number">23.2.</span> <span class="toc-text">文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Charset%E7%B1%BB"><span class="toc-number">23.3.</span> <span class="toc-text">Charset类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Locale%E7%B1%BB"><span class="toc-number">23.4.</span> <span class="toc-text">Locale类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ResourceBundles%E7%B1%BB"><span class="toc-number">23.5.</span> <span class="toc-text">ResourceBundles类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pattern%E7%B1%BB"><span class="toc-number">23.6.</span> <span class="toc-text">Pattern类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Matcher%E7%B1%BB"><span class="toc-number">23.7.</span> <span class="toc-text">Matcher类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DomReader"><span class="toc-number">24.</span> <span class="toc-text">DomReader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exception"><span class="toc-number">25.</span> <span class="toc-text">Exception</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-number">26.</span> <span class="toc-text">多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%BD%E9%87%8F%E4%BD%BF%E7%94%A8Runnable%E6%8E%A5%E5%8F%A3%E5%88%9B%E5%BB%BA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%A8%8B%E5%BA%8F%EF%BC%8C%E9%99%8D%E4%BD%8E%E8%80%A6%E5%90%88%E6%80%A7%EF%BC%8C%E5%A2%9E%E5%BC%BA%E6%89%A9%E5%B1%95%E6%80%A7"><span class="toc-number">26.0.1.</span> <span class="toc-text">尽量使用Runnable接口创建多线程程序，降低耦合性，增强扩展性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thread%E7%B1%BB%E5%AE%9E%E7%8E%B0"><span class="toc-number">26.1.</span> <span class="toc-text">Thread类实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Runnable%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0"><span class="toc-number">26.2.</span> <span class="toc-text">Runnable接口实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="toc-number">27.</span> <span class="toc-text">线程安全问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E4%BB%A3%E7%A0%81%E5%9D%97%EF%BC%9A"><span class="toc-number">27.1.</span> <span class="toc-text">同步代码块：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E6%96%B9%E6%B3%95"><span class="toc-number">27.2.</span> <span class="toc-text">同步方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lock%E6%8E%A5%E5%8F%A3-jdk1-5"><span class="toc-number">27.3.</span> <span class="toc-text">Lock接口 (jdk1.5+)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="toc-number">28.</span> <span class="toc-text">线程状态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#wait-amp-notify"><span class="toc-number">28.1.</span> <span class="toc-text">wait()&amp;notify()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">29.</span> <span class="toc-text">Lambda表达式</span></a></li></ol>
                     </div>
                 </span>
             </div>

@@ -340,33 +340,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>[toc]</p>
-<h2 id="c-调用C语言头文件"><a href="#c-调用C语言头文件" class="headerlink" title="c++调用C语言头文件"></a>c++调用C语言头文件</h2><p>​    去掉 .h 然后前面加上 c</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span> <span class="comment">// 相当于C语⾔⾥⾯的#include &lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span> <span class="comment">// 相当于C语⾔⾥⾯的#include &lt;stdib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span> <span class="comment">// 相当于C语⾔⾥⾯的#include &lt;ctype.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span> <span class="comment">// 相当于C语⾔⾥⾯的#include &lt;string.h&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>​    刷题时候都是为了方便，所以使用 <strong>using namespace std;</strong></p>
-<h2 id="cout输出控制"><a href="#cout输出控制" class="headerlink" title="cout输出控制"></a>cout输出控制</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> t = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">// bool类型数据输出时要加 boolalpha</span></span><br><span class="line">    cout &lt;&lt; t &lt;&lt; endl; <span class="comment">// 1</span></span><br><span class="line">    cout &lt;&lt; boolalpha &lt;&lt; t &lt;&lt; endl; <span class="comment">// true</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串 "></a>字符串 <string></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入iostream 和 string 这两个头文件</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// string可以用加号拼接</span></span><br><span class="line">    string s1 = <span class="string">&quot;hello&quot;</span>, s2 = <span class="string">&quot; world&quot;</span>;</span><br><span class="line">    cout &lt;&lt; s1 + s2 &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 读入字符串</span></span><br><span class="line">    string s, t;</span><br><span class="line">    cin &gt;&gt; s;  <span class="comment">// 读取s，不包括空格</span></span><br><span class="line">    <span class="built_in">getline</span>(cin, t); <span class="comment">// 读取⼀整⾏的字符串，包括空格</span></span><br><span class="line">        </span><br><span class="line">    <span class="comment">// 字符串长度length()</span></span><br><span class="line">    <span class="keyword">int</span> length = s.<span class="built_in">length</span>();</span><br><span class="line">    <span class="comment">// int length = s.size();  </span></span><br><span class="line">    <span class="comment">// string类的size()与length()没有任何区别</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 字符串模式匹配find()</span></span><br><span class="line">    s = <span class="string">&quot;aaabbb&quot;</span>, t = <span class="string">&quot;abb&quot;</span>;</span><br><span class="line">    s.<span class="built_in">find</span>(t); <span class="comment">// 返回首次匹配位置2</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 反转字符串reverse(s.begin(), s.end())</span></span><br><span class="line">    s = <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line">    <span class="built_in">reverse</span>(s.<span class="built_in">begin</span>(), s.<span class="built_in">end</span>());</span><br><span class="line">    cout &lt;&lt; s &lt;&lt; endl; <span class="comment">// dlrow olleh</span></span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 构造子串s.substr(pos, n)，返回一个从第pos位开始的长度为n的子串</span></span><br><span class="line">    s = <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line">    cout &lt;&lt; s.<span class="built_in">substr</span>(<span class="number">2</span>, <span class="number">3</span>) &lt;&lt; endl; <span class="comment">// llo</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="栈"><a href="#栈" class="headerlink" title="栈 "></a>栈 <stack></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入iostream 和 stack 这两个头文件</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        stack&lt;int&gt; s;</span></span><br><span class="line"><span class="comment">        s.empty()               如果栈为空返回true，否则返回false</span></span><br><span class="line"><span class="comment">        s.size()                返回栈中元素的个数</span></span><br><span class="line"><span class="comment">        s.pop()                 删除栈顶元素但不返回其值</span></span><br><span class="line"><span class="comment">        s.top()                 返回栈顶的元素，但不删除该元素</span></span><br><span class="line"><span class="comment">        s.push()                在栈顶压入新元素</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// stack&lt;DataType&gt; 初始化一个栈</span></span><br><span class="line">    stack&lt;<span class="keyword">int</span>&gt; s; </span><br><span class="line">    cout &lt;&lt; boolalpha &lt;&lt; s.<span class="built_in">empty</span>() &lt;&lt; endl; <span class="comment">// true</span></span><br><span class="line">    s.<span class="built_in">push</span>(<span class="number">8</span>);</span><br><span class="line">    cout &lt;&lt; s.<span class="built_in">top</span>() &lt;&lt; endl; <span class="comment">// 8</span></span><br><span class="line">    cout &lt;&lt; s.<span class="built_in">size</span>() &lt;&lt; endl;  <span class="comment">// 1</span></span><br><span class="line">    s.<span class="built_in">pop</span>(); </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列<queue></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入iostream 和 queue 这两个头文件</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">		queue&lt;int&gt; q;</span></span><br><span class="line"><span class="comment">        q.empty()               如果队列为空返回true，否则返回false</span></span><br><span class="line"><span class="comment">        q.size()                返回队列中元素的个数</span></span><br><span class="line"><span class="comment">        q.pop()                 删除队列首元素但不返回其值</span></span><br><span class="line"><span class="comment">        q.front()               返回队首元素的值，但不删除该元素</span></span><br><span class="line"><span class="comment">        q.push()                在队尾压入新元素</span></span><br><span class="line"><span class="comment">        q.back()                返回队列尾元素的值，但不删除该元素</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列"></a>优先队列</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合<set></h2><p>​    ⼀个set中各元素各不相同，且set内升序排序</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入iostream 和 set 这两个头文件</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">     <span class="comment">/*</span></span><br><span class="line"><span class="comment">        set&lt;int&gt; s;</span></span><br><span class="line"><span class="comment">        s.insert()              向集合添加一个元素</span></span><br><span class="line"><span class="comment">		s.erase()               删除一个元素</span></span><br><span class="line"><span class="comment">		s.count()               判断元素是否在set中</span></span><br><span class="line"><span class="comment">		s.size()                获取元素个数</span></span><br><span class="line"><span class="comment">		s.clear()               清空</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">    </span><br><span class="line">    set&lt;<span class="keyword">int</span>&gt; s;</span><br><span class="line">    s.<span class="built_in">insert</span>(<span class="number">2</span>);</span><br><span class="line">    s.<span class="built_in">insert</span>(<span class="number">3</span>);</span><br><span class="line">    cout &lt;&lt; *(s.<span class="built_in">begin</span>()) &lt;&lt; endl; <span class="comment">//输出第一个元素</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;<span class="comment">//插入0 - 9</span></span><br><span class="line">        s.<span class="built_in">insert</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (set&lt;<span class="keyword">int</span>&gt;::iterator it = s.<span class="built_in">begin</span>(); it != s.<span class="built_in">end</span>(); it++) &#123;</span><br><span class="line">        cout &lt;&lt; *it &lt;&lt; <span class="string">&quot; &quot;</span>;<span class="comment">//集合的遍历，it是一个迭代的指针</span></span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl &lt;&lt; (s.<span class="built_in">find</span>(<span class="number">2</span>) != s.<span class="built_in">end</span>()) &lt;&lt; endl;<span class="comment">//查找，元素</span></span><br><span class="line">    s.<span class="built_in">erase</span>(<span class="number">3</span>);<span class="comment">//删除元素</span></span><br><span class="line">    cout &lt;&lt; (s.<span class="built_in">find</span>(<span class="number">3</span>) != s.<span class="built_in">end</span>()) &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map<map></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入iostream 和 map 这两个头文件</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">   		map&lt;string, string&gt; m;</span></span><br><span class="line"><span class="comment">        set&lt;int&gt; s;</span></span><br><span class="line"><span class="comment">        s.insert()              向集合添加一个元素</span></span><br><span class="line"><span class="comment">		s.erase()               删除一个元素</span></span><br><span class="line"><span class="comment">		s.count()               判断元素是否在set中</span></span><br><span class="line"><span class="comment">		s.size()                获取元素个数</span></span><br><span class="line"><span class="comment">		s.clear()               清空</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    map&lt;string, string&gt; m;</span><br><span class="line">    m[<span class="string">&quot;hello&quot;</span>] = <span class="string">&quot;world&quot;</span>; <span class="comment">// 存储键为 &quot;hello&quot; 值为 &quot;world&quot;的键值对</span></span><br><span class="line">    cout &lt;&lt; m[<span class="string">&quot;hello&quot;</span>] &lt;&lt; endl; <span class="comment">// 访问map中key为&quot;hello&quot;的value,</span></span><br><span class="line">    cout &lt;&lt; m[<span class="string">&quot;world&quot;</span>] &lt;&lt; endl;<span class="comment">// 如果key不存在，则返回0或空</span></span><br><span class="line">    m[<span class="string">&quot;world&quot;</span>] = <span class="string">&quot;test&quot;</span>; <span class="comment">// 将&quot;world&quot;键对应的值修改为3</span></span><br><span class="line">    m[<span class="string">&quot;key&quot;</span>] = <span class="string">&quot;value&quot;</span>; <span class="comment">// 设置键为 &quot;key&quot; 值为&quot;value&quot; 的键值对</span></span><br><span class="line">    <span class="comment">//迭代器遍历，输出map中所有的元素，键it-&gt;first获取，值it-&gt;second获取</span></span><br><span class="line">    <span class="keyword">for</span> (map&lt;string, string&gt;::iterator it = m.<span class="built_in">begin</span>(); it != m.<span class="built_in">end</span>(); it++) &#123;</span><br><span class="line">        cout &lt;&lt; it-&gt;first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; it-&gt;second &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; m.<span class="built_in">begin</span>()-&gt;first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; m.<span class="built_in">begin</span>()-&gt;second &lt;&lt; endl;</span><br><span class="line">    <span class="comment">// 访问map的第一个元素，输出它的键和值</span></span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; m.<span class="built_in">rbegin</span>()-&gt;first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; m.<span class="built_in">rbegin</span>()-&gt;second &lt;&lt; endl;</span><br><span class="line">    <span class="comment">// 访问map的最后一个元素，输出它的键和值</span></span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; m.<span class="built_in">size</span>() &lt;&lt; endl;</span><br><span class="line">    <span class="comment">// 输出map的元素个数</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量<vector></h2><p>​    vector是一个能够存放任意类型的动态数组，能增加和压缩数据</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="keyword">int</span>&gt;test; <span class="comment">// 定义的时候不指定vector的⼤⼩</span></span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt;<span class="built_in">test2</span>(<span class="number">6</span>); <span class="comment">// 定义的时候指定vector的⼤⼩，默认test2⾥⾯元素都是0</span></span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt;<span class="built_in">test3</span>(<span class="number">6</span>, <span class="number">3</span>); <span class="comment">// 定义的时候指定vector的⼤⼩，默认test3⾥⾯元素都是3</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//尾部添加两个元素，0的位置存储5， 1 的位置存储8</span></span><br><span class="line">test.<span class="built_in">push_back</span>(<span class="number">5</span>);</span><br><span class="line">test.<span class="built_in">push_back</span>(<span class="number">8</span>);</span><br><span class="line"></span><br><span class="line">test.<span class="built_in">insert</span>(test.<span class="built_in">begin</span>()+i,value);<span class="comment">//在第i+1个元素前面插入value;</span></span><br><span class="line">test.<span class="built_in">erase</span>(test.<span class="built_in">begin</span>() + <span class="number">5</span>);<span class="comment">//删除第6个元素</span></span><br><span class="line">test.<span class="built_in">clear</span>();<span class="comment">//clear，清空向量</span></span><br><span class="line">test.<span class="built_in">size</span>();</span><br><span class="line">test.<span class="built_in">begin</span>();<span class="comment">//起始地址</span></span><br><span class="line">test.<span class="built_in">end</span>();<span class="comment">//结束地址</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//遍历向量</span></span><br><span class="line"><span class="keyword">for</span> (vector&lt;<span class="keyword">int</span>&gt;test::iterator it = m.<span class="built_in">begin</span>(); it != m.<span class="built_in">end</span>(); it++) &#123;</span><br><span class="line">        cout &lt;&lt; *it &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">reverse</span>(test.<span class="built_in">begin</span>(),test.<span class="built_in">end</span>());<span class="comment">//反转</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sort</span>(test.<span class="built_in">begin</span>(), test.<span class="built_in">end</span>());</span><br><span class="line"><span class="comment">//自定义排序规则，“小于”</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">comp</span><span class="params">(<span class="keyword">const</span> student &amp;a, <span class="keyword">const</span> student &amp;b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.score &lt; b.score;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">sort</span>(test.<span class="built_in">begin</span>(), test.<span class="built_in">end</span>(), comp);</span><br></pre></td></tr></table></figure>
-
-
+        
       
 
       
@@ -503,46 +477,41 @@
 
 
   
-    <article id="post-操作系统学习笔记2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-操作系统学习笔记3：计算机系统概述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         <!-- 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/">操作系统学习笔记2：系统调用</a>
+      <a class="article-title" href="/2020/04/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">操作系统学习笔记3：计算机系统概述</a>
     </h1>
   
  -->
         <center><p>
   
     <h1 itemprop="name">
-      <a class="article-title_my" href="/2020/04/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/">操作系统学习笔记2：系统调用</a>
+      <a class="article-title_my" href="/2020/04/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">操作系统学习笔记3：计算机系统概述</a>
     </h1>
   
 </p></center>
         
-        <a href="/2020/04/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/" class="archive-article-date">
-  	<time datetime="2020-04-27T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
+        <a href="/2020/04/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" class="archive-article-date">
+  	<time datetime="2020-04-28T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="操作系统接口就是系统调用的函数"><a href="#操作系统接口就是系统调用的函数" class="headerlink" title="操作系统接口就是系统调用的函数"></a>操作系统接口就是系统调用的函数</h2><p>POISX（Portable Operating System Interface of Unix）定义fork、open等系统函数</p>
-<h2 id="内核态与用户态"><a href="#内核态与用户态" class="headerlink" title="内核态与用户态"></a>内核态与用户态</h2><p>CS的最低两位来表示：0为内核态，3为用户态。</p>
-<p>执行时检查CPL（Current Privilege Level）是否小于等于DPL（Descriptor Privilege Level）</p>
-<p><img src="https://s2.loli.net/2022/01/13/kbDXT42wtrofsZM.png" alt="img"></p>
-<h2 id="用户程序发起的调用核心代码的唯一方式就是中断指令int"><a href="#用户程序发起的调用核心代码的唯一方式就是中断指令int" class="headerlink" title="用户程序发起的调用核心代码的唯一方式就是中断指令int"></a>用户程序发起的调用核心代码的唯一方式就是<strong>中断指令int</strong></h2><p>​    将CS中的CPL改为0，“进入内核”</p>
-<p>系统调用的核心:</p>
-<ol>
-<li>用户程序中包含一段包含i指令的代码    </li>
-<li>操作系统写中断处理,获取想调程序的编号</li>
-<li>操作系统根据编号执行相应代码</li>
-</ol>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">     |-----------------|                          </span><br><span class="line">     |  main()&#123;        |                                 |---------------------|</span><br><span class="line">     |	  whoami()<span class="comment">;    |                                 |   main()&#123;           |</span></span><br><span class="line">     |  &#125;              |                                 |     <span class="built_in">eax</span> = <span class="number">72</span><span class="comment">;       |</span></span><br><span class="line">     |-----------------|                                 |     <span class="keyword">int</span> <span class="number">0x80</span><span class="comment">;       |</span></span><br><span class="line">     |  whoami()&#123;      |                                 |   &#125;                 |</span><br><span class="line">     |   printf(<span class="number">100</span>,<span class="number">8</span>) |  ------------------→            |---------------------|</span><br><span class="line">     |  &#125;              |                                 |   _system_call:     |</span><br><span class="line">     |                 |                                 |     <span class="keyword">call</span> sys_whoami<span class="comment">;|</span></span><br><span class="line">     |                 |                                 |   //sys_call_table+ |</span><br><span class="line"><span class="number">100</span>: | <span class="string">&quot;username&quot;</span>      |                                 |   <span class="built_in">eax</span>*<span class="number">4</span>             |</span><br><span class="line">     |-----------------|                                 |---------------------|</span><br><span class="line">                                                         |   sys_whoami() &#123;    |</span><br><span class="line">                                                         |      printk(<span class="number">100</span>,<span class="number">8</span>)<span class="comment">; |</span></span><br><span class="line">                                                         |   &#125;                 |</span><br><span class="line">                                                         |                     |</span><br><span class="line">                                                         |                     |</span><br><span class="line">                                                    <span class="number">100</span>: |  <span class="string">&quot;username&quot;</span>         |</span><br><span class="line">                                                         |---------------------|    </span><br></pre></td></tr></table></figure>
+        <span id="more"></span>
 
+<p><img src="https://s2.loli.net/2022/01/18/oJ5pqOksiILR7nV.png" alt="image-20220118152541169"></p>
+<p><img src="https://s2.loli.net/2022/01/18/IvBF4oA9N7nzXCt.jpg" alt="Snipaste_2022-01-18_15-58-49"></p>
+<p><img src="https://s2.loli.net/2022/01/18/8qDM4OpA2WvB3ca.jpg" alt="Snipaste_2022-01-18_16-15-55"></p>
+<p><img src="https://s2.loli.net/2022/01/18/Dy3PSQRTjZp4xVe.png" alt="Snipaste_2022-01-18_17-00-00"></p>
+<p><img src="https://s2.loli.net/2022/01/18/udzKl2SHTAGyN1r.jpg" alt="Snipaste_2022-01-18_17-25-21_"></p>
+<p><img src="https://s2.loli.net/2022/01/18/z3jR8BUVyIviMAY.jpg" alt="Snipaste_2022-01-18_17-48-09"></p>
 
       
 
@@ -567,7 +536,89 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-操作系统学习笔记2：系统调用及用户级线程切换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        <!-- 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%8F%8A%E7%94%A8%E6%88%B7%E7%BA%A7%E7%BA%BF%E7%A8%8B%E5%88%87%E6%8D%A2/">操作系统学习笔记2：系统调用及用户级线程切换</a>
+    </h1>
+  
+ -->
+        <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_my" href="/2020/04/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%8F%8A%E7%94%A8%E6%88%B7%E7%BA%A7%E7%BA%BF%E7%A8%8B%E5%88%87%E6%8D%A2/">操作系统学习笔记2：系统调用及用户级线程切换</a>
+    </h1>
+  
+</p></center>
+        
+        <a href="/2020/04/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%8F%8A%E7%94%A8%E6%88%B7%E7%BA%A7%E7%BA%BF%E7%A8%8B%E5%88%87%E6%8D%A2/" class="archive-article-date">
+  	<time datetime="2020-04-27T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="操作系统接口就是系统调用的函数"><a href="#操作系统接口就是系统调用的函数" class="headerlink" title="操作系统接口就是系统调用的函数"></a>
+        
+      
+
+      
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%8F%8A%E7%94%A8%E6%88%B7%E7%BA%A7%E7%BA%BF%E7%A8%8B%E5%88%87%E6%8D%A2/">展开全文 >></a>
         </p>
       
 
@@ -928,89 +979,6 @@
 
 
   
-    <article id="post-JS学习笔记3：对象与函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        <!-- 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/25/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%87%BD%E6%95%B0/">JS学习笔记3：对象、函数与原型</a>
-    </h1>
-  
- -->
-        <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_my" href="/2019/04/25/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%87%BD%E6%95%B0/">JS学习笔记3：对象、函数与原型</a>
-    </h1>
-  
-</p></center>
-        
-        <a href="/2019/04/25/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%87%BD%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2019-04-25T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>JS中的对象包括内建对象、宿主对象、自定义对象
-        
-      
-
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/25/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%87%BD%E6%95%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1121,11 +1089,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
             
             <div class="clearfix"></div>

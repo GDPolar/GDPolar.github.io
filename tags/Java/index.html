@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://GDPolar.github.io">
-  <title>JS学习笔记2：比较 | GDPolar&#39;s Blog</title>
+  <title>Tag: Java | GDPolar&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="123null &gt; 0   &#x2F;&#x2F; null 尝试转型为number，则为0，所以结果为 falsenull &gt;&#x3D; 0  &#x2F;&#x2F; null 尝试转为number，则为0，结果为 truenull &#x3D;&#x3D; 0  &#x2F;&#x2F; null在设计上，在此处不尝试转型，所以结果为 false">
-<meta property="og:type" content="article">
-<meta property="og:title" content="JS学习笔记2：比较">
-<meta property="og:url" content="https://gdpolar.github.io/2019/04/24/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E6%AF%94%E8%BE%83/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="GDPolar&#39;s Blog">
+<meta property="og:url" content="https://gdpolar.github.io/tags/Java/index.html">
 <meta property="og:site_name" content="GDPolar&#39;s Blog">
-<meta property="og:description" content="123null &gt; 0   &#x2F;&#x2F; null 尝试转型为number，则为0，所以结果为 falsenull &gt;&#x3D; 0  &#x2F;&#x2F; null 尝试转为number，则为0，结果为 truenull &#x3D;&#x3D; 0  &#x2F;&#x2F; null在设计上，在此处不尝试转型，所以结果为 false">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-04-24T12:24:59.000Z">
-<meta property="article:modified_time" content="2022-01-07T15:03:09.738Z">
 <meta property="article:author" content="GDPolar">
-<meta property="article:tag" content="JS学习">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="GDPolar&#39;s Blog" type="application/atom+xml">
@@ -149,290 +144,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JS学习笔记2：比较" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
+            
+  
+  
     
-      <header class="article-header">
-        <!-- 
-  
-    <h1 class="article-title" itemprop="name">
-      JS学习笔记2：比较
-    </h1>
-  
- -->
-        <center><p>
-  
-    <h1 class="article-title_my" itemprop="name">
-      JS学习笔记2：比较
-    </h1>
-  
-</p></center>
-        
-        <a href="/2019/04/24/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E6%AF%94%E8%BE%83/" class="archive-article-date">
-  	<time datetime="2019-04-24T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-24</time>
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/01/01/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2019-01-01T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-01</time>
 </a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">null</span> &gt; <span class="number">0</span>   <span class="comment">// null 尝试转型为number，则为0，所以结果为 false</span></span><br><span class="line"><span class="literal">null</span> &gt;= <span class="number">0</span>  <span class="comment">// null 尝试转为number，则为0，结果为 true</span></span><br><span class="line"><span class="literal">null</span> == <span class="number">0</span>  <span class="comment">// null在设计上，在此处不尝试转型，所以结果为 false</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/01/01/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Java学习笔记</a>
+    </h1>
+  
 
-<ul>
-<li> 内部相等性运算算法</li>
-</ul>
-<blockquote>
-<p>11.9.3 The Abstract Equality Comparison Algorithm<br>The comparison x == y, where x and y are values, produces true or false. Such a comparison is performed as follows: </p>
-<ol>
-<li>If Type(x) is different from Type(y), Go to step 14. </li>
-<li>If Type(x) is Undefined, return true. </li>
-<li>If Type(x) is Null, return true. </li>
-<li>If Type(x) is not Number, go to step 11. </li>
-<li>If x is NaN, return false. </li>
-<li>If y is NaN, return false. </li>
-<li>If x is the same number value as y, return true. </li>
-<li>If x is +0 and y is -0, return true. </li>
-<li>If x is -0 and y is +0, return true. </li>
-<li>Return false. </li>
-<li>If Type(x) is String, then return true if x and y are exactly the same sequence of characters (same length and same characters in corresponding positions). Otherwise, return false. </li>
-<li>If Type(x) is Boolean, return true if x and y are both true or both false. Otherwise, return false. </li>
-<li>Return true if x and y refer to the same object or if they refer to objects joined to each other (see 13.1.2). Otherwise, return false. </li>
-<li>If x is null and y is undefined, return true.  </li>
-<li>If x is undefined and y is null, return true. </li>
-<li>If Type(x) is Number and Type(y) is String, return the result of the comparison x == ToNumber(y). </li>
-<li>If Type(x) is String and Type(y) is Number, return the result of the comparison ToNumber(x)== y. </li>
-<li>If Type(x) is Boolean, return the result of the comparison ToNumber(x)== y. </li>
-<li>If Type(y) is Boolean, return the result of the comparison x == ToNumber(y). </li>
-<li>If Type(x) is either String or Number and Type(y) is Object, return the result of the comparison x == ToPrimitive(y). </li>
-<li>If Type(x) is Object and Type(y) is either String or Number, return the result of the comparison ToPrimitive(x)== y. </li>
-<li>Return false.</li>
-</ol>
-</blockquote>
-<hr>
-<ul>
-<li>内部关系运算算法</li>
-</ul>
-<blockquote>
-<p>11.8.5 The Abstract Relational Comparison Algorithm<br>The comparison x &lt; y, where x and y are values, produces true, false, or undefined (which indicates that at least one operand is NaN). Such a comparison is performed as follows: </p>
-<ol>
-<li>Call ToPrimitive(x, hint Number). </li>
-<li>Call ToPrimitive(y, hint Number). </li>
-<li>If Type(Result(1)) is String and Type(Result(2)) is String, go to step 16. (Note that this step differs from step 7 in the algorithm for the addition operator **+ *  in<code> </code>using *and instead of or.) </li>
-<li>Call ToNumber(Result(1)). </li>
-<li>Call ToNumber(Result(2)). </li>
-<li>If Result(4) is NaN, return undefined. </li>
-<li>If Result(5) is NaN, return undefined. </li>
-<li>If Result(4) and Result(5) are the same number value, return false. </li>
-<li>If Result(4) is +0 and Result(5) is -0, return false. </li>
-<li>If Result(4) is -0 and Result(5) is +0, return false. </li>
-<li>If Result(4) is +∞, return false. </li>
-<li>If Result(5) is +∞, return true. </li>
-<li>If Result(5) is -∞, return false. </li>
-<li>If Result(4) is -∞, return true. </li>
-<li>If the mathematical value of Result(4) is less than the mathematical value of Result(5) — note that these mathematical values are both finite and not both zero — return true. Otherwise, return false. </li>
-<li>If Result(2) is a prefix of Result(1), return false. (A string value p is a prefix of string value q if q can be the result of concatenating p and some other string<em>r</em>. Note that any string is a prefix of itself, because r may be the empty string.) </li>
-<li>If Result(1) is a prefix of Result(2), return true. </li>
-<li>Let k be the smallest nonnegative integer such that the character at position k within Result(1) is different from the character at position k within Result(2). (There must be such a k, for neither string is a prefix of the other.) </li>
-<li>Let m be the integer that is the code point value for the character at position k within Result(1). </li>
-<li>Let n be the integer that is the code point value for the character at position k within Result(2). </li>
-<li>If m &lt; n, return true. Otherwise, return false.</li>
-</ol>
-</blockquote>
-<ul>
-<li> “&gt;” 运算符</li>
-</ul>
-<blockquote>
-<p>The Greater-than Operator ( &gt; )<br>The production RelationalExpression :<br>RelationalExpression &gt; ShiftExpression is evaluated as follows: </p>
-<ol>
-<li>Evaluate RelationalExpression. </li>
-<li>Call GetValue(Result(1)). </li>
-<li>Evaluate ShiftExpression. </li>
-<li>Call GetValue(Result(3)). </li>
-<li>Perform the comparison Result(4) &lt; Result(2). </li>
-<li>If Result(5) is undefined, return false. Otherwise, return Result(5).</li>
-</ol>
-</blockquote>
-<ul>
-<li>”&gt;=” 运算符</li>
-</ul>
-<blockquote>
-<p>The Greater-than-or-equal Operator ( &gt;= )<br>The production RelationalExpression :<br>RelationalExpression &gt;= ShiftExpression is evaluated as follows: </p>
-<ol>
-<li>Evaluate RelationalExpression. </li>
-<li>Call GetValue(Result(1)). </li>
-<li>Evaluate ShiftExpression. </li>
-<li>Call GetValue(Result(3)). </li>
-<li>Perform the comparison Result(2) &lt; Result(4). (see 11.8.5). </li>
-<li>If Result(5) is true or undefined, return false. Otherwise, return true.</li>
-</ol>
-</blockquote>
-<ul>
-<li> “==” 运算符</li>
-</ul>
-<blockquote>
-<p>The Equals Operator ( == )<br>The production EqualityExpression :<br>EqualityExpression == RelationalExpression is evaluated as<br>follows: </p>
-<ol>
-<li>Evaluate EqualityExpression. </li>
-<li>Call GetValue(Result(1)). </li>
-<li>Evaluate RelationalExpression. </li>
-<li>Call GetValue(Result(3)). </li>
-<li>Perform the comparison Result(4) == Result(2). (see 11.9.3). </li>
-<li>Return Result(5).</li>
-</ol>
-</blockquote>
-<hr>
-<p>根据以上ES3的实现，得出以下结论：</p>
-<ol>
-<li>关系运算符 和 相等运算符 并不是一个类别的.</li>
-<li>关系运算符,在设计上,总是需要运算元尝试转为一个number . 而相等运算符在设计上,则没有这方面的考虑.</li>
-<li>最重要的一点, 不要把 拿 a &gt; b , a == b 的结果 想当然的去和 a &gt;= b 建立联系.  正确的符合最初设计思想的关系是 a &gt; b 与 a &gt;= b是一组 . a == b 和其他相等运算符才是一组. 比如 a === b , a != b, a !== b .</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">null</span> &gt; <span class="number">0</span>   <span class="comment">// null 尝试转型为number，则为0，所以结果为 false</span></span><br><span class="line"><span class="literal">null</span> &gt;= <span class="number">0</span>  <span class="comment">// null 尝试转为number，则为0，结果为 true</span></span><br><span class="line"><span class="literal">null</span> == <span class="number">0</span>  <span class="comment">// null在设计上，在此处不尝试转型，所以结果为 false</span></span><br></pre></td></tr></table></figure>
-
-<p>ps:这设计真是令人无语</p>
-
-      
-
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://gdpolar.github.io/2019/04/24/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E6%AF%94%E8%BE%83/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/04/25/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%87%BD%E6%95%B0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          JS学习笔记3：对象、函数与原型
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/04/23/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JS学习笔记1：基本数据类型及逻辑运算</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    目录，不存在的…
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -456,9 +221,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
