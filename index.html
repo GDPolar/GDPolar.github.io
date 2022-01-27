@@ -327,26 +327,142 @@
 
 
   
-    <article id="post-LeetCode.19删除链表倒数第N个节点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-LeetCode142. 环形链表 II" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         <!-- 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/02/LeetCode.19%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/">LeetCode19. 删除链表的倒数第 N 个结点</a>
+      <a class="article-title" href="/2022/01/03/LeetCode142.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%20II/">LeetCode142. 环形链表 II</a>
     </h1>
   
  -->
         <center><p>
   
     <h1 itemprop="name">
-      <a class="article-title_my" href="/2022/01/02/LeetCode.19%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/">LeetCode19. 删除链表的倒数第 N 个结点</a>
+      <a class="article-title_my" href="/2022/01/03/LeetCode142.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%20II/">LeetCode142. 环形链表 II</a>
     </h1>
   
 </p></center>
         
-        <a href="/2022/01/02/LeetCode.19%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/" class="archive-article-date">
+        <a href="/2022/01/03/LeetCode142.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%20II/" class="archive-article-date">
+  	<time datetime="2022-01-03T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="142-环形链表-II"><a href="#142-环形链表-II" class="headerlink" title="142. 环形链表 II"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-list-cycle-ii/">142. 环形链表 II</a></h4><blockquote>
+<p>给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。</p>
+<p>不允许修改 链表。</p>
+<p>示例 1：</p>
+<pre><code>输入：head = [3,2,0,-4], pos = 1
+输出：返回索引为 1 的链表节点
+解释：链表中有一个环，其尾部连接到第二个节点。
+</code></pre>
+<p>示例 2：</p>
+<pre><code>输入：head = [1,2], pos = 0
+输出：返回索引为 0 的链表节点
+解释：链表中有一个环，其尾部连接到第一个节点。
+</code></pre>
+<p>示例 3：</p>
+<pre><code>输入：head = [1], pos = -1
+输出：返回 null
+解释：链表中没有环。
+</code></pre>
+<p>提示：</p>
+<pre><code>链表中节点的数目范围在范围 [0, 104] 内
+-105 &lt;= Node.val &lt;= 105
+pos 的值为 -1 或者链表中的一个有效索引
+</code></pre>
+</blockquote>
+<hr>
+<h2 id="此题主要是数学运算"><a href="#此题主要是数学运算" class="headerlink" title="此题主要是数学运算"></a>此题主要是数学运算</h2><p>​    快慢指针法，快指针每次移动两个节点，慢指针每次移动一个节点，有环的话，一定会在环内相遇。</p>
+<p>​    因为快指针走两步，慢指针走一步，相对来说，快指针是一个节点一个节点的靠近慢指针的，所以一定会重合。</p>
+<p>​    假设从头结点到环形入口节点的节点数为x，环形入口节点到 快指针与慢指针相遇节点节点数为y，从相遇节点再到环形入口节点节点数为 z。</p>
+<p><img src="https://s2.loli.net/2022/01/27/FhRKAkME6PGtNgj.png" alt="image-20220127215744568"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(x + y) * 2 = x + y + n (y + z)</span><br><span class="line">x = (n - 1) (y + z) + z</span><br></pre></td></tr></table></figure>
+<p>​    当n为1的时候，公式就化为 x = z，即<strong>从头结点出发一个指针，从相遇节点也出发一个指针，这两个指针每次只走一个节点，那么当这两个指针相遇的时候就是环形入口的节点</strong>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">detectCycle</span><span class="params">(ListNode *head)</span> </span>&#123;</span><br><span class="line">        ListNode* fast = head;</span><br><span class="line">        ListNode* slow = head;</span><br><span class="line">        <span class="keyword">while</span>(fast != <span class="literal">NULL</span> &amp;&amp; fast-&gt;next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            fast = fast-&gt;next-&gt;next;</span><br><span class="line">            <span class="comment">// 快慢指针相遇，此时从head 和 相遇点，同时查找直至相遇</span></span><br><span class="line">            <span class="keyword">if</span> (slow == fast) &#123;</span><br><span class="line">                ListNode* index1 = fast;</span><br><span class="line">                ListNode* index2 = head;</span><br><span class="line">                <span class="keyword">while</span> (index1 != index2) &#123;</span><br><span class="line">                    index1 = index1-&gt;next;</span><br><span class="line">                    index2 = index2-&gt;next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> index2; <span class="comment">// 返回环的入口</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+
+      
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/03/LeetCode142.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%20II/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-LeetCode19. 删除链表倒数第N个节点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        <!-- 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/02/LeetCode19.%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/">LeetCode19. 删除链表的倒数第 N 个结点</a>
+    </h1>
+  
+ -->
+        <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_my" href="/2022/01/02/LeetCode19.%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/">LeetCode19. 删除链表的倒数第 N 个结点</a>
+    </h1>
+  
+</p></center>
+        
+        <a href="/2022/01/02/LeetCode19.%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/" class="archive-article-date">
   	<time datetime="2022-01-02T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-02</time>
 </a>
         
@@ -406,7 +522,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/02/LeetCode.19%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/01/02/LeetCode19.%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/">展开全文 >></a>
         </p>
       
 
@@ -650,114 +766,6 @@ listB 中节点数目为 n
 
 
   
-    <article id="post-LeetCode209.长度最小的子数组 " class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        <!-- 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/01/LeetCode209.%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%20/">LeetCode209.长度最小的子数组</a>
-    </h1>
-  
- -->
-        <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_my" href="/2022/01/01/LeetCode209.%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%20/">LeetCode209.长度最小的子数组</a>
-    </h1>
-  
-</p></center>
-        
-        <a href="/2022/01/01/LeetCode209.%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%20/" class="archive-article-date">
-  	<time datetime="2022-01-01T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209. 长度最小的子数组"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-size-subarray-sum/">209. 长度最小的子数组</a></h4><blockquote>
-<p>给定一个含有 n 个正整数的数组和一个正整数 target 。</p>
-<p>找出该数组中满足其和 ≥ target 的长度最小的 连续子数组 [numsl, numsl+1, …, numsr-1, numsr] ，并返回其长度。如果不存在符合条件的子数组，返回     0 。</p>
-<p>示例 1：</p>
-<pre><code>输入：target = 7, nums = [2,3,1,2,4,3]
-输出：2
-解释：子数组 [4,3] 是该条件下的长度最小的子数组。
-</code></pre>
-<p>示例 2：</p>
-<pre><code>输入：target = 4, nums = [1,4,4]
-输出：1
-</code></pre>
-<p>示例 3：</p>
-<pre><code>输入：target = 11, nums = [1,1,1,1,1,1,1,1]
-输出：0
-</code></pre>
-<p>提示：</p>
-<p>   1 &lt;= target &lt;= 109<br>   1 &lt;= nums.length &lt;= 105<br>   1 &lt;= nums[i] &lt;= 105</p>
-</blockquote>
-<hr>
-<h2 id="此题可采用“滑动窗口法”"><a href="#此题可采用“滑动窗口法”" class="headerlink" title="此题可采用“滑动窗口法”"></a>此题可采用“滑动窗口法”</h2><p>​    所谓滑动窗口，就是不断的调节子序列的起始位置和终止位置，从而得出要想的结果。</p>
-<p>​    窗口的起始位置如何移动：如果当前窗口的值大于s了，窗口就要向前移动了（也就是该缩小了）。</p>
-<p>​    窗口的结束位置如何移动：窗口的结束位置就是遍历数组的指针，窗口的起始位置设置为数组的起始位置就可以了。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minSubArrayLen</span><span class="params">(<span class="keyword">int</span> target, vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.<span class="built_in">size</span>() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">999999</span>, sum = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; </span><br><span class="line">        <span class="keyword">while</span> (i &lt;= j &amp;&amp; j &lt; nums.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (sum &lt; target) &#123; <span class="comment">// 结束位置右滑</span></span><br><span class="line">                <span class="keyword">if</span> (++j &lt; nums.<span class="built_in">size</span>())  <span class="comment">// 防止数组超过最右边界</span></span><br><span class="line">                    sum += nums[j];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>( res &gt; (j - i + <span class="number">1</span>) ) <span class="comment">// 起始位置右滑</span></span><br><span class="line">                    res = j - i + <span class="number">1</span>;</span><br><span class="line">                sum -= nums[i++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (res == <span class="number">999999</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/01/LeetCode209.%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%20/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-LeetCode206. 反转链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -846,6 +854,222 @@ listB 中节点数目为 n
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/01/01/LeetCode206.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-LeetCode209. 长度最小的子数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        <!-- 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/01/LeetCode209.%20%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/">LeetCode209.长度最小的子数组</a>
+    </h1>
+  
+ -->
+        <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_my" href="/2022/01/01/LeetCode209.%20%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/">LeetCode209.长度最小的子数组</a>
+    </h1>
+  
+</p></center>
+        
+        <a href="/2022/01/01/LeetCode209.%20%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/" class="archive-article-date">
+  	<time datetime="2022-01-01T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209. 长度最小的子数组"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-size-subarray-sum/">209. 长度最小的子数组</a></h4><blockquote>
+<p>给定一个含有 n 个正整数的数组和一个正整数 target 。</p>
+<p>找出该数组中满足其和 ≥ target 的长度最小的 连续子数组 [numsl, numsl+1, …, numsr-1, numsr] ，并返回其长度。如果不存在符合条件的子数组，返回     0 。</p>
+<p>示例 1：</p>
+<pre><code>输入：target = 7, nums = [2,3,1,2,4,3]
+输出：2
+解释：子数组 [4,3] 是该条件下的长度最小的子数组。
+</code></pre>
+<p>示例 2：</p>
+<pre><code>输入：target = 4, nums = [1,4,4]
+输出：1
+</code></pre>
+<p>示例 3：</p>
+<pre><code>输入：target = 11, nums = [1,1,1,1,1,1,1,1]
+输出：0
+</code></pre>
+<p>提示：</p>
+<p>   1 &lt;= target &lt;= 109<br>   1 &lt;= nums.length &lt;= 105<br>   1 &lt;= nums[i] &lt;= 105</p>
+</blockquote>
+<hr>
+<h2 id="此题可采用“滑动窗口法”"><a href="#此题可采用“滑动窗口法”" class="headerlink" title="此题可采用“滑动窗口法”"></a>此题可采用“滑动窗口法”</h2><p>​    所谓滑动窗口，就是不断的调节子序列的起始位置和终止位置，从而得出要想的结果。</p>
+<p>​    窗口的起始位置如何移动：如果当前窗口的值大于s了，窗口就要向前移动了（也就是该缩小了）。</p>
+<p>​    窗口的结束位置如何移动：窗口的结束位置就是遍历数组的指针，窗口的起始位置设置为数组的起始位置就可以了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minSubArrayLen</span><span class="params">(<span class="keyword">int</span> target, vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.<span class="built_in">size</span>() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">999999</span>, sum = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; </span><br><span class="line">        <span class="keyword">while</span> (i &lt;= j &amp;&amp; j &lt; nums.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (sum &lt; target) &#123; <span class="comment">// 结束位置右滑</span></span><br><span class="line">                <span class="keyword">if</span> (++j &lt; nums.<span class="built_in">size</span>())  <span class="comment">// 防止数组超过最右边界</span></span><br><span class="line">                    sum += nums[j];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>( res &gt; (j - i + <span class="number">1</span>) ) <span class="comment">// 起始位置右滑</span></span><br><span class="line">                    res = j - i + <span class="number">1</span>;</span><br><span class="line">                sum -= nums[i++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (res == <span class="number">999999</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+
+      
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/01/LeetCode209.%20%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-LeetCode209.长度最小的子数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        <!-- 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/01/LeetCode209.%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/">LeetCode209.长度最小的子数组</a>
+    </h1>
+  
+ -->
+        <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_my" href="/2022/01/01/LeetCode209.%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/">LeetCode209.长度最小的子数组</a>
+    </h1>
+  
+</p></center>
+        
+        <a href="/2022/01/01/LeetCode209.%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/" class="archive-article-date">
+  	<time datetime="2022-01-01T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209. 长度最小的子数组"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-size-subarray-sum/">209. 长度最小的子数组</a></h4><blockquote>
+<p>给定一个含有 n 个正整数的数组和一个正整数 target 。</p>
+<p>找出该数组中满足其和 ≥ target 的长度最小的 连续子数组 [numsl, numsl+1, …, numsr-1, numsr] ，并返回其长度。如果不存在符合条件的子数组，返回     0 。</p>
+<p>示例 1：</p>
+<pre><code>输入：target = 7, nums = [2,3,1,2,4,3]
+输出：2
+解释：子数组 [4,3] 是该条件下的长度最小的子数组。
+</code></pre>
+<p>示例 2：</p>
+<pre><code>输入：target = 4, nums = [1,4,4]
+输出：1
+</code></pre>
+<p>示例 3：</p>
+<pre><code>输入：target = 11, nums = [1,1,1,1,1,1,1,1]
+输出：0
+</code></pre>
+<p>提示：</p>
+<p>   1 &lt;= target &lt;= 109<br>   1 &lt;= nums.length &lt;= 105<br>   1 &lt;= nums[i] &lt;= 105</p>
+</blockquote>
+<hr>
+<h2 id="此题可采用“滑动窗口法”"><a href="#此题可采用“滑动窗口法”" class="headerlink" title="此题可采用“滑动窗口法”"></a>此题可采用“滑动窗口法”</h2><p>​    所谓滑动窗口，就是不断的调节子序列的起始位置和终止位置，从而得出要想的结果。</p>
+<p>​    窗口的起始位置如何移动：如果当前窗口的值大于s了，窗口就要向前移动了（也就是该缩小了）。</p>
+<p>​    窗口的结束位置如何移动：窗口的结束位置就是遍历数组的指针，窗口的起始位置设置为数组的起始位置就可以了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minSubArrayLen</span><span class="params">(<span class="keyword">int</span> target, vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.<span class="built_in">size</span>() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">999999</span>, sum = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; </span><br><span class="line">        <span class="keyword">while</span> (i &lt;= j &amp;&amp; j &lt; nums.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (sum &lt; target) &#123; <span class="comment">// 结束位置右滑</span></span><br><span class="line">                <span class="keyword">if</span> (++j &lt; nums.<span class="built_in">size</span>())  <span class="comment">// 防止数组超过最右边界</span></span><br><span class="line">                    sum += nums[j];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>( res &gt; (j - i + <span class="number">1</span>) ) <span class="comment">// 起始位置右滑</span></span><br><span class="line">                    res = j - i + <span class="number">1</span>;</span><br><span class="line">                sum -= nums[i++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (res == <span class="number">999999</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+
+      
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/01/LeetCode209.%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/">展开全文 >></a>
         </p>
       
 
@@ -981,172 +1205,6 @@ listB 中节点数目为 n
 
 
   
-    <article id="post-微机原理期末复习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        <!-- 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/24/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">微机原理期末复习</a>
-    </h1>
-  
- -->
-        <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_my" href="/2021/04/24/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">微机原理期末复习</a>
-    </h1>
-  
-</p></center>
-        
-        <a href="/2021/04/24/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2021-04-24T03:22:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h3 id="题型包括：5道综合题、6道简答题"><a href="#题型包括：5道综合题、6道简答题" class="headerlink" title="题型包括：5道综合题、6道简答题"></a>题型包括：5道综合题、6道简答题</h3>
-        
-      
-
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">期末复习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/24/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计组期末复习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        <!-- 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/12/%E8%AE%A1%E7%BB%84%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">计组期末复习</a>
-    </h1>
-  
- -->
-        <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_my" href="/2021/01/12/%E8%AE%A1%E7%BB%84%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">计组期末复习</a>
-    </h1>
-  
-</p></center>
-        
-        <a href="/2021/01/12/%E8%AE%A1%E7%BB%84%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2021-01-12T07:33:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h3 id="题型包括：选择、填空、名词解释、简答、大题"><a href="#题型包括：选择、填空、名词解释、简答、大题" class="headerlink" title="题型包括：选择、填空、名词解释、简答、大题 "></a>题型包括：选择、填空、名词解释、简答、大题
-        
-      
-
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">期末复习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/12/%E8%AE%A1%E7%BB%84%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1253,11 +1311,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1265,11 +1323,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+                <a href="javascript:void(0)" class="js-tag color5">期末复习</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">期末复习</a>
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
             
             <div class="clearfix"></div>
