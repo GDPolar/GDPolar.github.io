@@ -146,6 +146,123 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-LeetCode206. 反转链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        <!-- 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/01/LeetCode206.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">LeetCode206. 反转链表</a>
+    </h1>
+  
+ -->
+        <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_my" href="/2022/01/01/LeetCode206.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">LeetCode206. 反转链表</a>
+    </h1>
+  
+</p></center>
+        
+        <a href="/2022/01/01/LeetCode206.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" class="archive-article-date">
+  	<time datetime="2022-01-01T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="206-反转链表"><a href="#206-反转链表" class="headerlink" title="206. 反转链表"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-linked-list/">206. 反转链表</a></h4><blockquote>
+<p>给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。</p>
+<p>示例 1：</p>
+<pre><code>输入：head = [1,2,3,4,5]
+</code></pre>
+<p>   输出：[5,4,3,2,1]</p>
+<p>示例 2：</p>
+<p>   输入：head = [1,2]<br>    输出：[2,1]</p>
+<p>示例 3：</p>
+<p>   输入：head = []<br>    输出：[]</p>
+<p>提示：</p>
+<pre><code>链表中节点的数目范围是 [0, 5000]
+-5000 &lt;= Node.val &lt;= 5000
+</code></pre>
+</blockquote>
+<hr>
+<h2 id="递归法"><a href="#递归法" class="headerlink" title="递归法"></a>递归法</h2><p>假设链表为</p>
+<p>​    n<sub>1</sub> –&gt; ….. –&gt; n<sub>k-1</sub> – &gt;  n<sub>k</sub> –&gt;  n<sub>k+1</sub> –&gt; … –&gt; n<sub>m</sub> –&gt; ∅</p>
+<p>若从节点 n<sub>k+1</sub> 到 n<sub>m</sub> 已经被反转，此时正处于 n<sub>k</sub> </p>
+<p>​    n<sub>1</sub> –&gt; ….. –&gt; n<sub>k-1</sub> – &gt;  n<sub>k</sub> –&gt;  n<sub>k+1</sub> &lt;– … &lt;– n<sub>m</sub> &lt;– ∅</p>
+<p>所以令n<sub>k</sub>-&gt;next-&gt;next = n<sub>k</sub>;</p>
+<p>理解递归的关键在于不要在乎递归内部，把递归函数当作一个普通函数且只关心其输入输出，即把递归当作<strong>黑盒函数</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 由于要执行 head-&gt;next-&gt;next = head，所以 head-&gt;next 不能为空</span></span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">nullptr</span> || head-&gt;next == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode* newHead = <span class="built_in">reverseList</span>(head-&gt;next); </span><br><span class="line">        head-&gt;next-&gt;next = head;</span><br><span class="line">        head-&gt;next = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">return</span> newHead;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="双指针法"><a href="#双指针法" class="headerlink" title="双指针法"></a>双指针法</h2><p>通过两个前后指针顺序遍历链表并反转</p>
+<p>由于此题链表无头节点，则p、q指针初始值分别为p = nullptr, q = head</p>
+<p>若为有头节点链表，则p、q指针初始值分别为p = head, q = head-&gt;next</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode* p = <span class="literal">nullptr</span>, *q = head, *t;</span><br><span class="line">        <span class="keyword">while</span> (q != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            t = q-&gt;next; <span class="comment">// 临时保存快指针的下一节点</span></span><br><span class="line">            q-&gt;next = p;</span><br><span class="line">            p = q;</span><br><span class="line">            q = t;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+
+      
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/01/LeetCode206.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-LeetCode209.长度最小的子数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -942,88 +1059,6 @@
 
 
   
-    <article id="post-JS学习笔记6：内建对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        <!-- 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/28/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06%EF%BC%9A%E5%86%85%E5%BB%BA%E5%AF%B9%E8%B1%A1/">JS学习笔记6：内建对象</a>
-    </h1>
-  
- -->
-        <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_my" href="/2019/04/28/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06%EF%BC%9A%E5%86%85%E5%BB%BA%E5%AF%B9%E8%B1%A1/">JS学习笔记6：内建对象</a>
-    </h1>
-  
-</p></center>
-        
-        <a href="/2019/04/28/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06%EF%BC%9A%E5%86%85%E5%BB%BA%E5%AF%B9%E8%B1%A1/" class="archive-article-date">
-  	<time datetime="2019-04-28T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>JS的常用对象包括Array、Date、Math、String等
-        
-      
-
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/28/JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06%EF%BC%9A%E5%86%85%E5%BB%BA%E5%AF%B9%E8%B1%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1130,11 +1165,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
