@@ -6,25 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://GDPolar.github.io">
-  <title>操作系统学习笔记3：计算机系统概述 | GDPolar&#39;s Blog</title>
+  <title>计网学习笔记3：数据链路层 | GDPolar&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="article">
-<meta property="og:title" content="操作系统学习笔记3：计算机系统概述">
-<meta property="og:url" content="https://gdpolar.github.io/2022/01/19/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/index.html">
+<meta property="og:title" content="计网学习笔记3：数据链路层">
+<meta property="og:url" content="https://gdpolar.github.io/2022/02/26/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/index.html">
 <meta property="og:site_name" content="GDPolar&#39;s Blog">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2022/01/18/oJ5pqOksiILR7nV.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/18/IvBF4oA9N7nzXCt.jpg">
-<meta property="og:image" content="https://s2.loli.net/2022/01/18/8qDM4OpA2WvB3ca.jpg">
-<meta property="og:image" content="https://s2.loli.net/2022/01/18/Dy3PSQRTjZp4xVe.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/18/udzKl2SHTAGyN1r.jpg">
-<meta property="og:image" content="https://s2.loli.net/2022/01/18/z3jR8BUVyIviMAY.jpg">
-<meta property="article:published_time" content="2022-01-19T12:24:59.000Z">
-<meta property="article:modified_time" content="2022-01-24T09:36:05.185Z">
+<meta property="og:image" content="https://s2.loli.net/2022/03/17/1npD2ZTqXJV8Nuw.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/17/BVTIhbeOpafHPlA.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/17/8WKSLinbTUhpv3g.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/17/EaOhvTUIiSu37VF.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/17/I7dbAGMlqnwaVUj.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/17/jVMeKlgYRwtrAox.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/17/EBb2VDJLuHRZp3f.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/17/1ukYI8wjmsNZGDg.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/17/s4H5gzkVmEC8ouN.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/17/bNKszL1DdQg8Vv5.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/17/KxGN4MZyS3cE5Js.png">
+<meta property="article:published_time" content="2022-02-26T12:24:59.000Z">
+<meta property="article:modified_time" content="2022-03-17T09:45:18.639Z">
 <meta property="article:author" content="GDPolar">
-<meta property="article:tag" content="操作系统">
+<meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.loli.net/2022/01/18/oJ5pqOksiILR7nV.png">
+<meta name="twitter:image" content="https://s2.loli.net/2022/03/17/1npD2ZTqXJV8Nuw.png">
   
     <link rel="alternative" href="/atom.xml" title="GDPolar&#39;s Blog" type="application/atom+xml">
   
@@ -154,27 +159,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-操作系统学习笔记3：计算机系统概述" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-计网学习笔记3：数据链路层" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         <!-- 
   
     <h1 class="article-title" itemprop="name">
-      操作系统学习笔记3：计算机系统概述
+      计网学习笔记3：数据链路层
     </h1>
   
  -->
         <center><p>
   
     <h1 class="article-title_my" itemprop="name">
-      操作系统学习笔记3：计算机系统概述
+      计网学习笔记3：数据链路层
     </h1>
   
 </p></center>
         
-        <a href="/2022/01/19/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" class="archive-article-date">
-  	<time datetime="2022-01-19T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-19</time>
+        <a href="/2022/02/26/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" class="archive-article-date">
+  	<time datetime="2022-02-26T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-26</time>
 </a>
         
       </header>
@@ -183,12 +188,17 @@
       
         <span id="more"></span>
 
-<p><img src="https://s2.loli.net/2022/01/18/oJ5pqOksiILR7nV.png" alt="oJ5pqOksiILR7nV"></p>
-<p><img src="https://s2.loli.net/2022/01/18/IvBF4oA9N7nzXCt.jpg" alt="IvBF4oA9N7nzXCt"></p>
-<p><img src="https://s2.loli.net/2022/01/18/8qDM4OpA2WvB3ca.jpg" alt="8qDM4OpA2WvB3ca"></p>
-<p><img src="https://s2.loli.net/2022/01/18/Dy3PSQRTjZp4xVe.png" alt="Dy3PSQRTjZp4xVe"></p>
-<p><img src="https://s2.loli.net/2022/01/18/udzKl2SHTAGyN1r.jpg" alt="udzKl2SHTAGyN1r"></p>
-<p><img src="https://s2.loli.net/2022/01/18/z3jR8BUVyIviMAY.jpg" alt="z3jR8BUVyIviMAY"></p>
+<p><img src="https://s2.loli.net/2022/03/17/1npD2ZTqXJV8Nuw.png" alt="image-20220317113201891"></p>
+<p><img src="https://s2.loli.net/2022/03/17/BVTIhbeOpafHPlA.png" alt="image-20220317161730793"></p>
+<p><img src="https://s2.loli.net/2022/03/17/8WKSLinbTUhpv3g.png" alt="image-20220317162046855"></p>
+<p><img src="https://s2.loli.net/2022/03/17/EaOhvTUIiSu37VF.png" alt="image-20220317162513042"></p>
+<p><img src="https://s2.loli.net/2022/03/17/I7dbAGMlqnwaVUj.png" alt="image-20220317163044461"></p>
+<p><img src="https://s2.loli.net/2022/03/17/jVMeKlgYRwtrAox.png" alt="image-20220317164642148"></p>
+<p><img src="https://s2.loli.net/2022/03/17/EBb2VDJLuHRZp3f.png" alt="image-20220317170140090"></p>
+<p><img src="https://s2.loli.net/2022/03/17/1ukYI8wjmsNZGDg.png" alt="image-20220317170910977"></p>
+<p><img src="https://s2.loli.net/2022/03/17/s4H5gzkVmEC8ouN.png" alt="image-20220317172034611"></p>
+<p><img src="https://s2.loli.net/2022/03/17/bNKszL1DdQg8Vv5.png" alt="image-20220317171956747"></p>
+<p><img src="https://s2.loli.net/2022/03/17/KxGN4MZyS3cE5Js.png" alt="image-20220317174501921"></p>
 
       
 
@@ -203,7 +213,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
         		</li>
       		
 		</ul>
@@ -259,7 +269,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://gdpolar.github.io/2022/01/19/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://gdpolar.github.io/2022/02/26/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -273,18 +283,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/01/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04%EF%BC%9A%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%861/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          操作系统学习笔记4：进程管理1
-        
-      </div>
-    </a>
   
-  
-    <a href="/2022/01/03/LeetCode142.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%20II/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LeetCode142. 环形链表 II</div>
+    <a href="/2022/02/25/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E7%89%A9%E7%90%86%E5%B1%82/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计网学习笔记2:物理层</div>
       <i class="icon-circle-right"></i>
     </a>
   
