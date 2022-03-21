@@ -6,25 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://GDPolar.github.io">
-  <title>计网学习笔记1：概论 | GDPolar&#39;s Blog</title>
+  <title>计网学习笔记6：运输层 | GDPolar&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="article">
-<meta property="og:title" content="计网学习笔记1：概论">
-<meta property="og:url" content="https://gdpolar.github.io/2022/02/24/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%AE%BA/index.html">
+<meta property="og:title" content="计网学习笔记6：运输层">
+<meta property="og:url" content="https://gdpolar.github.io/2022/03/01/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06%EF%BC%9A%E8%BF%90%E8%BE%93%E5%B1%82/index.html">
 <meta property="og:site_name" content="GDPolar&#39;s Blog">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2022/03/16/39IMzAgWBpCRejx.png">
-<meta property="og:image" content="https://s2.loli.net/2022/03/16/OkjUAI4pnXDtJc8.png">
-<meta property="og:image" content="https://s2.loli.net/2022/03/16/SZ5uJf8KAdaQTMh.png">
-<meta property="og:image" content="https://s2.loli.net/2022/03/16/qjoQ27eB3CE5NMs.png">
-<meta property="og:image" content="https://s2.loli.net/2022/03/16/wVC4hlqzgHBNvKM.png">
-<meta property="og:image" content="https://s2.loli.net/2022/03/16/cE7jqCtPSLJ3Ue2.png">
-<meta property="article:published_time" content="2022-02-24T12:24:59.000Z">
-<meta property="article:modified_time" content="2022-03-21T08:41:42.575Z">
+<meta property="og:image" content="https://s2.loli.net/2022/03/21/76r2NFhpYuB3sP8.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/21/VnmqWf5MZCsXP8Y.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/21/xbTgawtj7HQOYzU.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/21/1vCSFRbqrsmcWkA.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/21/KYdMs6VpCEWr9Rz.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/21/4wY9S5MTNqPdaz1.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/21/26chlYj3FNHrAVg.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/21/Urd7LzaHJ8t5KPA.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/21/ApdyUnf5NmCLkZP.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/21/Tpld4huiRSX8WO9.png">
+<meta property="article:published_time" content="2022-03-01T12:24:59.000Z">
+<meta property="article:modified_time" content="2022-03-21T14:37:53.459Z">
 <meta property="article:author" content="GDPolar">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.loli.net/2022/03/16/39IMzAgWBpCRejx.png">
+<meta name="twitter:image" content="https://s2.loli.net/2022/03/21/76r2NFhpYuB3sP8.png">
   
     <link rel="alternative" href="/atom.xml" title="GDPolar&#39;s Blog" type="application/atom+xml">
   
@@ -154,41 +158,45 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-计网学习笔记1：概论" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-计网学习笔记6：运输层" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         <!-- 
   
     <h1 class="article-title" itemprop="name">
-      计网学习笔记1：概论
+      计网学习笔记6：运输层
     </h1>
   
  -->
         <center><p>
   
     <h1 class="article-title_my" itemprop="name">
-      计网学习笔记1：概论
+      计网学习笔记6：运输层
     </h1>
   
 </p></center>
         
-        <a href="/2022/02/24/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%AE%BA/" class="archive-article-date">
-  	<time datetime="2022-02-24T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-24</time>
+        <a href="/2022/03/01/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06%EF%BC%9A%E8%BF%90%E8%BE%93%E5%B1%82/" class="archive-article-date">
+  	<time datetime="2022-03-01T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://s2.loli.net/2022/03/16/39IMzAgWBpCRejx.png" alt="image-20220316234058372"></p>
+        <p><img src="https://s2.loli.net/2022/03/21/76r2NFhpYuB3sP8.png" alt="image-20220321172154126"></p>
 <span id="more"></span>
 
-<p><img src="https://s2.loli.net/2022/03/16/OkjUAI4pnXDtJc8.png" alt="image-20220316234214409"></p>
-<p><img src="https://s2.loli.net/2022/03/16/SZ5uJf8KAdaQTMh.png" alt="image-20220316234333223"></p>
-<p><img src="https://s2.loli.net/2022/03/16/qjoQ27eB3CE5NMs.png" alt="image-20220316234516949"></p>
-<p><img src="https://s2.loli.net/2022/03/16/wVC4hlqzgHBNvKM.png" alt="image-20220316234641439"></p>
-<p><img src="https://s2.loli.net/2022/03/16/cE7jqCtPSLJ3Ue2.png" alt="image-20220316234747911"></p>
+<p><img src="https://s2.loli.net/2022/03/21/VnmqWf5MZCsXP8Y.png" alt="image-20220321172802971"></p>
+<p><img src="https://s2.loli.net/2022/03/21/xbTgawtj7HQOYzU.png" alt="image-20220321173317697"></p>
+<p><img src="https://s2.loli.net/2022/03/21/1vCSFRbqrsmcWkA.png" alt="image-20220321211703291"></p>
+<p><img src="https://s2.loli.net/2022/03/21/KYdMs6VpCEWr9Rz.png" alt="image-20220321212518398"></p>
+<p><img src="https://s2.loli.net/2022/03/21/4wY9S5MTNqPdaz1.png" alt="image-20220321214936800"></p>
+<p><img src="https://s2.loli.net/2022/03/21/26chlYj3FNHrAVg.png" alt="image-20220321220754531"></p>
+<p><img src="https://s2.loli.net/2022/03/21/Urd7LzaHJ8t5KPA.png" alt="image-20220321221211779"></p>
+<p><img src="https://s2.loli.net/2022/03/21/ApdyUnf5NmCLkZP.png" alt="image-20220321223134596"></p>
+<p><img src="https://s2.loli.net/2022/03/21/Tpld4huiRSX8WO9.png" alt="image-20220321223727028"></p>
 
       
 
@@ -259,7 +267,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://gdpolar.github.io/2022/02/24/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%AE%BA/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://gdpolar.github.io/2022/03/01/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06%EF%BC%9A%E8%BF%90%E8%BE%93%E5%B1%82/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -273,18 +281,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/02/25/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E7%89%A9%E7%90%86%E5%B1%82/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/03/02/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07%EF%BC%9A%E5%BA%94%E7%94%A8%E5%B1%82/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          计网学习笔记2:物理层
+          计网学习笔记7：应用层
         
       </div>
     </a>
   
   
-    <a href="/2022/01/24/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B08%EF%BC%9AIO%E7%AE%A1%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">操作系统学习笔记8：I/O管理</div>
+    <a href="/2022/02/28/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05%EF%BC%9A%E7%BD%91%E7%BB%9C%E5%B1%82/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计网学习笔记5：网络层</div>
       <i class="icon-circle-right"></i>
     </a>
   
