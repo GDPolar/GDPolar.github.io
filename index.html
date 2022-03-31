@@ -146,6 +146,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Vue笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        <!-- 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/10/Vue%E7%AC%94%E8%AE%B0/">Vue2笔记1</a>
+    </h1>
+  
+ -->
+        <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_my" href="/2022/03/10/Vue%E7%AC%94%E8%AE%B0/">Vue2笔记1</a>
+    </h1>
+  
+</p></center>
+        
+        <a href="/2022/03/10/Vue%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2022-03-10T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;../vue.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Demo1<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 插值语法，使用两个大括号 --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- &#123;&#123;XXX&#125;&#125;中的XXX要写JS表达式，且XXX可以自动读取到data中的所有属性 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>hello:&#123;&#123;name.toUpperCase()&#125;&#125; !<span class="tag">&lt;/<span class="name">h1</span>&gt;</span> </span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 指令语法，用于解析标签（标签属性、标签体内容、绑定事件...） --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h4</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 属性前加上 v-bind: 属性绑定 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">v-bind:value</span>=<span class="string">&quot;url&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- v-bind: 可简写为 : --&gt;</span></span><br><span class="line">            单项数据绑定:<span class="tag">&lt;<span class="name">input</span> <span class="attr">:value</span>=<span class="string">&quot;url&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">&lt;!-- v-model 双向绑定 --&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 只可用于表单类元素（input、select等），v-model:value可简写为v-model --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model:value</span>=<span class="string">&quot;url&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">            双向数据绑定:<span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">&quot;url&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">        Vue.config.productionTip = <span class="literal">false</span>;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// Vue实例与容器是一对一的关系</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">            <span class="attr">el</span> : <span class="string">&quot;#root&quot;</span>,    <span class="comment">// el属性用于指定当前Vue实例所服务的容器，通常为CSS选择器字符串</span></span></span><br><span class="line"><span class="javascript">            <span class="attr">data</span> : &#123;        <span class="comment">// data属性的值可为对象，在容器中用两个大括号引用</span></span></span><br><span class="line"><span class="javascript">                <span class="attr">name</span> : <span class="string">&quot;zhangsan&quot;</span>,</span></span><br><span class="line"><span class="javascript">                <span class="attr">url</span> : <span class="string">&quot;http://gdpolar.top&quot;</span></span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">        &#125;);</span></span><br><span class="line"><span class="javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/03/10/Vue%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-计网学习笔记7：应用层" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -901,102 +984,6 @@
 
 
   
-    <article id="post-操作系统学习笔记6：内存管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        <!-- 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06%EF%BC%9A%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">操作系统学习笔记6：内存管理</a>
-    </h1>
-  
- -->
-        <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_my" href="/2022/01/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06%EF%BC%9A%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">操作系统学习笔记6：内存管理</a>
-    </h1>
-  
-</p></center>
-        
-        <a href="/2022/01/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06%EF%BC%9A%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" class="archive-article-date">
-  	<time datetime="2022-01-22T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <span id="more"></span>
-
-<p><img src="https://s2.loli.net/2022/02/14/5AbC8opsNQ9aF34.png" alt="image-20220214211557067"></p>
-<p><img src="https://s2.loli.net/2022/02/14/YtL4nWZE3X1AI6V.png" alt="image-20220214212235855"></p>
-<p><img src="https://s2.loli.net/2022/02/14/Jv8CXONIEhqjnLH.png" alt="image-20220214214714872"></p>
-<p><img src="https://s2.loli.net/2022/02/16/635LuDPxkJHnzob.png" alt="image-20220216110346323"></p>
-<p><img src="https://s2.loli.net/2022/02/16/VZvDTHo3bML1zdm.png" alt="image-20220216112610585"></p>
-<p><img src="https://s2.loli.net/2022/02/16/ZQ7YonAzaf4yOKe.png" alt="image-20220216145047735"></p>
-<p><img src="https://s2.loli.net/2022/02/20/S3GNy7imHhWPlR2.png" alt="image-20220219115808437"></p>
-<p><img src="https://s2.loli.net/2022/02/19/LR75tSpQVyvUcaT.png" alt="image-20220219122140998"></p>
-<p><img src="https://s2.loli.net/2022/02/19/IkfCYsltLvTS8zg.png" alt="image-20220219170721638"> </p>
-<p><img src="https://s2.loli.net/2022/02/20/xdlHDbZ4citTUfy.png" alt="image-20220220103808083"></p>
-<p><img src="https://s2.loli.net/2022/02/20/UQK5thw6FmdLzIT.png" alt="image-20220220112745201"></p>
-<p><img src="https://s2.loli.net/2022/02/20/CxEV9WUdFTqRh4y.png" alt="image-20220220115917113"></p>
-<p><img src="https://s2.loli.net/2022/02/20/Bi97xRkA8Y1WutQ.png" alt="image-20220220121111626"></p>
-
-      
-
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06%EF%BC%9A%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1103,15 +1090,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1123,7 +1106,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
