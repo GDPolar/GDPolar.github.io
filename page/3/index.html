@@ -551,38 +551,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="142-环形链表-II"><a href="#142-环形链表-II" class="headerlink" title="142. 环形链表 II"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-list-cycle-ii/">142. 环形链表 II</a></h4><blockquote>
-<p>给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。</p>
-<p>不允许修改 链表。</p>
-<p>示例 1：</p>
-<pre><code>输入：head = [3,2,0,-4], pos = 1
-输出：返回索引为 1 的链表节点
-解释：链表中有一个环，其尾部连接到第二个节点。
-</code></pre>
-<p>示例 2：</p>
-<pre><code>输入：head = [1,2], pos = 0
-输出：返回索引为 0 的链表节点
-解释：链表中有一个环，其尾部连接到第一个节点。
-</code></pre>
-<p>示例 3：</p>
-<pre><code>输入：head = [1], pos = -1
-输出：返回 null
-解释：链表中没有环。
-</code></pre>
-<p>提示：</p>
-<pre><code>链表中节点的数目范围在范围 [0, 104] 内
--105 &lt;= Node.val &lt;= 105
-pos 的值为 -1 或者链表中的一个有效索引
-</code></pre>
-</blockquote>
-<hr>
-<h2 id="此题主要是数学运算"><a href="#此题主要是数学运算" class="headerlink" title="此题主要是数学运算"></a>此题主要是数学运算</h2><p>​    快慢指针法，快指针每次移动两个节点，慢指针每次移动一个节点，有环的话，一定会在环内相遇。</p>
-<p>​    因为快指针走两步，慢指针走一步，相对来说，快指针是一个节点一个节点的靠近慢指针的，所以一定会重合。</p>
-<p>​    假设从头结点到环形入口节点的节点数为x，环形入口节点到 快指针与慢指针相遇节点节点数为y，从相遇节点再到环形入口节点节点数为 z。</p>
-<p><img src="https://s2.loli.net/2022/01/27/FhRKAkME6PGtNgj.png" alt="image-20220127215744568"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(x + y) * 2 = x + y + n (y + z)</span><br><span class="line">x = (n - 1) (y + z) + z</span><br></pre></td></tr></table></figure>
-<p>​    当n为1的时候，公式就化为 x = z，即<strong>从头结点出发一个指针，从相遇节点也出发一个指针，这两个指针每次只走一个节点，那么当这两个指针相遇的时候就是环形入口的节点</strong>。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">detectCycle</span><span class="params">(ListNode *head)</span> </span>&#123;</span><br><span class="line">        ListNode* fast = head;</span><br><span class="line">        ListNode* slow = head;</span><br><span class="line">        <span class="keyword">while</span>(fast != <span class="literal">NULL</span> &amp;&amp; fast-&gt;next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            fast = fast-&gt;next-&gt;next;</span><br><span class="line">            <span class="comment">// 快慢指针相遇，此时从head 和 相遇点，同时查找直至相遇</span></span><br><span class="line">            <span class="keyword">if</span> (slow == fast) &#123;</span><br><span class="line">                ListNode* index1 = fast;</span><br><span class="line">                ListNode* index2 = head;</span><br><span class="line">                <span class="keyword">while</span> (index1 != index2) &#123;</span><br><span class="line">                    index1 = index1-&gt;next;</span><br><span class="line">                    index2 = index2-&gt;next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> index2; <span class="comment">// 返回环的入口</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <h4 id="142-环形链表-II"><a href="#142-环形链表-II" class="headerlink" title="142. 环形链表 II"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-list-cycle-ii/">142. 环形链表 II</a>
+        
       
 
       
@@ -667,31 +637,8 @@ pos 的值为 -1 或者链表中的一个有效索引
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="19-删除链表的倒数第-N-个结点"><a href="#19-删除链表的倒数第-N-个结点" class="headerlink" title="19. 删除链表的倒数第 N 个结点"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/">19. 删除链表的倒数第 N 个结点</a></h4><blockquote>
-<p>给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。</p>
-<p>示例 1：</p>
-<pre><code>输入：head = [1,2,3,4,5], n = 2
-输出：[1,2,3,5]
-</code></pre>
-<p>示例 2：</p>
-<pre><code>输入：head = [1], n = 1
-输出：[]
-</code></pre>
-<p>示例 3：</p>
-<pre><code>输入：head = [1,2], n = 1
-输出：[1]
-</code></pre>
-<p>提示：</p>
-<pre><code>链表中结点的数目为 sz
-1 &lt;= sz &lt;= 30
-0 &lt;= Node.val &lt;= 100
-1 &lt;= n &lt;= sz
-</code></pre>
-</blockquote>
-<hr>
-<h2 id="此题采用双指针法"><a href="#此题采用双指针法" class="headerlink" title="此题采用双指针法"></a>此题采用双指针法</h2><p>​    添加虚拟头结点方便处理</p>
-<p>​    让快指针先移动n步，然后让两指针同时移动，直到快指针指向链表末尾时，删掉慢指针所指向的节点即可</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">removeNthFromEnd</span><span class="params">(ListNode* head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        ListNode *tHead = <span class="keyword">new</span> <span class="built_in">ListNode</span>();</span><br><span class="line">        tHead-&gt;next = head;</span><br><span class="line">        ListNode *p = tHead, *q = tHead;</span><br><span class="line">        <span class="keyword">while</span> (n-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (q-&gt;next != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        p-&gt;next = p-&gt;next-&gt;next;</span><br><span class="line">        <span class="keyword">return</span> tHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <h4 id="19-删除链表的倒数第-N-个结点"><a href="#19-删除链表的倒数第-N-个结点" class="headerlink" title="19. 删除链表的倒数第 N 个结点"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/">19. 删除链表的倒数第 N 个结点</a>
+        
       
 
       
@@ -749,107 +696,6 @@ pos 的值为 -1 或者链表中的一个有效索引
 
 
   
-    <article id="post-LeetCode24. 两两交换链表中的节点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        <!-- 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/02/LeetCode24.%20%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/">LeetCode24. 两两交换链表中的节点</a>
-    </h1>
-  
- -->
-        <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_my" href="/2022/01/02/LeetCode24.%20%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/">LeetCode24. 两两交换链表中的节点</a>
-    </h1>
-  
-</p></center>
-        
-        <a href="/2022/01/02/LeetCode24.%20%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2022-01-02T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="24-两两交换链表中的节点"><a href="#24-两两交换链表中的节点" class="headerlink" title="24. 两两交换链表中的节点"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/">24. 两两交换链表中的节点</a></h4><blockquote>
-<p>给你一个链表，两两交换其中相邻的节点，并返回交换后链表的头节点。你必须在不修改节点内部的值的情况下完成本题（即，只能进行节点交换）。</p>
-<p>示例 1：</p>
-<pre><code>输入：head = [1,2,3,4]
-</code></pre>
-<p>   输出：[2,1,4,3]</p>
-<p>示例 2：</p>
-<p>   输入：head = [1]<br>    输出：[1]</p>
-<p>提示：</p>
-<pre><code>链表中节点的数目在范围 [0, 100] 内
-</code></pre>
-<p>   0 &lt;= Node.val &lt;= 100</p>
-</blockquote>
-<hr>
-<h2 id="此题正常模拟即可"><a href="#此题正常模拟即可" class="headerlink" title="此题正常模拟即可"></a>此题正常模拟即可</h2><p>​    添加虚拟头结点方便处理</p>
-<p>​    每次交换当前指向的节点的后两个节点</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">swapPairs</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode *tHead = <span class="keyword">new</span> <span class="built_in">ListNode</span>(); <span class="comment">// 添加一个虚拟头节点</span></span><br><span class="line">        tHead-&gt;next = head;</span><br><span class="line">        ListNode *p, *q, *t, *cur = tHead;</span><br><span class="line">        <span class="keyword">while</span> (cur-&gt;next != <span class="literal">nullptr</span> &amp;&amp; cur-&gt;next-&gt;next != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            p = cur-&gt;next;</span><br><span class="line">            q = p-&gt;next;</span><br><span class="line">            t = q-&gt;next;</span><br><span class="line">            q-&gt;next = p;</span><br><span class="line">            cur-&gt;next = q;</span><br><span class="line">            p-&gt;next = t;</span><br><span class="line">            cur = p;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/02/LeetCode24.%20%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-LeetCode面试题 02.07. 链表相交" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -877,35 +723,8 @@ pos 的值为 -1 或者链表中的一个有效索引
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="面试题-02-07-链表相交"><a href="#面试题-02-07-链表相交" class="headerlink" title="面试题 02.07. 链表相交"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/intersection-of-two-linked-lists-lcci/">面试题 02.07. 链表相交</a></h4><blockquote>
-<p>给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表没有交点，返回 null 。</p>
-<p>示例 1：</p>
-<pre><code>输入：listA = [4,1,8,4,5], listB = [5,0,1,8,4,5]
-输出：Intersected at &#39;8&#39;
-</code></pre>
-<p>示例 2：</p>
-<pre><code>输入：listA = [0,9,1,2,4], listB = [3,2,4]
-输出：Intersected at &#39;2&#39;
-</code></pre>
-<p>示例 3：</p>
-<pre><code>输入：listA = [2,6,4], listB = [1,5]
-输出：null
-</code></pre>
-<p>提示：</p>
-<pre><code>listA 中节点数目为 m
-listB 中节点数目为 n
-0 &lt;= m, n &lt;= 3 * 104
-1 &lt;= Node.val &lt;= 105
-0 &lt;= skipA &lt;= m
-0 &lt;= skipB &lt;= n
-如果 listA 和 listB 没有交点，intersectVal 为 0
-如果 listA 和 listB 有交点，intersectVal == listA[skipA + 1] == listB[skipB + 1]
-</code></pre>
-</blockquote>
-<hr>
-<h2 id="此题采用双指针法"><a href="#此题采用双指针法" class="headerlink" title="此题采用双指针法"></a>此题采用双指针法</h2><p>​    添加虚拟头结点方便处理</p>
-<p>​    让快指针先移动n步，然后让两指针同时移动，直到快指针指向链表末尾时，删掉慢指针所指向的节点即可</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">getIntersectionNode</span><span class="params">(ListNode *headA, ListNode *headB)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (headA == <span class="literal">NULL</span> || headB == <span class="literal">NULL</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> lengthA = <span class="number">0</span>, lengthB = <span class="number">0</span>;</span><br><span class="line">        ListNode *t, *tA = headA, *tB = headB;</span><br><span class="line">        t = headA;</span><br><span class="line">        <span class="keyword">while</span> (t != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            lengthA++;</span><br><span class="line">            t = t-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        t = headB;</span><br><span class="line">        <span class="keyword">while</span> (t != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            lengthB++;</span><br><span class="line">            t = t-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (lengthA &lt; lengthB) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = lengthB - lengthA; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">                tB = tB-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = lengthA - lengthB; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">                tA = tA-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (tA != tB &amp;&amp; tA != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            tA = tA-&gt;next;</span><br><span class="line">            tB = tB-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tA;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <h4 id="面试题-02-07-链表相交"><a href="#面试题-02-07-链表相交" class="headerlink" title="面试题 02.07. 链表相交"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/intersection-of-two-linked-lists-lcci/">面试题 02.07. 链表相交</a>
+        
       
 
       
@@ -963,6 +782,92 @@ listB 中节点数目为 n
 
 
   
+    <article id="post-LeetCode24. 两两交换链表中的节点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        <!-- 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/02/LeetCode24.%20%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/">LeetCode24. 两两交换链表中的节点</a>
+    </h1>
+  
+ -->
+        <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_my" href="/2022/01/02/LeetCode24.%20%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/">LeetCode24. 两两交换链表中的节点</a>
+    </h1>
+  
+</p></center>
+        
+        <a href="/2022/01/02/LeetCode24.%20%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/" class="archive-article-date">
+  	<time datetime="2022-01-02T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="24-两两交换链表中的节点"><a href="#24-两两交换链表中的节点" class="headerlink" title="24. 两两交换链表中的节点"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/">24. 两两交换链表中的节点</a>
+        
+      
+
+      
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/02/LeetCode24.%20%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-LeetCode206. 反转链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -990,39 +895,8 @@ listB 中节点数目为 n
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="206-反转链表"><a href="#206-反转链表" class="headerlink" title="206. 反转链表"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-linked-list/">206. 反转链表</a></h4><blockquote>
-<p>给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。</p>
-<p>示例 1：</p>
-<pre><code>输入：head = [1,2,3,4,5]
-</code></pre>
-<p>   输出：[5,4,3,2,1]</p>
-<p>示例 2：</p>
-<p>   输入：head = [1,2]<br>    输出：[2,1]</p>
-<p>示例 3：</p>
-<p>   输入：head = []<br>    输出：[]</p>
-<p>提示：</p>
-<pre><code>链表中节点的数目范围是 [0, 5000]
--5000 &lt;= Node.val &lt;= 5000
-</code></pre>
-</blockquote>
-<hr>
-<h2 id="递归法"><a href="#递归法" class="headerlink" title="递归法"></a>递归法</h2><p>假设链表为</p>
-<p>​    n<sub>1</sub> –&gt; ….. –&gt; n<sub>k-1</sub> – &gt;  n<sub>k</sub> –&gt;  n<sub>k+1</sub> –&gt; … –&gt; n<sub>m</sub> –&gt; ∅</p>
-<p>若从节点 n<sub>k+1</sub> 到 n<sub>m</sub> 已经被反转，此时正处于 n<sub>k</sub> </p>
-<p>​    n<sub>1</sub> –&gt; ….. –&gt; n<sub>k-1</sub> – &gt;  n<sub>k</sub> –&gt;  n<sub>k+1</sub> &lt;– … &lt;– n<sub>m</sub> &lt;– ∅</p>
-<p>所以令n<sub>k</sub>-&gt;next-&gt;next = n<sub>k</sub>;</p>
-<p>理解递归的关键在于不要在乎递归内部，把递归函数当作一个普通函数且只关心其输入输出，即把递归当作<strong>黑盒函数</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 由于要执行 head-&gt;next-&gt;next = head，所以 head-&gt;next 不能为空</span></span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">nullptr</span> || head-&gt;next == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode* newHead = <span class="built_in">reverseList</span>(head-&gt;next); </span><br><span class="line">        head-&gt;next-&gt;next = head;</span><br><span class="line">        head-&gt;next = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">return</span> newHead;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="双指针法"><a href="#双指针法" class="headerlink" title="双指针法"></a>双指针法</h2><p>通过两个前后指针顺序遍历链表并反转</p>
-<p>由于此题链表无头节点，则p、q指针初始值分别为p = nullptr, q = head</p>
-<p>若为有头节点链表，则p、q指针初始值分别为p = head, q = head-&gt;next</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode* p = <span class="literal">nullptr</span>, *q = head, *t;</span><br><span class="line">        <span class="keyword">while</span> (q != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            t = q-&gt;next; <span class="comment">// 临时保存快指针的下一节点</span></span><br><span class="line">            q-&gt;next = p;</span><br><span class="line">            p = q;</span><br><span class="line">            q = t;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-
+        <h4 id="206-反转链表"><a href="#206-反转链表" class="headerlink" title="206. 反转链表"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-linked-list/">206. 反转链表</a>
+        
       
 
       
@@ -1107,30 +981,8 @@ listB 中节点数目为 n
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209. 长度最小的子数组"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-size-subarray-sum/">209. 长度最小的子数组</a></h4><blockquote>
-<p>给定一个含有 n 个正整数的数组和一个正整数 target 。</p>
-<p>找出该数组中满足其和 ≥ target 的长度最小的 连续子数组 [numsl, numsl+1, …, numsr-1, numsr] ，并返回其长度。如果不存在符合条件的子数组，返回     0 。</p>
-<p>示例 1：</p>
-<pre><code>输入：target = 7, nums = [2,3,1,2,4,3]
-输出：2
-解释：子数组 [4,3] 是该条件下的长度最小的子数组。
-</code></pre>
-<p>示例 2：</p>
-<pre><code>输入：target = 4, nums = [1,4,4]
-输出：1
-</code></pre>
-<p>示例 3：</p>
-<pre><code>输入：target = 11, nums = [1,1,1,1,1,1,1,1]
-输出：0
-</code></pre>
-<p>提示：</p>
-<p>   1 &lt;= target &lt;= 109<br>   1 &lt;= nums.length &lt;= 105<br>   1 &lt;= nums[i] &lt;= 105</p>
-</blockquote>
-<hr>
-<h2 id="此题可采用“滑动窗口法”"><a href="#此题可采用“滑动窗口法”" class="headerlink" title="此题可采用“滑动窗口法”"></a>此题可采用“滑动窗口法”</h2><p>​    所谓滑动窗口，就是不断的调节子序列的起始位置和终止位置，从而得出要想的结果。</p>
-<p>​    窗口的起始位置如何移动：如果当前窗口的值大于s了，窗口就要向前移动了（也就是该缩小了）。</p>
-<p>​    窗口的结束位置如何移动：窗口的结束位置就是遍历数组的指针，窗口的起始位置设置为数组的起始位置就可以了。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minSubArrayLen</span><span class="params">(<span class="keyword">int</span> target, vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.<span class="built_in">size</span>() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">999999</span>, sum = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; </span><br><span class="line">        <span class="keyword">while</span> (i &lt;= j &amp;&amp; j &lt; nums.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (sum &lt; target) &#123; <span class="comment">// 结束位置右滑</span></span><br><span class="line">                <span class="keyword">if</span> (++j &lt; nums.<span class="built_in">size</span>())  <span class="comment">// 防止数组超过最右边界</span></span><br><span class="line">                    sum += nums[j];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>( res &gt; (j - i + <span class="number">1</span>) ) <span class="comment">// 起始位置右滑</span></span><br><span class="line">                    res = j - i + <span class="number">1</span>;</span><br><span class="line">                sum -= nums[i++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (res == <span class="number">999999</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <h4 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209. 长度最小的子数组"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-size-subarray-sum/">209. 长度最小的子数组</a>
+        
       
 
       
@@ -1286,6 +1138,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
               </li>
              
@@ -1294,15 +1150,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
