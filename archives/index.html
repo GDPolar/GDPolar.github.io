@@ -43,22 +43,29 @@
       <div class="bar2"></div>
       <div class="bar3"></div>
     </div>
-    <script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
     <script>
       var hide = false;
       function myFunction(x) {
           x.classList.toggle("change");
           if(hide == false){
-              $(".left-col").css('display', 'none');
-              $(".mid-col").css("left", 6);
-              $(".tools-col").css('display', 'none');
-              $(".tools-col.hide").css('display', 'none');
-              hide = true;
+            document.getElementsByClassName("left-col")[0].setAttribute("display", "none");
+            document.getElementsByClassName("mid-col")[0].setAttribute("left", 6);
+            document.getElementsByClassName("tools-col")[0].setAttribute("display", "none");
+            document.getElementsByClassName("tools-col.hide")[0].setAttribute("display", "none");
+              // $(".left-col").css('display', 'none');
+              // $(".mid-col").css("left", 6);
+              // $(".tools-col").css('display', 'none');
+              // $(".tools-col.hide").css('display', 'none');
+            hide = true;
           }else{
-              $(".left-col").css('display', '');
-              $(".mid-col").css("left", 300);
-              $(".tools-col").css('display', '');
-              $(".tools-col.hide").css('display', '');
+            document.getElementsByClassName("left-col")[0].setAttribute("display", "");
+            document.getElementsByClassName("mid-col")[0].setAttribute("left", 300);
+            document.getElementsByClassName("tools-col")[0].setAttribute("display", "");
+            document.getElementsByClassName("tools-col.hide")[0].setAttribute("display", "");
+              // $(".left-col").css('display', '');
+              // $(".mid-col").css("left", 300);
+              // $(".tools-col").css('display', '');
+              // $(".tools-col.hide").css('display', '');
               hide = false;
           }
       }
@@ -200,6 +207,48 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       	<div class="article-meta">
+	      	<a href="/2022/03/31/PAT.1002%20%E5%86%99%E5%87%BA%E8%BF%99%E4%B8%AA%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2022-03-31T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-31</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/03/31/PAT.1002%20%E5%86%99%E5%87%BA%E8%BF%99%E4%B8%AA%E6%95%B0/">1002 写出这个数</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PAT</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
 	      	<a href="/2022/03/31/PAT.1001%20%E5%AE%B3%E6%AD%BB%E4%BA%BA%E4%B8%8D%E5%81%BF%E5%91%BD%E7%9A%84(3n+1)%E7%8C%9C%E6%83%B3/" class="archive-article-date">
   	<time datetime="2022-03-31T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-31</time>
 </a>
@@ -242,14 +291,14 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       	<div class="article-meta">
-	      	<a href="/2022/03/31/PAT.1002%20%E5%86%99%E5%87%BA%E8%BF%99%E4%B8%AA%E6%95%B0/" class="archive-article-date">
+	      	<a href="/2022/03/31/PAT.1003%20%E6%88%91%E8%A6%81%E9%80%9A%E8%BF%87%EF%BC%81/" class="archive-article-date">
   	<time datetime="2022-03-31T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-31</time>
 </a>
         </div>
     	 
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/31/PAT.1002%20%E5%86%99%E5%87%BA%E8%BF%99%E4%B8%AA%E6%95%B0/">1002 写出这个数</a>
+      <a class="archive-article-title" href="/2022/03/31/PAT.1003%20%E6%88%91%E8%A6%81%E9%80%9A%E8%BF%87%EF%BC%81/">1003 我要通过！</a>
     </h1>
   
 
@@ -326,14 +375,14 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       	<div class="article-meta">
-	      	<a href="/2022/03/31/PAT.1003%20%E6%88%91%E8%A6%81%E9%80%9A%E8%BF%87%EF%BC%81/" class="archive-article-date">
+	      	<a href="/2022/03/31/PAT.1005%20%E7%BB%A7%E7%BB%AD(3n+1)%E7%8C%9C%E6%83%B3/" class="archive-article-date">
   	<time datetime="2022-03-31T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-31</time>
 </a>
         </div>
     	 
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/31/PAT.1003%20%E6%88%91%E8%A6%81%E9%80%9A%E8%BF%87%EF%BC%81/">1003 我要通过！</a>
+      <a class="archive-article-title" href="/2022/03/31/PAT.1005%20%E7%BB%A7%E7%BB%AD(3n+1)%E7%8C%9C%E6%83%B3/">1005 继续(3n+1)猜想</a>
     </h1>
   
 
@@ -418,48 +467,6 @@
   
     <h1 itemprop="name">
       <a class="archive-article-title" href="/2022/03/31/PAT.1007%20%E7%B4%A0%E6%95%B0%E5%AF%B9%E7%8C%9C%E6%83%B3/">1007 素数对猜想</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PAT</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/31/PAT.1005%20%E7%BB%A7%E7%BB%AD(3n+1)%E7%8C%9C%E6%83%B3/" class="archive-article-date">
-  	<time datetime="2022-03-31T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/31/PAT.1005%20%E7%BB%A7%E7%BB%AD(3n+1)%E7%8C%9C%E6%83%B3/">1005 继续(3n+1)猜想</a>
     </h1>
   
 
@@ -716,15 +723,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">刷题总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
               </li>
              
               <li class="article-tag-list-item">

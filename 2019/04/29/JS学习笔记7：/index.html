@@ -48,22 +48,29 @@
       <div class="bar2"></div>
       <div class="bar3"></div>
     </div>
-    <script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
     <script>
       var hide = false;
       function myFunction(x) {
           x.classList.toggle("change");
           if(hide == false){
-              $(".left-col").css('display', 'none');
-              $(".mid-col").css("left", 6);
-              $(".tools-col").css('display', 'none');
-              $(".tools-col.hide").css('display', 'none');
-              hide = true;
+            document.getElementsByClassName("left-col")[0].setAttribute("display", "none");
+            document.getElementsByClassName("mid-col")[0].setAttribute("left", 6);
+            document.getElementsByClassName("tools-col")[0].setAttribute("display", "none");
+            document.getElementsByClassName("tools-col.hide")[0].setAttribute("display", "none");
+              // $(".left-col").css('display', 'none');
+              // $(".mid-col").css("left", 6);
+              // $(".tools-col").css('display', 'none');
+              // $(".tools-col.hide").css('display', 'none');
+            hide = true;
           }else{
-              $(".left-col").css('display', '');
-              $(".mid-col").css("left", 300);
-              $(".tools-col").css('display', '');
-              $(".tools-col.hide").css('display', '');
+            document.getElementsByClassName("left-col")[0].setAttribute("display", "");
+            document.getElementsByClassName("mid-col")[0].setAttribute("left", 300);
+            document.getElementsByClassName("tools-col")[0].setAttribute("display", "");
+            document.getElementsByClassName("tools-col.hide")[0].setAttribute("display", "");
+              // $(".left-col").css('display', '');
+              // $(".mid-col").css("left", 300);
+              // $(".tools-col").css('display', '');
+              // $(".tools-col.hide").css('display', '');
               hide = false;
           }
       }
@@ -456,15 +463,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">刷题总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
               </li>
              
               <li class="article-tag-list-item">

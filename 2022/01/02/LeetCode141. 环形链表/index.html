@@ -49,22 +49,29 @@
       <div class="bar2"></div>
       <div class="bar3"></div>
     </div>
-    <script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
     <script>
       var hide = false;
       function myFunction(x) {
           x.classList.toggle("change");
           if(hide == false){
-              $(".left-col").css('display', 'none');
-              $(".mid-col").css("left", 6);
-              $(".tools-col").css('display', 'none');
-              $(".tools-col.hide").css('display', 'none');
-              hide = true;
+            document.getElementsByClassName("left-col")[0].setAttribute("display", "none");
+            document.getElementsByClassName("mid-col")[0].setAttribute("left", 6);
+            document.getElementsByClassName("tools-col")[0].setAttribute("display", "none");
+            document.getElementsByClassName("tools-col.hide")[0].setAttribute("display", "none");
+              // $(".left-col").css('display', 'none');
+              // $(".mid-col").css("left", 6);
+              // $(".tools-col").css('display', 'none');
+              // $(".tools-col.hide").css('display', 'none');
+            hide = true;
           }else{
-              $(".left-col").css('display', '');
-              $(".mid-col").css("left", 300);
-              $(".tools-col").css('display', '');
-              $(".tools-col.hide").css('display', '');
+            document.getElementsByClassName("left-col")[0].setAttribute("display", "");
+            document.getElementsByClassName("mid-col")[0].setAttribute("left", 300);
+            document.getElementsByClassName("tools-col")[0].setAttribute("display", "");
+            document.getElementsByClassName("tools-col.hide")[0].setAttribute("display", "");
+              // $(".left-col").css('display', '');
+              // $(".mid-col").css("left", 300);
+              // $(".tools-col").css('display', '');
+              // $(".tools-col.hide").css('display', '');
               hide = false;
           }
       }
@@ -324,18 +331,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/01/03/LeetCode142.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%20II/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/01/02/LeetCode19.%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          LeetCode142. 环形链表 II
+          LeetCode19. 删除链表的倒数第 N 个结点
         
       </div>
     </a>
   
   
-    <a href="/2022/01/02/LeetCode19.%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LeetCode19. 删除链表的倒数第 N 个结点</div>
+    <a href="/2022/01/02/LeetCode24.%20%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LeetCode24. 两两交换链表中的节点</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -475,15 +482,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">刷题总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
               </li>
              
               <li class="article-tag-list-item">
