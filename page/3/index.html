@@ -37,6 +37,33 @@
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
+
+    <div class="mymenucontainer" onclick="myFunction(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+
+    <script>
+      var hide = false;
+      function myFunction(x) {
+          x.classList.toggle("change");
+          if(hide == false){
+              $(".left-col").css('display', 'none');
+              $(".mid-col").css("left", 6);
+              $(".tools-col").css('display', 'none');
+              $(".tools-col.hide").css('display', 'none');
+              hide = true;
+          }else{
+              $(".left-col").css('display', '');
+              $(".mid-col").css("left", 300);
+              $(".tools-col").css('display', '');
+              $(".tools-col.hide").css('display', '');
+              hide = false;
+          }
+      }
+  </script>
+  
     <div class="left-col" q-class="show:isShow">
       
 <div class="overlay" style="background: #4d4d4d"></div>
@@ -55,7 +82,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/">刷题笔记</a></li>
+				<li><a href="/tags">归档</a></li>
+	        
+				<li><a href="/tags/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/">刷题总结</a></li>
 	        
 			</ul>
 		</nav>
@@ -113,6 +142,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -130,12 +161,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/">刷题笔记</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags">归档</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/">刷题总结</a></li>
 		        
 				</ul>
 			</nav>
@@ -610,6 +643,92 @@
 
 
   
+    <article id="post-LeetCode141. 环形链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        <!-- 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/02/LeetCode141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/">LeetCode面试题 02.07.链表相交</a>
+    </h1>
+  
+ -->
+        <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_my" href="/2022/01/02/LeetCode141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/">LeetCode面试题 02.07.链表相交</a>
+    </h1>
+  
+</p></center>
+        
+        <a href="/2022/01/02/LeetCode141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" class="archive-article-date">
+  	<time datetime="2022-01-02T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="面试题-02-07-链表相交"><a href="#面试题-02-07-链表相交" class="headerlink" title="面试题 02.07. 链表相交"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/intersection-of-two-linked-lists-lcci/">面试题 02.07. 链表相交</a>
+        
+      
+
+      
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/02/LeetCode141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-LeetCode19. 删除链表倒数第N个节点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -667,92 +786,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/01/02/LeetCode19.%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-LeetCode面试题 02.07. 链表相交" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        <!-- 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/02/LeetCode%E9%9D%A2%E8%AF%95%E9%A2%98%2002.07.%20%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4/">LeetCode面试题 02.07.链表相交</a>
-    </h1>
-  
- -->
-        <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_my" href="/2022/01/02/LeetCode%E9%9D%A2%E8%AF%95%E9%A2%98%2002.07.%20%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4/">LeetCode面试题 02.07.链表相交</a>
-    </h1>
-  
-</p></center>
-        
-        <a href="/2022/01/02/LeetCode%E9%9D%A2%E8%AF%95%E9%A2%98%2002.07.%20%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4/" class="archive-article-date">
-  	<time datetime="2022-01-02T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="面试题-02-07-链表相交"><a href="#面试题-02-07-链表相交" class="headerlink" title="面试题 02.07. 链表相交"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/intersection-of-two-linked-lists-lcci/">面试题 02.07. 链表相交</a>
-        
-      
-
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/02/LeetCode%E9%9D%A2%E8%AF%95%E9%A2%98%2002.07.%20%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4/">展开全文 >></a>
         </p>
       
 
@@ -868,6 +901,92 @@
 
 
   
+    <article id="post-LeetCode面试题 02.07. 链表相交" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        <!-- 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/02/LeetCode%E9%9D%A2%E8%AF%95%E9%A2%98%2002.07.%20%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4/">LeetCode面试题 02.07.链表相交</a>
+    </h1>
+  
+ -->
+        <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_my" href="/2022/01/02/LeetCode%E9%9D%A2%E8%AF%95%E9%A2%98%2002.07.%20%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4/">LeetCode面试题 02.07.链表相交</a>
+    </h1>
+  
+</p></center>
+        
+        <a href="/2022/01/02/LeetCode%E9%9D%A2%E8%AF%95%E9%A2%98%2002.07.%20%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4/" class="archive-article-date">
+  	<time datetime="2022-01-02T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="面试题-02-07-链表相交"><a href="#面试题-02-07-链表相交" class="headerlink" title="面试题 02.07. 链表相交"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/intersection-of-two-linked-lists-lcci/">面试题 02.07. 链表相交</a>
+        
+      
+
+      
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/02/LeetCode%E9%9D%A2%E8%AF%95%E9%A2%98%2002.07.%20%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-LeetCode206. 反转链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -925,92 +1044,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/01/01/LeetCode206.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-LeetCode209.长度最小的子数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        <!-- 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/01/LeetCode209.%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/">LeetCode209.长度最小的子数组</a>
-    </h1>
-  
- -->
-        <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_my" href="/2022/01/01/LeetCode209.%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/">LeetCode209.长度最小的子数组</a>
-    </h1>
-  
-</p></center>
-        
-        <a href="/2022/01/01/LeetCode209.%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/" class="archive-article-date">
-  	<time datetime="2022-01-01T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209. 长度最小的子数组"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-size-subarray-sum/">209. 长度最小的子数组</a>
-        
-      
-
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/01/LeetCode209.%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/">展开全文 >></a>
         </p>
       
 
@@ -1162,7 +1195,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color5">期末复习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1174,7 +1207,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">期末复习</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
