@@ -37,7 +37,7 @@
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
-
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <div class="mymenucontainer" onclick="myFunction(this)">
       <div class="bar1"></div>
       <div class="bar2"></div>
@@ -48,30 +48,30 @@
       function myFunction(x) {
           x.classList.toggle("change");
           if(hide == false){
-            document.getElementsByClassName("left-col")[0].setAttribute("display", "none");
-            document.getElementsByClassName("mid-col")[0].setAttribute("left", 6);
-            document.getElementsByClassName("tools-col")[0].setAttribute("display", "none");
-            document.getElementsByClassName("tools-col.hide")[0].setAttribute("display", "none");
-              // $(".left-col").css('display', 'none');
-              // $(".mid-col").css("left", 6);
-              // $(".tools-col").css('display', 'none');
-              // $(".tools-col.hide").css('display', 'none');
+            // document.getElementById("left-col").setAttribute("display", "none");
+            // document.getElementById("mid-col").setAttribute("left", 6);
+            // document.getElementsByClassName("tools-col")[0].setAttribute("display", "none");
+            // document.getElementById("tools-col.hide").setAttribute("display", "none");
+              $(".left-col").css('display', 'none');
+              $(".mid-col").css("left", 6);
+              $(".tools-col").css('display', 'none');
+              $(".tools-col.hide").css('display', 'none');
             hide = true;
           }else{
-            document.getElementsByClassName("left-col")[0].setAttribute("display", "");
-            document.getElementsByClassName("mid-col")[0].setAttribute("left", 300);
-            document.getElementsByClassName("tools-col")[0].setAttribute("display", "");
-            document.getElementsByClassName("tools-col.hide")[0].setAttribute("display", "");
-              // $(".left-col").css('display', '');
-              // $(".mid-col").css("left", 300);
-              // $(".tools-col").css('display', '');
-              // $(".tools-col.hide").css('display', '');
+            // document.getElementById("left-col").setAttribute("display", "");
+            // document.getElementById("mid-col").setAttribute("left", 300);
+            // document.getElementsByClassName("tools-col")[0].setAttribute("display", "");
+            // document.getElementById("tools-col.hide").setAttribute("display", "");
+              $(".left-col").css('display', '');
+              $(".mid-col").css("left", 300);
+              $(".tools-col").css('display', '');
+              $(".tools-col.hide").css('display', '');
               hide = false;
           }
       }
   </script>
   
-    <div class="left-col" q-class="show:isShow">
+    <div class="left-col" id="left-col" q-class="show:isShow">
       
 <div class="overlay" style="background: #4d4d4d"></div>
 <div class="intrude-less">
@@ -127,7 +127,7 @@
 </div>
 
     </div>
-    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+    <div class="mid-col" id="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
   	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
@@ -1191,6 +1191,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
               </li>
              
@@ -1199,15 +1203,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">

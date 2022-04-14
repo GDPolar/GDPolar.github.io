@@ -37,7 +37,7 @@
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
-
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <div class="mymenucontainer" onclick="myFunction(this)">
       <div class="bar1"></div>
       <div class="bar2"></div>
@@ -48,30 +48,30 @@
       function myFunction(x) {
           x.classList.toggle("change");
           if(hide == false){
-            document.getElementsByClassName("left-col")[0].setAttribute("display", "none");
-            document.getElementsByClassName("mid-col")[0].setAttribute("left", 6);
-            document.getElementsByClassName("tools-col")[0].setAttribute("display", "none");
-            document.getElementsByClassName("tools-col.hide")[0].setAttribute("display", "none");
-              // $(".left-col").css('display', 'none');
-              // $(".mid-col").css("left", 6);
-              // $(".tools-col").css('display', 'none');
-              // $(".tools-col.hide").css('display', 'none');
+            // document.getElementById("left-col").setAttribute("display", "none");
+            // document.getElementById("mid-col").setAttribute("left", 6);
+            // document.getElementsByClassName("tools-col")[0].setAttribute("display", "none");
+            // document.getElementById("tools-col.hide").setAttribute("display", "none");
+              $(".left-col").css('display', 'none');
+              $(".mid-col").css("left", 6);
+              $(".tools-col").css('display', 'none');
+              $(".tools-col.hide").css('display', 'none');
             hide = true;
           }else{
-            document.getElementsByClassName("left-col")[0].setAttribute("display", "");
-            document.getElementsByClassName("mid-col")[0].setAttribute("left", 300);
-            document.getElementsByClassName("tools-col")[0].setAttribute("display", "");
-            document.getElementsByClassName("tools-col.hide")[0].setAttribute("display", "");
-              // $(".left-col").css('display', '');
-              // $(".mid-col").css("left", 300);
-              // $(".tools-col").css('display', '');
-              // $(".tools-col.hide").css('display', '');
+            // document.getElementById("left-col").setAttribute("display", "");
+            // document.getElementById("mid-col").setAttribute("left", 300);
+            // document.getElementsByClassName("tools-col")[0].setAttribute("display", "");
+            // document.getElementById("tools-col.hide").setAttribute("display", "");
+              $(".left-col").css('display', '');
+              $(".mid-col").css("left", 300);
+              $(".tools-col").css('display', '');
+              $(".tools-col.hide").css('display', '');
               hide = false;
           }
       }
   </script>
   
-    <div class="left-col" q-class="show:isShow">
+    <div class="left-col" id="left-col" q-class="show:isShow">
       
 <div class="overlay" style="background: #4d4d4d"></div>
 <div class="intrude-less">
@@ -127,7 +127,7 @@
 </div>
 
     </div>
-    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+    <div class="mid-col" id="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
   	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
@@ -477,14 +477,14 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       	<div class="article-meta">
-	      	<a href="/2022/01/02/LeetCode19.%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/" class="archive-article-date">
+	      	<a href="/2022/01/02/LeetCode141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" class="archive-article-date">
   	<time datetime="2022-01-02T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-02</time>
 </a>
         </div>
     	 
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/01/02/LeetCode19.%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/">LeetCode19. 删除链表的倒数第 N 个结点</a>
+      <a class="archive-article-title" href="/2022/01/02/LeetCode141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/">LeetCode面试题 02.07.链表相交</a>
     </h1>
   
 
@@ -519,14 +519,14 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       	<div class="article-meta">
-	      	<a href="/2022/01/02/LeetCode141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" class="archive-article-date">
+	      	<a href="/2022/01/02/LeetCode19.%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/" class="archive-article-date">
   	<time datetime="2022-01-02T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-02</time>
 </a>
         </div>
     	 
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/01/02/LeetCode141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/">LeetCode面试题 02.07.链表相交</a>
+      <a class="archive-article-title" href="/2022/01/02/LeetCode19.%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/">LeetCode19. 删除链表的倒数第 N 个结点</a>
     </h1>
   
 
@@ -699,6 +699,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
               </li>
              
@@ -707,15 +711,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
