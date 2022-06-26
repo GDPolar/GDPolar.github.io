@@ -6,20 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://GDPolar.github.io">
-  <title>LeetCode454. 四数相加 II | GDPolar&#39;s Blog</title>
+  <title>Tag: LeetCode | GDPolar&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="454. 四数相加 II">
-<meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode454. 四数相加 II">
-<meta property="og:url" content="https://gdpolar.github.io/2022/06/02/LeetCode454.%20%E5%9B%9B%E6%95%B0%E7%9B%B8%E5%8A%A0%20II/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="GDPolar&#39;s Blog">
+<meta property="og:url" content="https://gdpolar.github.io/tags/LeetCode/page/2/index.html">
 <meta property="og:site_name" content="GDPolar&#39;s Blog">
-<meta property="og:description" content="454. 四数相加 II">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-06-02T12:24:59.000Z">
-<meta property="article:modified_time" content="2022-06-24T14:47:52.801Z">
 <meta property="article:author" content="GDPolar">
-<meta property="article:tag" content="数据结构与算法">
-<meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="GDPolar&#39;s Blog" type="application/atom+xml">
@@ -196,78 +190,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-LeetCode454. 四数相加 II" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
+            
+  
+  
     
-      <header class="article-header">
-        <!-- 
-  
-    <h1 class="article-title" itemprop="name">
-      LeetCode454. 四数相加 II
-    </h1>
-  
- -->
-        <center><p>
-  
-    <h1 class="article-title_my" itemprop="name">
-      LeetCode454. 四数相加 II
-    </h1>
-  
-</p></center>
-        
-        <a href="/2022/06/02/LeetCode454.%20%E5%9B%9B%E6%95%B0%E7%9B%B8%E5%8A%A0%20II/" class="archive-article-date">
-  	<time datetime="2022-06-02T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-02</time>
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2022" class="archive-year">2022</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/01/01/LeetCode59.%20%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5%20II/" class="archive-article-date">
+  	<time datetime="2022-01-01T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-01</time>
 </a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="454-四数相加-II"><a href="#454-四数相加-II" class="headerlink" title="454. 四数相加 II"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-linked-list/"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/4sum-ii/">454. 四数相加 II</a></a><span id="more"></span></h4><blockquote>
-<p>给你四个整数数组 <code>nums1</code>、<code>nums2</code>、<code>nums3</code> 和 <code>nums4</code> ，数组长度都是 <code>n</code> ，请你计算有多少个元组 <code>(i, j, k, l)</code> 能满足：</p>
-<ul>
-<li><code>0 &lt;= i, j, k, l &lt; n</code></li>
-<li><code>nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0</code></li>
-</ul>
-<p>示例 1：</p>
-<pre><code>输入：nums1 = [1,2], nums2 = [-2,-1], nums3 = [-1,2], nums4 = [0,2]
-输出：2
-解释：
-两个元组如下：
-1. (0, 0, 0, 1) -&gt; nums1[0] + nums2[0] + nums3[0] + nums4[1] = 1 + (-2) + (-1) + 2 = 0
-2. (1, 1, 0, 0) -&gt; nums1[1] + nums2[1] + nums3[0] + nums4[0] = 2 + (-1) + (-1) + 0 = 0
-</code></pre>
-<p>示例 2：</p>
-<pre><code>输入：nums1 = [0], nums2 = [0], nums3 = [0], nums4 = [0]
-输出：1
-</code></pre>
-<p>提示：</p>
-<pre><code>n == nums1.length
-n == nums2.length
-n == nums3.length
-n == nums4.length
-1 &lt;= n &lt;= 200
--228 &lt;= nums1[i], nums2[i], nums3[i], nums4[i] &lt;= 228
-</code></pre>
-</blockquote>
-<hr>
-<h2 id="显然暴力的O-n-4-复杂度不可能通过，两两一组降为O-n-2-复杂度竟然可以"><a href="#显然暴力的O-n-4-复杂度不可能通过，两两一组降为O-n-2-复杂度竟然可以" class="headerlink" title="显然暴力的O(n^4)复杂度不可能通过，两两一组降为O(n^2)复杂度竟然可以"></a>显然暴力的O(n^4)复杂度不可能通过，两两一组降为O(n^2)复杂度竟然可以</h2><p>hashmap.getOrDefault(Object key, V defaultValue):</p>
-<p>​    返回 key 相映射的的 value，如果给定的 key 在映射关系中找不到，则返回defaultValue。 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fourSumCount</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2, <span class="keyword">int</span>[] nums3, <span class="keyword">int</span>[] nums4)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>, tempSum, times;</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; hm1 = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : nums1) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j : nums2) &#123;</span><br><span class="line">                times = <span class="number">1</span>;</span><br><span class="line">                tempSum = i + j;</span><br><span class="line">                <span class="keyword">if</span> (hm1.containsKey(tempSum)) &#123;</span><br><span class="line">                    times += hm1.get(tempSum);</span><br><span class="line">                &#125;</span><br><span class="line">                hm1.put(tempSum, times);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : nums3) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j : nums4) &#123;</span><br><span class="line">                tempSum = i + j;</span><br><span class="line">                <span class="keyword">if</span>(hm1.containsKey(-tempSum)) &#123;</span><br><span class="line">                    res +=  hm1.get(-tempSum);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/01/01/LeetCode59.%20%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5%20II/">LeetCode59. 螺旋矩阵 II</a>
+    </h1>
+  
 
-
-
-
-
-
-      
-
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -283,118 +235,22 @@ n == nums4.length
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://gdpolar.github.io/2022/06/02/LeetCode454.%20%E5%9B%9B%E6%95%B0%E7%9B%B8%E5%8A%A0%20II/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
   
   
-    <a href="/2022/06/01/LeetCode202.%20%E5%BF%AB%E4%B9%90%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LeetCode202.快乐数</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#454-%E5%9B%9B%E6%95%B0%E7%9B%B8%E5%8A%A0-II"><span class="toc-number">1.</span> <span class="toc-text">454. 四数相加 II</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E7%84%B6%E6%9A%B4%E5%8A%9B%E7%9A%84O-n-4-%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8D%E5%8F%AF%E8%83%BD%E9%80%9A%E8%BF%87%EF%BC%8C%E4%B8%A4%E4%B8%A4%E4%B8%80%E7%BB%84%E9%99%8D%E4%B8%BAO-n-2-%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%AB%9F%E7%84%B6%E5%8F%AF%E4%BB%A5"><span class="toc-number"></span> <span class="toc-text">显然暴力的O(n^4)复杂度不可能通过，两两一组降为O(n^2)复杂度竟然可以</span></a>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/tags/LeetCode/">&amp;laquo; Prev</a><a class="page-number" href="/tags/LeetCode/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -419,9 +275,9 @@ n == nums4.length
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
