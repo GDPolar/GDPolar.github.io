@@ -219,34 +219,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="第一章-基本语法"><a href="#第一章-基本语法" class="headerlink" title="第一章 基本语法"></a>第一章 基本语法</h1><ul>
-<li><p>除非确实要处理 UTF-16 代码单元，否则<strong>不要</strong>在程序中使用 <strong>char</strong> 类型</p>
-</li>
-<li><p><strong>strictfp</strong> 关键字修饰的方法中，所有的指令都必须使用严格的浮点计算</p>
-<blockquote>
-<p>默认情况下，虚拟机设计者允许对中间计算结果采用扩展的精度（扩展的指数），即浮点运算结果不可预知。</p>
-<p>有时我们可能想要得到完全可预测的浮点计算，即浮点计算的结果在各处理器平台都一样，那么就可以使用 strictfp 关键字。但是由于该关键字会对中间结果进行截断操作，而截断操作需要消耗时间，所以在计算速度上比精确计算要慢。因此，在Java中，最优性能与理想结果之间存在冲突。</p>
-<p>strictfp 关键字可用来修饰类、接口或方法。使用 strictfp 关键字标记的方法必须使用严格的浮点计算来生成可再生的结果。严格的浮点计算表示浮点计算完全依照浮点规范 IEEE-754 来执行。需要注意的是，采用严格浮点计算可能会产生溢出，而默认情况下，不会产生溢出。对大多数程序来说， 浮点溢出不属于大向题。</p>
-</blockquote>
-</li>
-<li><p>当用二元运算符连接两个值时，先要进行类型转换。优先级 <strong>double &gt; float &gt; long &gt; int</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">double</span> b = <span class="number">2.1</span>;</span><br><span class="line"><span class="keyword">long</span> c = <span class="number">1L</span>;</span><br><span class="line"><span class="keyword">float</span> d = <span class="number">3.2F</span>;</span><br><span class="line"><span class="keyword">char</span> e = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="keyword">byte</span> f = <span class="number">10</span>；</span><br><span class="line"><span class="keyword">double</span> res1 = a + b; <span class="comment">// double</span></span><br><span class="line"><span class="keyword">float</span> res2 = c + d; <span class="comment">// float</span></span><br><span class="line"><span class="keyword">int</span> res3 = e + f; <span class="comment">// int</span></span><br><span class="line"><span class="keyword">long</span> res4 = c + e; <span class="comment">// long</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>1、两操作数中有一个是 double，另一个会被转换为 double 计算；</p>
-<p>2、否则若其中有一个是 float，另一个会被转换为 float 计算；</p>
-<p>3、否则若其中有一个是 long，另一个会被转换为 long 计算；</p>
-<p>4、否则两个操作数都将被转为 int 计算。</p>
-</blockquote>
-</li>
-<li><p>二元运算符（+=， -= 之类）。如果运算符得到一个值，其类型与左侧操作数类型不同，则会发生强转。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x = <span class="number">1</span>;</span><br><span class="line">x += <span class="number">1.5</span>; <span class="comment">// 等价于 x = (int)(x + 1.5)</span></span><br></pre></td></tr></table></figure></li>
-<li><p>条件与或运算注意<strong>短路</strong>现象。</p>
-<p>**&amp;&amp; **运算符检查第一个表达式是否返回 false ，如果是 false 则直接返回 false，不再执行右侧的语句。</p>
-<p><strong>||</strong> 运算符检查第一个表达式是否返回 true ，如果是 true 则直接返回 true ，不再执行右侧的语句。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当 x 为 0 时，不会执行 1 / x 的检查</span></span><br><span class="line"><span class="keyword">if</span> (x != <span class="number">0</span> &amp;&amp; <span class="number">1</span> / x &gt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="第二章-数据类型"><a href="#第二章-数据类型" class="headerlink" title="第二章 数据类型"></a>第二章 数据类型</h1>
+        <p>基于Java核心技术卷1
+        
       
 
       
@@ -327,7 +301,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="E:\Blog\source_posts\image-20220910233002021.png" alt="image-20220910233002021"></p>
+        <p><img src="https://s2.loli.net/2022/09/23/9GUrCLTlJFX3Pe2.png" alt="image-20220910233002021"></p>
 
       
 
@@ -979,26 +953,26 @@
 
 
   
-    <article id="post-PAT.1005 继续(3n+1)猜想" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-PAT.1003 我要通过！" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         <!-- 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/31/PAT.1005%20%E7%BB%A7%E7%BB%AD(3n+1)%E7%8C%9C%E6%83%B3/">PAT1005.继续(3n+1)猜想</a>
+      <a class="article-title" href="/2022/03/31/PAT.1003%20%E6%88%91%E8%A6%81%E9%80%9A%E8%BF%87%EF%BC%81/">PAT1003.我要通过！</a>
     </h1>
   
  -->
         <center><p>
   
     <h1 itemprop="name">
-      <a class="article-title_my" href="/2022/03/31/PAT.1005%20%E7%BB%A7%E7%BB%AD(3n+1)%E7%8C%9C%E6%83%B3/">PAT1005.继续(3n+1)猜想</a>
+      <a class="article-title_my" href="/2022/03/31/PAT.1003%20%E6%88%91%E8%A6%81%E9%80%9A%E8%BF%87%EF%BC%81/">PAT1003.我要通过！</a>
     </h1>
   
 </p></center>
         
-        <a href="/2022/03/31/PAT.1005%20%E7%BB%A7%E7%BB%AD(3n+1)%E7%8C%9C%E6%83%B3/" class="archive-article-date">
+        <a href="/2022/03/31/PAT.1003%20%E6%88%91%E8%A6%81%E9%80%9A%E8%BF%87%EF%BC%81/" class="archive-article-date">
   	<time datetime="2022-03-31T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-31</time>
 </a>
         
@@ -1006,7 +980,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="1005-继续-3n-1-猜想"><a href="#1005-继续-3n-1-猜想" class="headerlink" title="1005 继续(3n+1)猜想"></a><a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/994805260223102976/problems/994805320306507776">1005 继续(3n+1)猜想</a>
+        <h4 id="1003-我要通过！"><a href="#1003-我要通过！" class="headerlink" title="1003 我要通过！"></a><a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/994805260223102976/problems/994805323154440192">1003 我要通过！</a>
         
       
 
@@ -1035,7 +1009,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/31/PAT.1005%20%E7%BB%A7%E7%BB%AD(3n+1)%E7%8C%9C%E6%83%B3/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/03/31/PAT.1003%20%E6%88%91%E8%A6%81%E9%80%9A%E8%BF%87%EF%BC%81/">展开全文 >></a>
         </p>
       
 
@@ -1163,15 +1137,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">刷题总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1199,19 +1173,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">期末复习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">深度学习</a>
+                <a href="javascript:void(0)" class="js-tag color5">期末复习</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">深度学习</a>
               </li>
             
             <div class="clearfix"></div>
