@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://GDPolar.github.io">
-  <title>MongoDB笔记 | GDPolar&#39;s Blog</title>
+  <title>MongoDB入门笔记 | GDPolar&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="基本概念">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MongoDB笔记">
-<meta property="og:url" content="https://gdpolar.github.io/2022/09/10/MongoDB%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="MongoDB入门笔记">
+<meta property="og:url" content="https://gdpolar.github.io/2022/09/10/MongoDB%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="GDPolar&#39;s Blog">
 <meta property="og:description" content="基本概念">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-09-10T12:24:59.000Z">
-<meta property="article:modified_time" content="2022-10-02T14:26:57.961Z">
+<meta property="article:modified_time" content="2022-10-03T15:28:03.132Z">
 <meta property="article:author" content="GDPolar">
 <meta property="article:tag" content="MongoDB">
 <meta name="twitter:card" content="summary">
@@ -195,26 +195,26 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-MongoDB笔记" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-MongoDB入门笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         <!-- 
   
     <h1 class="article-title" itemprop="name">
-      MongoDB笔记
+      MongoDB入门笔记
     </h1>
   
  -->
         <center><p>
   
     <h1 class="article-title_my" itemprop="name">
-      MongoDB笔记
+      MongoDB入门笔记
     </h1>
   
 </p></center>
         
-        <a href="/2022/09/10/MongoDB%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+        <a href="/2022/09/10/MongoDB%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/" class="archive-article-date">
   	<time datetime="2022-09-10T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-10</time>
 </a>
         
@@ -251,14 +251,48 @@
 <p>MongoDB 是由 C++ 编写的一个基于分布式文件存储的开源数据库系统。</p>
 <p>MongoDB 将数据存储为一个文档，由 K - V 对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。</p>
 <h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><ul>
-<li><strong>“show dbs”</strong> 或 <strong>“show databases”</strong> 显示所有的数据库</li>
+<li><strong>“show dbs”</strong> 或 <strong>“show databases”</strong> 显示所有的数据库。</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;show databases</span><br><span class="line">&lt;admin   <span class="number">40.00</span> KiB</span><br><span class="line"> config  <span class="number">36.00</span> KiB</span><br><span class="line"> local   <span class="number">72.00</span> KiB</span><br><span class="line"> test    <span class="number">72.00</span> KiB</span><br><span class="line">    </span><br><span class="line">&gt;show dbs</span><br><span class="line">&lt;admin   <span class="number">40.00</span> KiB</span><br><span class="line"> config  <span class="number">36.00</span> KiB</span><br><span class="line"> local   <span class="number">72.00</span> KiB</span><br><span class="line"> test    <span class="number">72.00</span> KiB</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><strong>“use dbname”</strong>  连接到指定数据库</li>
+<li><p><strong>“use dbname”</strong>  如果数据库不存在，则创建数据库，否则连接到指定数据库。</p>
+<p><strong>“db.dropDatabase()”</strong> 删除当前数据库。</p>
+</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;use test</span><br><span class="line">&lt;<span class="string">&#x27;switched to db test&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>“db.clname.insert()”</strong>  插入一条或多条 document。</p>
+<p><strong>“db.clname.insertOne()”</strong>  插入一条 document。</p>
+<p><strong>“db.clname.insertMany()”</strong>  插入多条 document。</p>
+<p>插入 document 时，会自动创建 collection。若插入的数据无 _id 字段，会自动生成。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;db.students.<span class="built_in">insert</span>([</span><br><span class="line">    &#123; name : <span class="string">&quot;zhangsan&quot;</span>, age : <span class="number">18</span> &#125;,</span><br><span class="line">    &#123; name : <span class="string">&quot;lisi&quot;</span>, age : <span class="number">19</span> &#125;</span><br><span class="line"> ])</span><br><span class="line">&gt;db.students.<span class="built_in">insertOne</span>(&#123; name : <span class="string">&quot;wangwu&quot;</span>, age : <span class="number">18</span>&#125;)</span><br><span class="line">&gt;db.students.<span class="built_in">find</span>()</span><br><span class="line">&lt;&#123; _id: <span class="built_in">ObjectId</span>(<span class="string">&quot;633aa225f3b1a9afbafe6fc9&quot;</span>),</span><br><span class="line">  name: <span class="string">&#x27;zhangsan&#x27;</span>,</span><br><span class="line">  age: <span class="number">18</span> &#125;</span><br><span class="line"> &#123; _id: <span class="built_in">ObjectId</span>(<span class="string">&quot;633aa225f3b1a9afbafe6fca&quot;</span>),</span><br><span class="line">  name: <span class="string">&#x27;lisi&#x27;</span>,</span><br><span class="line">  age: <span class="number">19</span> &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>“db.clname.find()”</strong>  查询符合条件的 document。</p>
+<p><strong>“db.clname.findOne()”</strong>  查询符合条件的 document 的第一个。</p>
+<p><strong>“db.clname.find().count()”</strong>  计数。</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;db.students.<span class="built_in">find</span>(&#123;age : <span class="number">18</span>&#125;)</span><br><span class="line">&lt;&#123; _id: <span class="built_in">ObjectId</span>(<span class="string">&quot;633aa225f3b1a9afbafe6fc9&quot;</span>),</span><br><span class="line">  name: <span class="string">&#x27;zhangsan&#x27;</span>,</span><br><span class="line">  age: <span class="number">18</span> &#125;</span><br><span class="line"> &#123; _id: <span class="built_in">ObjectId</span>(<span class="string">&quot;633aa529f3b1a9afbafe6fcb&quot;</span>),</span><br><span class="line">  name: <span class="string">&#x27;wangwu&#x27;</span>,</span><br><span class="line">  age: <span class="number">18</span> &#125;</span><br><span class="line"></span><br><span class="line">&gt;db.students.<span class="built_in">findOne</span>(&#123;age : <span class="number">18</span>&#125;)</span><br><span class="line">&lt;&#123; _id: <span class="built_in">ObjectId</span>(<span class="string">&quot;633aa225f3b1a9afbafe6fc9&quot;</span>),</span><br><span class="line">  name: <span class="string">&#x27;zhangsan&#x27;</span>,</span><br><span class="line">  age: <span class="number">18</span> &#125;</span><br><span class="line"></span><br><span class="line">&gt;db.students.<span class="built_in">find</span>(&#123;age : <span class="number">18</span>&#125;).<span class="built_in">count</span>()</span><br><span class="line">&lt;<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><del>“db.clname.update()”  $set 修改属性，$unset 删除属性。默认只修改一个。</del><strong>已过时</strong>。</p>
+<p><strong>“db.clname.updateOne()”</strong>  修改单个 document 的字段。</p>
+<p><strong>“db.clname.updateMany()”</strong>  修改多个 document 的字段。</p>
+<p><strong>“db.clname.replaceOne()”</strong>  替换指定的一整个 document 。</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&gt;db.students.<span class="built_in">update</span>(</span><br><span class="line">    &#123; name : <span class="string">&quot;zhangsan&quot;</span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        $set : &#123; age : <span class="number">20</span>, gender : <span class="string">&quot;man&quot;</span>&#125;,</span><br><span class="line">        $unset : &#123; name : <span class="string">&quot;&quot;</span>&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        multi : <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"> )</span><br><span class="line">&gt;db.students.<span class="built_in">find</span>(&#123;gender : <span class="string">&quot;man&quot;</span>&#125;)</span><br><span class="line">&lt;&#123; _id: <span class="built_in">ObjectId</span>(<span class="string">&quot;633aa225f3b1a9afbafe6fc9&quot;</span>),</span><br><span class="line">  age: <span class="number">20</span>,</span><br><span class="line">  gender: <span class="string">&#x27;man&#x27;</span> &#125;</span><br><span class="line"></span><br><span class="line">&gt;db.students.<span class="built_in">updateOne</span>(</span><br><span class="line">    &#123; gender : <span class="string">&quot;man&quot;</span> &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        $set : &#123; name: <span class="string">&quot;zhangsan&quot;</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br><span class="line">&gt;db.students.<span class="built_in">find</span>(&#123;gender : <span class="string">&quot;man&quot;</span>&#125;)</span><br><span class="line">&lt;&#123;_id: <span class="built_in">ObjectId</span>(<span class="string">&quot;633aa225f3b1a9afbafe6fc9&quot;</span>),</span><br><span class="line">  age: <span class="number">20</span>,</span><br><span class="line">  gender: <span class="string">&#x27;man&#x27;</span>,</span><br><span class="line">  name: <span class="string">&#x27;zhangsan&#x27;</span> &#125;</span><br><span class="line"></span><br><span class="line">&gt;db.students.<span class="built_in">replaceOne</span>(</span><br><span class="line">    &#123; name : <span class="string">&quot;zhangsan&quot;</span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name : <span class="string">&quot;zhangsaner&quot;</span>,</span><br><span class="line">        age : <span class="number">21</span>,</span><br><span class="line">        gender : <span class="string">&quot;man&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">)</span><br><span class="line">&gt;db.students.<span class="built_in">find</span>(&#123;name : <span class="string">&quot;zhangsaner&quot;</span>&#125;)</span><br><span class="line">&lt;&#123;_id: <span class="built_in">ObjectId</span>(<span class="string">&quot;633aa225f3b1a9afbafe6fc9&quot;</span>),</span><br><span class="line">  name: <span class="string">&#x27;zhangsaner&#x27;</span>,</span><br><span class="line">  age: <span class="number">21</span>,</span><br><span class="line">  gender: <span class="string">&#x27;man&#x27;</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><del>“db.clname.remove()”  删除符合条件的多个 document。</del><strong>已过时</strong>。</p>
+<p><strong>“db.clname.deleteOne()”</strong>  删除符合条件的多个 document。</p>
+<p><strong>“db.clname.deleteMany()”</strong>  删除符合条件的多个 document。</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;db.students.<span class="built_in">deleteOne</span>(&#123;name : <span class="string">&quot;zhangsaner&quot;</span>&#125;)</span><br><span class="line">&gt;db.students.<span class="built_in">find</span>()</span><br><span class="line">&lt;&#123; _id: <span class="built_in">ObjectId</span>(<span class="string">&quot;633aa225f3b1a9afbafe6fca&quot;</span>),</span><br><span class="line">  name: <span class="string">&#x27;lisi&#x27;</span>,</span><br><span class="line">  age: <span class="number">19</span> &#125;</span><br><span class="line"> &#123; _id: <span class="built_in">ObjectId</span>(<span class="string">&quot;633aa529f3b1a9afbafe6fcb&quot;</span>),</span><br><span class="line">  name: <span class="string">&#x27;wangwu&#x27;</span>,</span><br><span class="line">  age: <span class="number">18</span> &#125;    </span><br></pre></td></tr></table></figure>
+
+
       
 
       
@@ -328,7 +362,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://gdpolar.github.io/2022/09/10/MongoDB%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://gdpolar.github.io/2022/09/10/MongoDB%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -493,10 +527,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
               </li>
              
@@ -509,11 +539,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">废弃</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,11 +575,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color5">深度学习</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">深度学习</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
             
             <div class="clearfix"></div>
