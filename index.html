@@ -192,6 +192,1187 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-d2l房价预测练习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        <!-- 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/10/d2l%E6%88%BF%E4%BB%B7%E9%A2%84%E6%B5%8B%E7%BB%83%E4%B9%A0/">d2l房价预测练习</a>
+    </h1>
+  
+ -->
+        <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_my" href="/2022/10/10/d2l%E6%88%BF%E4%BB%B7%E9%A2%84%E6%B5%8B%E7%BB%83%E4%B9%A0/">d2l房价预测练习</a>
+    </h1>
+  
+</p></center>
+        
+        <a href="/2022/10/10/d2l%E6%88%BF%E4%BB%B7%E9%A2%84%E6%B5%8B%E7%BB%83%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2022-10-10T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch.utils <span class="keyword">import</span> data</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"></span><br><span class="line">train_data = pd.read_csv(<span class="string">&#x27;../input/house-prices-advanced-regression-techniques/train.csv&#x27;</span>)</span><br><span class="line">test_data = pd.read_csv(<span class="string">&#x27;../input/house-prices-advanced-regression-techniques/test.csv&#x27;</span>)</span><br><span class="line"></span><br><span class="line">train_data.head() <span class="comment"># 输出前五行</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">Id</th>
+<th align="left">MSSubClass</th>
+<th align="left">MSZoning</th>
+<th align="left">LotFrontage</th>
+<th align="left">LotArea</th>
+<th align="left">Street</th>
+<th align="left">Alley</th>
+<th align="left">LotShape</th>
+<th align="left">LandContour</th>
+<th align="left">Utilities</th>
+<th align="left">…</th>
+<th align="left">PoolArea</th>
+<th align="left">PoolQC</th>
+<th align="left">Fence</th>
+<th align="left">MiscFeature</th>
+<th align="left">MiscVal</th>
+<th align="left">MoSold</th>
+<th align="left">YrSold</th>
+<th align="left">SaleType</th>
+<th align="left">SaleCondition</th>
+<th>SalePrice</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">60</td>
+<td align="left">RL</td>
+<td align="left">65.0</td>
+<td align="left">8450</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">Reg</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">0</td>
+<td align="left">2</td>
+<td align="left">2008</td>
+<td align="left">WD</td>
+<td align="left">Normal</td>
+<td>208500</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">2</td>
+<td align="left">20</td>
+<td align="left">RL</td>
+<td align="left">80.0</td>
+<td align="left">9600</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">Reg</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">0</td>
+<td align="left">5</td>
+<td align="left">2007</td>
+<td align="left">WD</td>
+<td align="left">Normal</td>
+<td>181500</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">3</td>
+<td align="left">60</td>
+<td align="left">RL</td>
+<td align="left">68.0</td>
+<td align="left">11250</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">IR1</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">0</td>
+<td align="left">9</td>
+<td align="left">2008</td>
+<td align="left">WD</td>
+<td align="left">Normal</td>
+<td>223500</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">4</td>
+<td align="left">70</td>
+<td align="left">RL</td>
+<td align="left">60.0</td>
+<td align="left">9550</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">IR1</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">0</td>
+<td align="left">2</td>
+<td align="left">2006</td>
+<td align="left">WD</td>
+<td align="left">Abnorml</td>
+<td>140000</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">5</td>
+<td align="left">60</td>
+<td align="left">RL</td>
+<td align="left">84.0</td>
+<td align="left">14260</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">IR1</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">0</td>
+<td align="left">12</td>
+<td align="left">2008</td>
+<td align="left">WD</td>
+<td align="left">Normal</td>
+<td>250000</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 训练集 1460 个数据</span></span><br><span class="line"><span class="built_in">print</span>(train_data.shape) <span class="comment"># (1460, 81) </span></span><br><span class="line"><span class="comment"># 测试集 1459 个数据</span></span><br><span class="line"><span class="built_in">print</span>(test_data.shape) <span class="comment"># (1459, 80)，少一列最后的SalePrice</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">all_features = pd.concat((train_data.iloc[:, <span class="number">1</span>:-<span class="number">1</span>], test_data.iloc[:, <span class="number">1</span>:]))</span><br><span class="line">all_features</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">MSSubClass</th>
+<th align="left">MSZoning</th>
+<th align="left">LotFrontage</th>
+<th align="left">LotArea</th>
+<th align="left">Street</th>
+<th align="left">Alley</th>
+<th align="left">LotShape</th>
+<th align="left">LandContour</th>
+<th align="left">Utilities</th>
+<th align="left">LotConfig</th>
+<th align="left">…</th>
+<th align="left">ScreenPorch</th>
+<th align="left">PoolArea</th>
+<th align="left">PoolQC</th>
+<th align="left">Fence</th>
+<th align="left">MiscFeature</th>
+<th align="left">MiscVal</th>
+<th align="left">MoSold</th>
+<th align="left">YrSold</th>
+<th align="left">SaleType</th>
+<th>SaleCondition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0</td>
+<td align="left">60</td>
+<td align="left">RL</td>
+<td align="left">65.0</td>
+<td align="left">8450</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">Reg</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">Inside</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">0</td>
+<td align="left">2</td>
+<td align="left">2008</td>
+<td align="left">WD</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">20</td>
+<td align="left">RL</td>
+<td align="left">80.0</td>
+<td align="left">9600</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">Reg</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">FR2</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">0</td>
+<td align="left">5</td>
+<td align="left">2007</td>
+<td align="left">WD</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">60</td>
+<td align="left">RL</td>
+<td align="left">68.0</td>
+<td align="left">11250</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">IR1</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">Inside</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">0</td>
+<td align="left">9</td>
+<td align="left">2008</td>
+<td align="left">WD</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">70</td>
+<td align="left">RL</td>
+<td align="left">60.0</td>
+<td align="left">9550</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">IR1</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">Corner</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">0</td>
+<td align="left">2</td>
+<td align="left">2006</td>
+<td align="left">WD</td>
+<td>Abnorml</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">60</td>
+<td align="left">RL</td>
+<td align="left">84.0</td>
+<td align="left">14260</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">IR1</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">FR2</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">0</td>
+<td align="left">12</td>
+<td align="left">2008</td>
+<td align="left">WD</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td>…</td>
+</tr>
+<tr>
+<td align="left">1454</td>
+<td align="left">160</td>
+<td align="left">RM</td>
+<td align="left">21.0</td>
+<td align="left">1936</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">Reg</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">Inside</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">0</td>
+<td align="left">6</td>
+<td align="left">2006</td>
+<td align="left">WD</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td align="left">1455</td>
+<td align="left">160</td>
+<td align="left">RM</td>
+<td align="left">21.0</td>
+<td align="left">1894</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">Reg</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">Inside</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">0</td>
+<td align="left">4</td>
+<td align="left">2006</td>
+<td align="left">WD</td>
+<td>Abnorml</td>
+</tr>
+<tr>
+<td align="left">1456</td>
+<td align="left">20</td>
+<td align="left">RL</td>
+<td align="left">160.0</td>
+<td align="left">20000</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">Reg</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">Inside</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">0</td>
+<td align="left">9</td>
+<td align="left">2006</td>
+<td align="left">WD</td>
+<td>Abnorml</td>
+</tr>
+<tr>
+<td align="left">1457</td>
+<td align="left">85</td>
+<td align="left">RL</td>
+<td align="left">62.0</td>
+<td align="left">10441</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">Reg</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">Inside</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">NaN</td>
+<td align="left">MnPrv</td>
+<td align="left">Shed</td>
+<td align="left">700</td>
+<td align="left">7</td>
+<td align="left">2006</td>
+<td align="left">WD</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td align="left">1458</td>
+<td align="left">60</td>
+<td align="left">RL</td>
+<td align="left">74.0</td>
+<td align="left">9627</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">Reg</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">Inside</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">0</td>
+<td align="left">11</td>
+<td align="left">2006</td>
+<td align="left">WD</td>
+<td>Normal</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">all_features.dtypes </span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">MSSubClass         int64</span></span><br><span class="line"><span class="string">MSZoning          object</span></span><br><span class="line"><span class="string">LotFrontage      float64</span></span><br><span class="line"><span class="string">LotArea            int64</span></span><br><span class="line"><span class="string">Street            object</span></span><br><span class="line"><span class="string">                  ...   </span></span><br><span class="line"><span class="string">MiscVal            int64</span></span><br><span class="line"><span class="string">MoSold             int64</span></span><br><span class="line"><span class="string">YrSold             int64</span></span><br><span class="line"><span class="string">SaleType          object</span></span><br><span class="line"><span class="string">SaleCondition     object</span></span><br><span class="line"><span class="string">Length: 79, dtype: object</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 返回类型不为 object 列的列名，类型为数字的列名</span></span><br><span class="line">all_features.dtypes[all_features.dtypes != <span class="string">&#x27;object&#x27;</span>].index</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">Index([&#x27;MSSubClass&#x27;, &#x27;LotFrontage&#x27;, &#x27;LotArea&#x27;, &#x27;OverallQual&#x27;, &#x27;OverallCond&#x27;,</span></span><br><span class="line"><span class="string">       &#x27;YearBuilt&#x27;, &#x27;YearRemodAdd&#x27;, &#x27;MasVnrArea&#x27;, &#x27;BsmtFinSF1&#x27;, &#x27;BsmtFinSF2&#x27;,</span></span><br><span class="line"><span class="string">       &#x27;BsmtUnfSF&#x27;, &#x27;TotalBsmtSF&#x27;, &#x27;1stFlrSF&#x27;, &#x27;2ndFlrSF&#x27;, &#x27;LowQualFinSF&#x27;,</span></span><br><span class="line"><span class="string">       &#x27;GrLivArea&#x27;, &#x27;BsmtFullBath&#x27;, &#x27;BsmtHalfBath&#x27;, &#x27;FullBath&#x27;, &#x27;HalfBath&#x27;,</span></span><br><span class="line"><span class="string">       &#x27;BedroomAbvGr&#x27;, &#x27;KitchenAbvGr&#x27;, &#x27;TotRmsAbvGrd&#x27;, &#x27;Fireplaces&#x27;,</span></span><br><span class="line"><span class="string">       &#x27;GarageYrBlt&#x27;, &#x27;GarageCars&#x27;, &#x27;GarageArea&#x27;, &#x27;WoodDeckSF&#x27;, &#x27;OpenPorchSF&#x27;,</span></span><br><span class="line"><span class="string">       &#x27;EnclosedPorch&#x27;, &#x27;3SsnPorch&#x27;, &#x27;ScreenPorch&#x27;, &#x27;PoolArea&#x27;, &#x27;MiscVal&#x27;,</span></span><br><span class="line"><span class="string">       &#x27;MoSold&#x27;, &#x27;YrSold&#x27;],</span></span><br><span class="line"><span class="string">      dtype=&#x27;object&#x27;)</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将所有数字类特征放在一个共同的尺度上，即标准化</span></span><br><span class="line">numeric_features = all_features.dtypes[all_features.dtypes != <span class="string">&#x27;object&#x27;</span>].index</span><br><span class="line">all_features[numeric_features] = all_features[numeric_features].apply(</span><br><span class="line">    <span class="keyword">lambda</span> x: (x - x.mean()) / (x.std()))</span><br><span class="line"><span class="comment"># 标准化数据之后，均值为0，因此将缺失值设为0</span></span><br><span class="line">all_features[numeric_features] = all_features[numeric_features].fillna(<span class="number">0</span>)</span><br><span class="line">all_features</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">MSSubClass</th>
+<th align="left">MSZoning</th>
+<th align="left">LotFrontage</th>
+<th align="left">LotArea</th>
+<th align="left">Street</th>
+<th align="left">Alley</th>
+<th align="left">LotShape</th>
+<th align="left">LandContour</th>
+<th align="left">Utilities</th>
+<th align="left">LotConfig</th>
+<th align="left">…</th>
+<th align="left">ScreenPorch</th>
+<th align="left">PoolArea</th>
+<th align="left">PoolQC</th>
+<th align="left">Fence</th>
+<th align="left">MiscFeature</th>
+<th align="left">MiscVal</th>
+<th align="left">MoSold</th>
+<th align="left">YrSold</th>
+<th align="left">SaleType</th>
+<th>SaleCondition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0</td>
+<td align="left">0.067320</td>
+<td align="left">RL</td>
+<td align="left">-0.184443</td>
+<td align="left">-0.217841</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">Reg</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">Inside</td>
+<td align="left">…</td>
+<td align="left">-0.285886</td>
+<td align="left">-0.063139</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">-0.089577</td>
+<td align="left">-1.551918</td>
+<td align="left">0.157619</td>
+<td align="left">WD</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">-0.873466</td>
+<td align="left">RL</td>
+<td align="left">0.458096</td>
+<td align="left">-0.072032</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">Reg</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">FR2</td>
+<td align="left">…</td>
+<td align="left">-0.285886</td>
+<td align="left">-0.063139</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">-0.089577</td>
+<td align="left">-0.446848</td>
+<td align="left">-0.602858</td>
+<td align="left">WD</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">0.067320</td>
+<td align="left">RL</td>
+<td align="left">-0.055935</td>
+<td align="left">0.137173</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">IR1</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">Inside</td>
+<td align="left">…</td>
+<td align="left">-0.285886</td>
+<td align="left">-0.063139</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">-0.089577</td>
+<td align="left">1.026577</td>
+<td align="left">0.157619</td>
+<td align="left">WD</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">0.302516</td>
+<td align="left">RL</td>
+<td align="left">-0.398622</td>
+<td align="left">-0.078371</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">IR1</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">Corner</td>
+<td align="left">…</td>
+<td align="left">-0.285886</td>
+<td align="left">-0.063139</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">-0.089577</td>
+<td align="left">-1.551918</td>
+<td align="left">-1.363335</td>
+<td align="left">WD</td>
+<td>Abnorml</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">0.067320</td>
+<td align="left">RL</td>
+<td align="left">0.629439</td>
+<td align="left">0.518814</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">IR1</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">FR2</td>
+<td align="left">…</td>
+<td align="left">-0.285886</td>
+<td align="left">-0.063139</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">-0.089577</td>
+<td align="left">2.131647</td>
+<td align="left">0.157619</td>
+<td align="left">WD</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td>…</td>
+</tr>
+<tr>
+<td align="left">1454</td>
+<td align="left">2.419286</td>
+<td align="left">RM</td>
+<td align="left">-2.069222</td>
+<td align="left">-1.043758</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">Reg</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">Inside</td>
+<td align="left">…</td>
+<td align="left">-0.285886</td>
+<td align="left">-0.063139</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">-0.089577</td>
+<td align="left">-0.078492</td>
+<td align="left">-1.363335</td>
+<td align="left">WD</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td align="left">1455</td>
+<td align="left">2.419286</td>
+<td align="left">RM</td>
+<td align="left">-2.069222</td>
+<td align="left">-1.049083</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">Reg</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">Inside</td>
+<td align="left">…</td>
+<td align="left">-0.285886</td>
+<td align="left">-0.063139</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">-0.089577</td>
+<td align="left">-0.815205</td>
+<td align="left">-1.363335</td>
+<td align="left">WD</td>
+<td>Abnorml</td>
+</tr>
+<tr>
+<td align="left">1456</td>
+<td align="left">-0.873466</td>
+<td align="left">RL</td>
+<td align="left">3.884968</td>
+<td align="left">1.246594</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">Reg</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">Inside</td>
+<td align="left">…</td>
+<td align="left">-0.285886</td>
+<td align="left">-0.063139</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">-0.089577</td>
+<td align="left">1.026577</td>
+<td align="left">-1.363335</td>
+<td align="left">WD</td>
+<td>Abnorml</td>
+</tr>
+<tr>
+<td align="left">1457</td>
+<td align="left">0.655311</td>
+<td align="left">RL</td>
+<td align="left">-0.312950</td>
+<td align="left">0.034599</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">Reg</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">Inside</td>
+<td align="left">…</td>
+<td align="left">-0.285886</td>
+<td align="left">-0.063139</td>
+<td align="left">NaN</td>
+<td align="left">MnPrv</td>
+<td align="left">Shed</td>
+<td align="left">1.144116</td>
+<td align="left">0.289865</td>
+<td align="left">-1.363335</td>
+<td align="left">WD</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td align="left">1458</td>
+<td align="left">0.067320</td>
+<td align="left">RL</td>
+<td align="left">0.201080</td>
+<td align="left">-0.068608</td>
+<td align="left">Pave</td>
+<td align="left">NaN</td>
+<td align="left">Reg</td>
+<td align="left">Lvl</td>
+<td align="left">AllPub</td>
+<td align="left">Inside</td>
+<td align="left">…</td>
+<td align="left">-0.285886</td>
+<td align="left">-0.063139</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">NaN</td>
+<td align="left">-0.089577</td>
+<td align="left">1.763290</td>
+<td align="left">-1.363335</td>
+<td align="left">WD</td>
+<td>Normal</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pd.get_dummies 利用 pandas 实现one hot encode的方式</span></span><br><span class="line"><span class="comment"># “Dummy_na=True”将“na”（缺失值）视为有效的特征值，并为其创建指示符特征</span></span><br><span class="line">all_features = pd.get_dummies(all_features, dummy_na=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">all_features.shape <span class="comment"># (2919, 331)</span></span><br><span class="line">all_features</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">MSSubClass</th>
+<th align="left">LotFrontage</th>
+<th align="left">LotArea</th>
+<th align="left">OverallQual</th>
+<th align="left">OverallCond</th>
+<th align="left">YearBuilt</th>
+<th align="left">YearRemodAdd</th>
+<th align="left">MasVnrArea</th>
+<th align="left">BsmtFinSF1</th>
+<th align="left">BsmtFinSF2</th>
+<th align="left">…</th>
+<th align="left">SaleType_Oth</th>
+<th align="left">SaleType_WD</th>
+<th align="left">SaleType_nan</th>
+<th align="left">SaleCondition_Abnorml</th>
+<th align="left">SaleCondition_AdjLand</th>
+<th align="left">SaleCondition_Alloca</th>
+<th align="left">SaleCondition_Family</th>
+<th align="left">SaleCondition_Normal</th>
+<th align="left">SaleCondition_Partial</th>
+<th>SaleCondition_nan</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0</td>
+<td align="left">0.067320</td>
+<td align="left">-0.184443</td>
+<td align="left">-0.217841</td>
+<td align="left">0.646073</td>
+<td align="left">-0.507197</td>
+<td align="left">1.046078</td>
+<td align="left">0.896679</td>
+<td align="left">0.523038</td>
+<td align="left">0.580708</td>
+<td align="left">-0.29303</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td>0</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">-0.873466</td>
+<td align="left">0.458096</td>
+<td align="left">-0.072032</td>
+<td align="left">-0.063174</td>
+<td align="left">2.187904</td>
+<td align="left">0.154737</td>
+<td align="left">-0.395536</td>
+<td align="left">-0.569893</td>
+<td align="left">1.177709</td>
+<td align="left">-0.29303</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td>0</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">0.067320</td>
+<td align="left">-0.055935</td>
+<td align="left">0.137173</td>
+<td align="left">0.646073</td>
+<td align="left">-0.507197</td>
+<td align="left">0.980053</td>
+<td align="left">0.848819</td>
+<td align="left">0.333448</td>
+<td align="left">0.097840</td>
+<td align="left">-0.29303</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td>0</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">0.302516</td>
+<td align="left">-0.398622</td>
+<td align="left">-0.078371</td>
+<td align="left">0.646073</td>
+<td align="left">-0.507197</td>
+<td align="left">-1.859033</td>
+<td align="left">-0.682695</td>
+<td align="left">-0.569893</td>
+<td align="left">-0.494771</td>
+<td align="left">-0.29303</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td>0</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">0.067320</td>
+<td align="left">0.629439</td>
+<td align="left">0.518814</td>
+<td align="left">1.355319</td>
+<td align="left">-0.507197</td>
+<td align="left">0.947040</td>
+<td align="left">0.753100</td>
+<td align="left">1.381770</td>
+<td align="left">0.468770</td>
+<td align="left">-0.29303</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td>0</td>
+</tr>
+<tr>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td>…</td>
+</tr>
+<tr>
+<td align="left">1454</td>
+<td align="left">2.419286</td>
+<td align="left">-2.069222</td>
+<td align="left">-1.043758</td>
+<td align="left">-1.481667</td>
+<td align="left">1.289537</td>
+<td align="left">-0.043338</td>
+<td align="left">-0.682695</td>
+<td align="left">-0.569893</td>
+<td align="left">-0.968860</td>
+<td align="left">-0.29303</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td>0</td>
+</tr>
+<tr>
+<td align="left">1455</td>
+<td align="left">2.419286</td>
+<td align="left">-2.069222</td>
+<td align="left">-1.049083</td>
+<td align="left">-1.481667</td>
+<td align="left">-0.507197</td>
+<td align="left">-0.043338</td>
+<td align="left">-0.682695</td>
+<td align="left">-0.569893</td>
+<td align="left">-0.415757</td>
+<td align="left">-0.29303</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td>0</td>
+</tr>
+<tr>
+<td align="left">1456</td>
+<td align="left">-0.873466</td>
+<td align="left">3.884968</td>
+<td align="left">1.246594</td>
+<td align="left">-0.772420</td>
+<td align="left">1.289537</td>
+<td align="left">-0.373465</td>
+<td align="left">0.561660</td>
+<td align="left">-0.569893</td>
+<td align="left">1.717643</td>
+<td align="left">-0.29303</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td>0</td>
+</tr>
+<tr>
+<td align="left">1457</td>
+<td align="left">0.655311</td>
+<td align="left">-0.312950</td>
+<td align="left">0.034599</td>
+<td align="left">-0.772420</td>
+<td align="left">-0.507197</td>
+<td align="left">0.682939</td>
+<td align="left">0.370221</td>
+<td align="left">-0.569893</td>
+<td align="left">-0.229194</td>
+<td align="left">-0.29303</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td>0</td>
+</tr>
+<tr>
+<td align="left">1458</td>
+<td align="left">0.067320</td>
+<td align="left">0.201080</td>
+<td align="left">-0.068608</td>
+<td align="left">0.646073</td>
+<td align="left">-0.507197</td>
+<td align="left">0.715952</td>
+<td align="left">0.465941</td>
+<td align="left">-0.045732</td>
+<td align="left">0.694840</td>
+<td align="left">-0.29303</td>
+<td align="left">…</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 训练数据个数</span></span><br><span class="line">n_train = train_data.shape[<span class="number">0</span>] <span class="comment"># 1460</span></span><br><span class="line"><span class="comment"># 通过values属性转换为tensor</span></span><br><span class="line">train_features = torch.tensor(all_features[:n_train].values, dtype=torch.float32)</span><br><span class="line">test_features = torch.tensor(all_features[n_train:].values, dtype=torch.float32)</span><br><span class="line">train_labels = torch.tensor(</span><br><span class="line">    train_data.SalePrice.values.reshape(-<span class="number">1</span>, <span class="number">1</span>), </span><br><span class="line">    dtype=torch.float32)</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 线性模型作为baseline检查错误</span></span><br><span class="line">loss = nn.MSELoss()</span><br><span class="line">in_features = train_features.shape[<span class="number">1</span>] <span class="comment"># 列数</span></span><br><span class="line">train_features</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">tensor([[ 0.0673, -0.1844, -0.2178,  ...,  1.0000,  0.0000,  0.0000],</span></span><br><span class="line"><span class="string">        [-0.8735,  0.4581, -0.0720,  ...,  1.0000,  0.0000,  0.0000],</span></span><br><span class="line"><span class="string">        [ 0.0673, -0.0559,  0.1372,  ...,  1.0000,  0.0000,  0.0000],</span></span><br><span class="line"><span class="string">        ...,</span></span><br><span class="line"><span class="string">        [ 0.3025, -0.1416, -0.1428,  ...,  1.0000,  0.0000,  0.0000],</span></span><br><span class="line"><span class="string">        [-0.8735, -0.0559, -0.0572,  ...,  1.0000,  0.0000,  0.0000],</span></span><br><span class="line"><span class="string">        [-0.8735,  0.2439, -0.0293,  ...,  1.0000,  0.0000,  0.0000]])</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_net</span>():</span></span><br><span class="line">    net = nn.Sequential(nn.Linear(in_features,<span class="number">1</span>))</span><br><span class="line">    <span class="keyword">return</span> net</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算相对误差</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log_rmse</span>(<span class="params">net, features, labels</span>):</span></span><br><span class="line">    <span class="comment"># 为了在取对数时进一步稳定该值，将小于1的值设置为1</span></span><br><span class="line">    clipped_preds = torch.clamp(net(features), <span class="number">1</span>, <span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>))</span><br><span class="line">    rmse = torch.sqrt(loss(torch.log(clipped_preds),</span><br><span class="line">                           torch.log(labels)))</span><br><span class="line">    <span class="keyword">return</span> rmse.item()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_array</span>(<span class="params">data_arrays, batch_size, is_train=<span class="literal">True</span></span>):</span>  </span><br><span class="line">    <span class="string">&quot;&quot;&quot;构造一个PyTorch数据迭代器&quot;&quot;&quot;</span></span><br><span class="line">    dataset = data.TensorDataset(*data_arrays)</span><br><span class="line">    <span class="keyword">return</span> data.DataLoader(dataset, batch_size, shuffle=is_train)</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span>(<span class="params">net, train_features, train_labels, test_features, test_labels,</span></span></span><br><span class="line"><span class="params"><span class="function">          num_epochs, learning_rate, weight_decay, batch_size</span>):</span></span><br><span class="line">    train_ls, test_ls = [], []</span><br><span class="line">    train_iter = load_array((train_features, train_labels), batch_size)</span><br><span class="line">    <span class="comment"># 这里使用的是Adam优化算法</span></span><br><span class="line">    optimizer = torch.optim.Adam(net.parameters(),</span><br><span class="line">                                 lr = learning_rate,</span><br><span class="line">                                 weight_decay = weight_decay)</span><br><span class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(num_epochs):</span><br><span class="line">        <span class="keyword">for</span> X, y <span class="keyword">in</span> train_iter:</span><br><span class="line">            optimizer.zero_grad()</span><br><span class="line">            l = loss(net(X), y)</span><br><span class="line">            l.backward()</span><br><span class="line">            optimizer.step()</span><br><span class="line">        train_ls.append(log_rmse(net, train_features, train_labels))</span><br><span class="line">        <span class="keyword">if</span> test_labels <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            test_ls.append(log_rmse(net, test_features, test_labels))</span><br><span class="line">    <span class="keyword">return</span> train_ls, test_ls</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># K则交叉验证</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_k_fold_data</span>(<span class="params">k, i, X, y</span>):</span></span><br><span class="line">    <span class="keyword">assert</span> k &gt; <span class="number">1</span></span><br><span class="line">    fold_size = X.shape[<span class="number">0</span>] // k</span><br><span class="line">    X_train, y_train = <span class="literal">None</span>, <span class="literal">None</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(k):</span><br><span class="line">        idx = <span class="built_in">slice</span>(j * fold_size, (j + <span class="number">1</span>) * fold_size)</span><br><span class="line">        X_part, y_part = X[idx, :], y[idx]</span><br><span class="line">        <span class="keyword">if</span> j == i:</span><br><span class="line">            X_valid, y_valid = X_part, y_part</span><br><span class="line">        <span class="keyword">elif</span> X_train <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            X_train, y_train = X_part, y_part</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            X_train = torch.cat([X_train, X_part], <span class="number">0</span>)</span><br><span class="line">            y_train = torch.cat([y_train, y_part], <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> X_train, y_train, X_valid, y_valid</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">k_fold</span>(<span class="params">k, X_train, y_train, num_epochs, learning_rate, weight_decay,</span></span></span><br><span class="line"><span class="params"><span class="function">           batch_size</span>):</span></span><br><span class="line">    train_l_sum, valid_l_sum = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(k):</span><br><span class="line">        data = get_k_fold_data(k, i, X_train, y_train)</span><br><span class="line">        net = get_net()</span><br><span class="line">        train_ls, valid_ls = train(net, *data, num_epochs, learning_rate,</span><br><span class="line">                                   weight_decay, batch_size)</span><br><span class="line">        train_l_sum += train_ls[-<span class="number">1</span>]</span><br><span class="line">        valid_l_sum += valid_ls[-<span class="number">1</span>]</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;折<span class="subst">&#123;i + <span class="number">1</span>&#125;</span>，训练log rmse<span class="subst">&#123;<span class="built_in">float</span>(train_ls[-<span class="number">1</span>]):f&#125;</span>, &#x27;</span></span><br><span class="line">              <span class="string">f&#x27;验证log rmse<span class="subst">&#123;<span class="built_in">float</span>(valid_ls[-<span class="number">1</span>]):f&#125;</span>&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> train_l_sum / k, valid_l_sum / k</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">k, num_epochs, lr, weight_decay, batch_size = <span class="number">5</span>, <span class="number">100</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">64</span></span><br><span class="line">train_l, valid_l = k_fold(k, train_features, train_labels, num_epochs, lr,</span><br><span class="line">                          weight_decay, batch_size)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;k&#125;</span>-折验证: 平均训练log rmse: <span class="subst">&#123;<span class="built_in">float</span>(train_l):f&#125;</span>, &#x27;</span></span><br><span class="line">      <span class="string">f&#x27;平均验证log rmse: <span class="subst">&#123;<span class="built_in">float</span>(valid_l):f&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">折1，训练log rmse0.170228, 验证log rmse0.156313</span></span><br><span class="line"><span class="string">折2，训练log rmse0.162502, 验证log rmse0.192678</span></span><br><span class="line"><span class="string">折3，训练log rmse0.163904, 验证log rmse0.168219</span></span><br><span class="line"><span class="string">折4，训练log rmse0.167658, 验证log rmse0.154873</span></span><br><span class="line"><span class="string">折5，训练log rmse0.162894, 验证log rmse0.182875</span></span><br><span class="line"><span class="string">5-折验证: 平均训练log rmse: 0.165437, 平均验证log rmse: 0.170992</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_and_pred</span>(<span class="params">train_features, test_features, train_labels, test_data,</span></span></span><br><span class="line"><span class="params"><span class="function">                   num_epochs, lr, weight_decay, batch_size</span>):</span></span><br><span class="line">    net = get_net()</span><br><span class="line">    train_ls, _ = train(net, train_features, train_labels, <span class="literal">None</span>, <span class="literal">None</span>,</span><br><span class="line">                        num_epochs, lr, weight_decay, batch_size)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;训练log rmse：<span class="subst">&#123;<span class="built_in">float</span>(train_ls[-<span class="number">1</span>]):f&#125;</span>&#x27;</span>)</span><br><span class="line">    <span class="comment"># 将网络应用于测试集。</span></span><br><span class="line">    preds = net(test_features).detach().numpy()</span><br><span class="line">    <span class="comment"># 将其重新格式化以导出到Kaggle</span></span><br><span class="line">    test_data[<span class="string">&#x27;SalePrice&#x27;</span>] = pd.Series(preds.reshape(<span class="number">1</span>, -<span class="number">1</span>)[<span class="number">0</span>])</span><br><span class="line">    submission = pd.concat([test_data[<span class="string">&#x27;Id&#x27;</span>], test_data[<span class="string">&#x27;SalePrice&#x27;</span>]], axis=<span class="number">1</span>)</span><br><span class="line">    submission.to_csv(<span class="string">&#x27;submission.csv&#x27;</span>, index=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">train_and_pred(train_features, test_features, train_labels, test_data,</span><br><span class="line">               num_epochs, lr, weight_decay, batch_size)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">训练log rmse：0.162470</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.read_csv(<span class="string">&#x27;submission.csv&#x27;</span>).head()</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">Id</th>
+<th align="center">SalePrice</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1461</td>
+<td align="center">119559.195</td>
+</tr>
+<tr>
+<td align="center">1462</td>
+<td align="center">154014.53</td>
+</tr>
+<tr>
+<td align="center">1463</td>
+<td align="center">198652.77</td>
+</tr>
+<tr>
+<td align="center">1464</td>
+<td align="center">217135.89</td>
+</tr>
+<tr>
+<td align="center">1465</td>
+<td align="center">177476.7</td>
+</tr>
+</tbody></table>
+<h2 id="最终-score-为-：-0-16706"><a href="#最终-score-为-：-0-16706" class="headerlink" title="最终 score 为 ： 0.16706"></a>最终 score 为 ： 0.16706</h2>
+      
+
+      
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/10/10/d2l%E6%88%BF%E4%BB%B7%E9%A2%84%E6%B5%8B%E7%BB%83%E4%B9%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-JDK学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -383,7 +1564,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1>
+        <h1 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h1><p><a target="_blank" rel="noopener" href="https://github.com/GDPolar/Pan/blob/master/ReferenceCards15-PDF.pdf">手册</a></p>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1>
         
       
 
@@ -950,89 +2132,6 @@
 
 
   
-    <article id="post-Vue笔记2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        <!-- 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/10/Vue%E7%AC%94%E8%AE%B02/">Vue笔记2</a>
-    </h1>
-  
- -->
-        <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_my" href="/2022/04/10/Vue%E7%AC%94%E8%AE%B02/">Vue笔记2</a>
-    </h1>
-  
-</p></center>
-        
-        <a href="/2022/04/10/Vue%E7%AC%94%E8%AE%B02/" class="archive-article-date">
-  	<time datetime="2022-04-10T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <span id="more"></span>
-
-
-      
-
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/10/Vue%E7%AC%94%E8%AE%B02/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1131,15 +2230,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">刷题总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
               </li>
              
               <li class="article-tag-list-item">
