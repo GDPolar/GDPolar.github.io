@@ -16,7 +16,7 @@
 <meta property="og:description" content="《Java核心技术卷1》读书笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-09-20T12:24:59.000Z">
-<meta property="article:modified_time" content="2022-10-02T15:07:19.758Z">
+<meta property="article:modified_time" content="2022-10-22T08:00:02.679Z">
 <meta property="article:author" content="GDPolar">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -347,14 +347,31 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Named</span> </span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">getName</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 编译器要求必须要解决二义性问题，即必须覆盖</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">Person</span>, <span class="title">Named</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;ss&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>一个 lambda 表达式只在某些分支返回一个值，而在另外一些分支不返回值，是不合法的。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">int</span> x) -&gt; &#123;<span class="keyword">if</span> (x &gt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;&#125; <span class="comment">// ERROR</span></span><br></pre></td></tr></table></figure></li>
-<li><p>只有一个抽象方法的接口称为<strong>函数式接口（functional interface）</strong>，可通过 lambda 表达式创建该接口的对象</p>
+<li><p>只有一个抽象方法的接口称为<strong>函数式接口（functional interface）</strong>，可通过 lambda 表达式创建该接口的对象。</p>
 <p>本质上虚拟机新定义了一个 private static 方法，并 return 该方法的返回值。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyNumber</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getValue</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">strHandler</span><span class="params">(String str, MyFunction mf)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> mf.getValue(str);</span><br><span class="line">&#125;</span><br><span class="line">String trimStr = strHandler(<span class="string">&quot;\t\t hello       &quot;</span>, (str) -&gt; str.trim());</span><br><span class="line">String upperStr = strHandler(<span class="string">&quot;abcdefg&quot;</span>, (str) -&gt; str.toUpperCase());</span><br><span class="line">String newStr = strHandler(<span class="string">&quot;abcdefghi&quot;</span>, (str) -&gt; str.substring(<span class="number">2</span>, <span class="number">5</span>));</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 <li><p>lambda 表达式的体与嵌套块有<strong>相同的作用域</strong>，因此在 lambda 表达式声明一个与局部变量同名的参数或局部变量是不合法的。</p>
 </li>
 <li><p>lambda 表达式中“捕获”的变量必须是<strong>事实最终变量</strong>（effectively final），即该变量初始化后不会再为它重新赋值。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; ++i) &#123;</span><br><span class="line">	ActionListener listener = event -&gt; &#123;</span><br><span class="line">        System.out.println(i); <span class="comment">// ERROR:Cannot refer to changing i</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li></li>
+<li><p>局部类能够访问局部变量，但访问的局部变量必须是<strong>事实最终变量</strong>（effectively final），且会被进行保存。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">(<span class="keyword">int</span> internal, <span class="keyword">boolean</span> beep)</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">TimePrinter</span> <span class="keyword">implements</span> <span class="title">ActionListener</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;</span><br><span class="line">            System.out.println(Instant.ofEpochMilli(e.getWhen()));</span><br><span class="line">            <span class="keyword">if</span> (beep) &#123;</span><br><span class="line">                ToolKit.getDefaultToolkit().beep();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> listener = <span class="keyword">new</span> TimePrinter();</span><br><span class="line">    <span class="keyword">var</span> timer = <span class="keyword">new</span> Timer(internal, listener);</span><br><span class="line">    timer.start();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 编译器为这个局部内部类合成了 TalkingClock$TimePrinter</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TalkingClock</span>$<span class="title">TimePrinter</span> </span>&#123;</span><br><span class="line">    TalkingClock$TimePrinter(TalkingClock, <span class="keyword">boolean</span>);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(java.awt.event.ActionEvent)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">boolean</span> val$beep;</span><br><span class="line">    <span class="keyword">final</span> TalkingClock <span class="keyword">this</span>$<span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="第四章-异常"><a href="#第四章-异常" class="headerlink" title="第四章 异常"></a>第四章 异常</h1><ul>
+<li><p>Java 的异常层次</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Throwable</span><br><span class="line">├─Error</span><br><span class="line">│  └─*</span><br><span class="line">└─Exception</span><br><span class="line">   ├─IOException</span><br><span class="line">   ├─RuntimeException</span><br><span class="line">   └─*</span><br></pre></td></tr></table></figure>
+
+<p>将派生于 Error 类或 RuntimeException 类的异常称为<strong>非检查型（unchecked）异常</strong>，其他的异常称为<strong>检查型（checked）异常</strong>。</p>
+</li>
+<li><p>不应当声明从非检查型异常继承的异常。</p>
+</li>
+<li><p>超类未抛出检查型异常，子类也不能抛出任何检查型异常</p>
+<p>超类抛出异常，子类抛出的异常不能比超类的异常更通用，即<strong>可以抛出更特定的异常或不抛出异常</strong></p>
+</li>
+<li><p>finally 要用于清理资源，而不应该有改变控制流的语句。</p>
+</li>
+<li><p>try with re</p>
+</li>
 </ul>
 
       
@@ -478,7 +495,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">第一章 基本语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">第二章 对象与类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E6%8E%A5%E5%8F%A3%E3%80%81lambda-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8C%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">第三章 接口、lambda 表达式和内部类</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">第一章 基本语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">第二章 对象与类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E6%8E%A5%E5%8F%A3%E3%80%81lambda-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8C%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">第三章 接口、lambda 表达式和内部类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%BC%82%E5%B8%B8"><span class="toc-number">4.</span> <span class="toc-text">第四章 异常</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -591,15 +608,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">刷题总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -635,11 +652,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+                <a href="javascript:void(0)" class="js-tag color5">期末复习</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">期末复习</a>
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
              
               <li class="article-tag-list-item">
