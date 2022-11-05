@@ -603,6 +603,110 @@
 
 
   
+    <article id="post-Vmware虚拟机使用主机代理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        <!-- 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/01/Vmware%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BD%BF%E7%94%A8%E4%B8%BB%E6%9C%BA%E4%BB%A3%E7%90%86/">Vmware虚拟机使用主机代理</a>
+    </h1>
+  
+ -->
+        <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_my" href="/2022/09/01/Vmware%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BD%BF%E7%94%A8%E4%B8%BB%E6%9C%BA%E4%BB%A3%E7%90%86/">Vmware虚拟机使用主机代理</a>
+    </h1>
+  
+</p></center>
+        
+        <a href="/2022/09/01/Vmware%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BD%BF%E7%94%A8%E4%B8%BB%E6%9C%BA%E4%BB%A3%E7%90%86/" class="archive-article-date">
+  	<time datetime="2022-09-01T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-问题"><a href="#1-问题" class="headerlink" title="1 问题"></a>1 问题</h1><p>在虚拟机（Ubuntu 18.04）中网上冲浪，欲使用主机（Windows10 1909）的代理。</p>
+<h1 id="2-NAT模式"><a href="#2-NAT模式" class="headerlink" title="2 NAT模式"></a>2 NAT模式</h1><p>相当于在主机里建立一个虚拟路由器，虚拟机连接这个虚拟路由器。</p>
+<h1 id="3-解决步骤"><a href="#3-解决步骤" class="headerlink" title="3 解决步骤"></a>3 解决步骤</h1><h2 id="3-1-查看主机-IP-地址"><a href="#3-1-查看主机-IP-地址" class="headerlink" title="3.1 查看主机 IP 地址"></a>3.1 查看主机 IP 地址</h2><p>通过 <code>ipconfig</code> 查看本地 IP 为 <code>192.168.10.6</code></p>
+<p><img src="E:\Blog\source\assets\pics\Vmware虚拟机使用主机代理\image-20221105115044665.png" alt="image-20221105115044665"></p>
+<h2 id="3-2-编辑虚拟网络"><a href="#3-2-编辑虚拟网络" class="headerlink" title="3.2 编辑虚拟网络"></a>3.2 编辑虚拟网络</h2><p>打开虚拟网络编辑器。</p>
+<p><img src="E:\Blog\source\assets\pics\Vmware虚拟机使用主机代理\image-20221105115401999.png" alt="image-20221105115401999"></p>
+<p>修改 VMnet8 网络的子网 IP，前两项与主机 IP 一致，第三项必须不同，第四项为0，相应地修改掩码。</p>
+<p><img src="E:\Blog\source\assets\pics\Vmware虚拟机使用主机代理\image-20221105122440234.png" alt="image-20221105115938022"></p>
+<p>打开 NAT 设置和 DHCP 设置确认网关 IP 前三项与子网 IP 相同，IP 地址范围不能包含网关。</p>
+<p><img src="E:\Blog\source\assets\pics\Vmware虚拟机使用主机代理\image-20221105122515031.png" alt="image-20221105120059540"></p>
+<p><img src="E:\Blog\source\assets\pics\Vmware虚拟机使用主机代理\image-20221105122546577.png" alt="image-20221105120125733"></p>
+<p>在主机的 <code>控制面板\网络和 Internet\网络连接</code> 中查看 VMnet8 的 IP 属性，确认此处的 IP 地址不能和上述的网关 IP 相同。</p>
+<p><img src="E:\Blog\source\assets\pics\Vmware虚拟机使用主机代理\image-20221105120847912.png" alt="image-20221105120847912"></p>
+<h2 id="3-3-应用虚拟网络"><a href="#3-3-应用虚拟网络" class="headerlink" title="3.3 应用虚拟网络"></a>3.3 应用虚拟网络</h2><p>修改虚拟镜像的配置。</p>
+<p>修改后在虚拟机中测试是否能正常上网。</p>
+<p><img src="E:\Blog\source\assets\pics\Vmware虚拟机使用主机代理\image-20221105121026350.png" alt="image-20221105121026350"></p>
+<p>查看主机代理的端口。SOCETS 端口为 10808，HTTP 端口为 10809</p>
+<p><img src="E:\Blog\source\assets\pics\Vmware虚拟机使用主机代理\image-20221105121209945.png" alt="image-20221105121209945"></p>
+<p>选中”允许局域网的连接”。</p>
+<p><img src="E:\Blog\source\assets\pics\Vmware虚拟机使用主机代理\image-20221105121341347.png" alt="image-20221105121341347"></p>
+<h2 id="3-4-虚拟机内部设置"><a href="#3-4-虚拟机内部设置" class="headerlink" title="3.4 虚拟机内部设置"></a>3.4 虚拟机内部设置</h2><p>设置完成后测试可以网上冲浪。</p>
+<p><img src="E:\Blog\source\assets\pics\Vmware虚拟机使用主机代理\image-20221105121501206.png" alt="image-20221105121501206"></p>
+<p><img src="E:\Blog\source\assets\pics\Vmware虚拟机使用主机代理\image-20221105121717595.png" alt="image-20221105121717595"></p>
+
+      
+
+      
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">疑难杂症</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/09/01/Vmware%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BD%BF%E7%94%A8%E4%B8%BB%E6%9C%BA%E4%BB%A3%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-深度学习入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -943,92 +1047,6 @@
 
 
   
-    <article id="post-LeetCode454. 四数相加 II " class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        <!-- 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/02/LeetCode454.%20%E5%9B%9B%E6%95%B0%E7%9B%B8%E5%8A%A0%20II%20/">LeetCode454. 四数相加 II</a>
-    </h1>
-  
- -->
-        <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_my" href="/2022/06/02/LeetCode454.%20%E5%9B%9B%E6%95%B0%E7%9B%B8%E5%8A%A0%20II%20/">LeetCode454. 四数相加 II</a>
-    </h1>
-  
-</p></center>
-        
-        <a href="/2022/06/02/LeetCode454.%20%E5%9B%9B%E6%95%B0%E7%9B%B8%E5%8A%A0%20II%20/" class="archive-article-date">
-  	<time datetime="2022-06-02T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="454-四数相加-II"><a href="#454-四数相加-II" class="headerlink" title="454. 四数相加 II"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-linked-list/"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/4sum-ii/">454. 四数相加 II</a></a>
-        
-      
-
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/02/LeetCode454.%20%E5%9B%9B%E6%95%B0%E7%9B%B8%E5%8A%A0%20II%20/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1131,15 +1149,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">刷题总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1152,6 +1170,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">疑难杂症</a>
               </li>
              
               <li class="article-tag-list-item">

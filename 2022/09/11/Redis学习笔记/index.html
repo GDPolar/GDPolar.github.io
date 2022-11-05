@@ -16,7 +16,7 @@
 <meta property="og:description" content="redis 只支持 linux 操作系统">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-09-11T12:24:59.000Z">
-<meta property="article:modified_time" content="2022-10-24T13:50:49.402Z">
+<meta property="article:modified_time" content="2022-10-24T14:10:14.655Z">
 <meta property="article:author" content="GDPolar">
 <meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
@@ -250,8 +250,13 @@
 
 <h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>底层为一个<strong>双向循环链表</strong>。quicklist，每一个节点为多个空间上相邻的数据组成的一个 ziplist，并将一个个 ziplist 使用双向指针串起来。</p>
 <p>左侧为头，右侧为尾。</p>
-<p><code>lpush/rpush &lt;key1&gt; &lt;key2&gt;...</code>：头插法/尾插法插入数据<br><code>lpop/rpop &lt;key&gt;</code>：头部/尾部抛出一个值<br><code>lrange &lt;key&gt; &lt;start&gt; &lt;end&gt;</code>：获取左起 [start, end] 的数据</p>
+<p><code>lpush/rpush &lt;key1&gt; &lt;key2&gt;...</code>：头插法/尾插法插入数据<br><code>lpop/rpop &lt;key&gt;</code>：头部/尾部抛出一个值</p>
 <p><code>rpoplpush &lt;key1&gt; &lt;key2&gt;</code>：从 key1 尾部抛出一个值以头插法插入 key2</p>
+<p><code>lindex &lt;key&gt; &lt;index&gt;</code>：获取指定索引元素<br><code>lrange &lt;key&gt; &lt;start&gt; &lt;end&gt;</code>：获取左起 [start, end] 的数据</p>
+<p><code>llen &lt;key&gt;</code>：获取 list 长度</p>
+<p><code>linsert &lt;key&gt; before &lt;value&gt; &lt;newvalue&gt;</code>：在 value 后插入 newvalue</p>
+<p><code>lrem &lt;key&gt; &lt;n&gt; &lt;value&gt;</code>：从左起删除 n 个数据</p>
+<p><code>lset &lt;key&gt; &lt;index&gt; &lt;value&gt;</code>：将 key 下标为 index 的值替换为 value</p>
 
       
 
@@ -491,15 +496,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">刷题总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -512,6 +517,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">疑难杂症</a>
               </li>
              
               <li class="article-tag-list-item">
