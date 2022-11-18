@@ -16,7 +16,7 @@
 <meta property="og:description" content="206. 反转链表">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-01T12:24:59.000Z">
-<meta property="article:modified_time" content="2022-09-23T09:59:37.310Z">
+<meta property="article:modified_time" content="2022-11-18T07:35:08.345Z">
 <meta property="article:author" content="GDPolar">
 <meta property="article:tag" content="数据结构与算法">
 <meta property="article:tag" content="LeetCode">
@@ -243,7 +243,7 @@
 <p>​    n<sub>1</sub> –&gt; ….. –&gt; n<sub>k-1</sub> – &gt;  n<sub>k</sub> –&gt;  n<sub>k+1</sub> –&gt; … –&gt; n<sub>m</sub> –&gt; ∅</p>
 <p>若从节点 n<sub>k+1</sub> 到 n<sub>m</sub> 已经被反转，此时正处于 n<sub>k</sub> </p>
 <p>​    n<sub>1</sub> –&gt; ….. –&gt; n<sub>k-1</sub> – &gt;  n<sub>k</sub> –&gt;  n<sub>k+1</sub> &lt;– … &lt;– n<sub>m</sub> &lt;– ∅</p>
-<p>所以令n<sub>k</sub>-&gt;next-&gt;next = n<sub>k</sub>;</p>
+<p>所以令 n<sub>k</sub>-&gt;next-&gt;next = n<sub>k</sub>;</p>
 <p>理解递归的关键在于不要在乎递归内部，把递归函数当作一个普通函数且只关心其输入输出，即把递归当作<strong>黑盒函数</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 由于要执行 head-&gt;next-&gt;next = head，所以 head-&gt;next 不能为空</span></span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">nullptr</span> || head-&gt;next == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode* newHead = <span class="built_in">reverseList</span>(head-&gt;next); </span><br><span class="line">        head-&gt;next-&gt;next = head;</span><br><span class="line">        head-&gt;next = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">return</span> newHead;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
