@@ -16,7 +16,7 @@
 <meta property="og:description" content="《Java核心技术卷1》读书笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-09-20T12:24:59.000Z">
-<meta property="article:modified_time" content="2023-02-21T13:40:20.079Z">
+<meta property="article:modified_time" content="2023-02-25T09:07:39.242Z">
 <meta property="article:author" content="GDPolar">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -377,12 +377,56 @@
 <p>若有 <code>catch</code> 、 <code>finally</code> 字句，则在关闭资源之后执行。</p>
 </li>
 </ul>
-<h1 id="第五章-泛型"><a href="#第五章-泛型" class="headerlink" title="第五章 泛型"></a>第五章 泛型</h1><ul>
-<li><p>泛型类相当于普通类的工厂。常使用 E 表示集合的元素类型，&lt;K,  V&gt; 表示键值对，T 或 U 表示任意类型</p>
+<h1 id="第五章-泛型与集合"><a href="#第五章-泛型与集合" class="headerlink" title="第五章 泛型与集合"></a>第五章 泛型与集合</h1><ul>
+<li><p>泛型类相当于普通类的工厂。常使用 E 表示集合的元素类型，&lt;K,  V&gt; 表示键值对，T 或 U 表示任意类型。</p>
 </li>
-<li><p>定义一个带有泛型参数的方法，将类型变量放在修饰符（<code>public static</code>）的后面，返回类型的前面</p>
+<li><p>定义一个带有泛型参数的方法，将类型变量放在修饰符（<code>public static</code>）的后面，返回类型的前面。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">getMiddle</span><span class="params">(T... a)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a[a.length / <span class="number">2</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>泛型的限定，限定类型</p>
+<li><p>虚拟机中没有泛型，只有普通的类和方法，编译器进行**类型擦除（type erasure)**，即所有的类型参数都会被替换为它们的限定类型：</p>
+<p>1、若泛型无限定类型，如 <code>&lt;T&gt;</code> ，则替换为 <code>Object</code></p>
+<p>2、若泛型有限定类型，如 <code>&lt;T extends A &amp; B&gt;</code>，则用第一个限定类型替换，此处为 A</p>
+<p>因此，为提高效率，应将标签（tagging）接口，即无方法的接口放到限定列表末尾，如 <code>Serializable</code>。</p>
+</li>
+<li><p>泛型的限定，多个限定类型用 &amp; 分割，且只有第一个限定类型可以是 <code>class</code> 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 只有 A 可能是 class，B 和 C 必须是 interface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T extends A &amp; B &amp; C&gt; <span class="function">T <span class="title">fun</span><span class="params">(T.. a)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>编写一个泛型方法调用时，为了保持类型安全，编译器会在必要时插入强转指令。</p>
+</li>
+<li><p>类型擦除与多态会发生冲突，因此编译器会在子类中生成一个<strong>桥方法</strong>来调用父类中的同名方法以保持多态。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DateInterval interval = <span class="keyword">new</span> DateInterval(...);</span><br><span class="line">Pair&lt;LocalDate&gt; pair = interval;</span><br><span class="line">pair.setSecond(aDate);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 由于类型擦除，虚拟机中的 setSecond(LocalDate) 无法覆盖 setSecond(Object)，</span></span><br><span class="line"><span class="comment"> * 因此编译器在 DateInterval 类中生成了如下桥方法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSecond</span><span class="params">(Object second)</span> </span>&#123;</span><br><span class="line">    setSecond((LocalDate) second);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在虚拟机中，由<strong>参数类型和返回类型</strong>共同指定一个方法。</p>
+</li>
+<li><p>无论 S 与 T 有什么关系，<code>Pair&lt;S&gt;</code> 与 <code>Pair&lt;T&gt;</code> 都没有任何关系。</p>
+</li>
+<li><p>泛型通配符的使用规则：<strong>PECS</strong>，即生产者使用 &lt;<code>? extends T&gt;</code>，消费者使用 &lt;<code>? super T&gt;</code>。</p>
+</li>
+<li><p><code>Class</code> 类是泛型的，例如 <code>String.class</code> 实际上是唯一的 <code>Class&lt;String&gt;</code>类的对象。</p>
+</li>
+<li><p>“ for each ” 循环可以处理任何实现了 <code>Iterable</code>接口的对象，该接口只包含一个抽象方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Iterable</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function">Iterator&lt;E&gt; <span class="title">interator</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>Java 的迭代器位于<strong>两个元素之间</strong>，当调用<code>next</code>时，迭代器越过下一个元素，并返回刚刚越过的元素的引用，<code>remove()</code>删除上次调用 <code>next()</code>所返回的元素。</p>
+</li>
+<li><p>集合有两个基本接口：<code>Collection</code>和<code>Map</code>。</p>
+</li>
+<li><p>Java 中的所有链表都是<strong>双向链接</strong>。</p>
+</li>
+<li><p>动态数组的选用：不需要同步时，用 <code>ArrayList</code>；需要同步时，用<code>vector</code>。</p>
+</li>
+<li><p>对于 Map，要迭代处理 key 和 value，用 <code>forEach()</code>，提供一个接受键和值的 lambda 表达式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map.forEach((k, v) -&gt; System.out.println(k, v))</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="第六章-并发"><a href="#第六章-并发" class="headerlink" title="第六章 并发"></a>第六章 并发</h1><ul>
+<li><p>用 <code>ReentrantLock</code>保护代码块，必须在 finally 字句中释放锁，否则若临界区代码抛出异常，别的进程将会被阻塞</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mylock.lock();</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    mylock.unlock();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>一个锁对象可以有一个或多个相关联的条件对象，用<code>newCondition()</code>获取一个条件对象。当条件不满足时，调用条件对象的 <code>await()</code>方法，进入这个条件的等待集，直到锁可用，另一线程在同一条件上调用 <code>signalAll()</code>方法，接触等待线程的阻塞，使这些线程在当前线程释放锁后竞争访问对象。</p>
+</li>
+<li><p>若一个方法声明时有<code>synchronized</code>关键字，对象的锁将保护整个方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br><span class="line">等价于</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.intrinsicLock.lock();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// TODO</span></span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.intrinsicLock.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>最好用 <code>java.util.concurrent</code>来处理锁定，而不要用 <code>Lock</code> 和 <code>synchronized</code>，除非需要代码简洁或需要锁提供额外的能力。</p>
+</li>
+<li><p>如果声明一个字段为<code>volatile</code>，那么编译器和虚拟机就知道该字段可能会被另一个线程并发更新。编译器会插入适当的代码，使得某一个线程对该变量做修改时，这个修改对读取这个变量的其他线程都可见。</p>
+</li>
+<li><p><code>ThreadLocal</code>类为各个线程提供一个单独的生成器，让每个线程访问对都是存储在线程内部自己的变量副本。</p>
 </li>
 </ul>
 
@@ -507,7 +551,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">第一章 基本语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">第二章 对象与类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E6%8E%A5%E5%8F%A3%E3%80%81lambda-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8C%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">第三章 接口、lambda 表达式和内部类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%BC%82%E5%B8%B8"><span class="toc-number">4.</span> <span class="toc-text">第四章 异常</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%B3%9B%E5%9E%8B"><span class="toc-number">5.</span> <span class="toc-text">第五章 泛型</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">第一章 基本语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">第二章 对象与类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E6%8E%A5%E5%8F%A3%E3%80%81lambda-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8C%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">第三章 接口、lambda 表达式和内部类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%BC%82%E5%B8%B8"><span class="toc-number">4.</span> <span class="toc-text">第四章 异常</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%B3%9B%E5%9E%8B%E4%B8%8E%E9%9B%86%E5%90%88"><span class="toc-number">5.</span> <span class="toc-text">第五章 泛型与集合</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%B9%B6%E5%8F%91"><span class="toc-number">6.</span> <span class="toc-text">第六章 并发</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -620,7 +664,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">刷题总结</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -628,11 +676,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">刷题总结</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -652,11 +696,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">疑难杂症</a>
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+                <a href="javascript:void(0)" class="js-tag color5">疑难杂症</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -664,11 +708,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">深度学习</a>
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+                <a href="javascript:void(0)" class="js-tag color5">深度学习</a>
               </li>
              
               <li class="article-tag-list-item">
