@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://GDPolar.github.io">
   <title>Java巩固基础 | GDPolar&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="《Java核心技术卷1》读书笔记">
+  <meta name="description" content="基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java巩固基础">
 <meta property="og:url" content="https://gdpolar.github.io/2022/09/20/Java%E5%B7%A9%E5%9B%BA%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="GDPolar&#39;s Blog">
-<meta property="og:description" content="《Java核心技术卷1》读书笔记">
+<meta property="og:description" content="基础">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-09-20T12:24:59.000Z">
-<meta property="article:modified_time" content="2023-02-25T09:07:39.242Z">
+<meta property="article:modified_time" content="2023-03-02T08:40:29.640Z">
 <meta property="article:author" content="GDPolar">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -222,7 +222,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>《Java核心技术卷1》读书笔记<span id="more"></span></p>
+        <p>基础<span id="more"></span></p>
 <p>[toc]</p>
 <h1 id="第一章-基本语法"><a href="#第一章-基本语法" class="headerlink" title="第一章 基本语法"></a>第一章 基本语法</h1><ul>
 <li><p>除非确实要处理 UTF-16 代码单元，否则<strong>不要</strong>在程序中使用 <code>char</code> 类型</p>
@@ -271,6 +271,13 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">&quot;zhangsan&quot;</span>);</span><br></pre></td></tr></table></figure></li>
 <li><p>参数列表中的省略号 … 表示可以接收任意数量的对象</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><code>String.intern()</code> 是一个 native 方法，其作用是将指定的字符串对象的引用保存在字符串常量池中，可以简单分为两种情况：</p>
+<p>​    如果字符串常量池中保存了对应的字符串对象的引用，就直接返回该引用。</p>
+<p>​    如果字符串常量池中没有保存了对应的字符串对象的引用，那就在常量池中创建一个指向该字符串对象的引用并返回。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="string">&quot;Java&quot;</span>;</span><br><span class="line">String s2 = s1.intern();</span><br><span class="line">String s3 = <span class="keyword">new</span> String(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">String s4 = s3.intern();</span><br><span class="line">System.out.println(s1 == s2); <span class="comment">// true</span></span><br><span class="line">System.out.println(s3 == s4); <span class="comment">// false</span></span><br><span class="line">System.out.println(s1 == s4); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<p>被 <code>final</code> 关键字修改之后的 <code>String</code> 会被编译器当做常量来处理，编译器在程序编译期就可以确定它的值，其效果就相当于访问常量。如果编译器在运行时才能知道其确切值的话，就无法对其优化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> String str1 = <span class="string">&quot;str&quot;</span>;</span><br><span class="line"><span class="keyword">final</span> String str2 = <span class="string">&quot;ing&quot;</span>;</span><br><span class="line"><span class="keyword">final</span> String str3 = getStr();</span><br><span class="line"><span class="comment">// 下面两个表达式其实是等价的</span></span><br><span class="line">String c = <span class="string">&quot;str&quot;</span> + <span class="string">&quot;ing&quot;</span>;<span class="comment">// 常量池中的对象</span></span><br><span class="line">String d = str1 + str2; <span class="comment">// 常量池中的对象</span></span><br><span class="line">String e = str1 + str3; <span class="comment">// 在堆上创建的新的对象</span></span><br><span class="line">System.out.println(c == d);<span class="comment">// true</span></span><br><span class="line">System.out.println(c == e);<span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getStr</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">&quot;ing&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h1 id="第二章-对象与类"><a href="#第二章-对象与类" class="headerlink" title="第二章 对象与类"></a>第二章 对象与类</h1><ul>
 <li><p>若要返回一个可变数据字段的副本，应该使用 <code>clone()</code>，而不是直接返回</p>
@@ -335,6 +342,18 @@
 </li>
 </ul>
 <h1 id="第三章-接口、lambda-表达式和内部类"><a href="#第三章-接口、lambda-表达式和内部类" class="headerlink" title="第三章 接口、lambda 表达式和内部类"></a>第三章 接口、lambda 表达式和内部类</h1><ul>
+<li><p>接口与抽象类：</p>
+<p>共同点：</p>
+<p>​    都不能被实例化；</p>
+<p>​    都可以包含抽象方法；</p>
+<p>​    都可以有默认实现的方法（Java8 可以用 <code>default</code> 关键字在接口中定义默认方法）</p>
+<p>不同点：</p>
+<p>​    接口主要用于对类的行为进行约束，实现了某个接口就具有了对应的行为。抽象类主要用于代码复用，强调的是所属关系。</p>
+<p>​    一个类只能继承一个类，但是可以实现多个接口。</p>
+<p>​    接口中的成员变量只能是 <code>public static final</code> 类型的，不能被修改且必须有初始值，而抽象类的成员变量默认 default，可在子类中被重新定义，也可被重新赋值。</p>
+</li>
+<li><p>一个类用到其他的类，但是又不能访问这个类的成员，若想要交换此类的两个对象，用封装类（Wrapper Class）解决。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> model, no;</span><br><span class="line">    Car(<span class="keyword">int</span> model, <span class="keyword">int</span> no) &#123;</span><br><span class="line">        <span class="keyword">this</span>.model = model;</span><br><span class="line">        <span class="keyword">this</span>.no = no;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;no = &quot;</span> + no + <span class="string">&quot;, model = &quot;</span> + model);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CarWrapper</span> </span>&#123;</span><br><span class="line">   Car c;</span><br><span class="line"></span><br><span class="line">   CarWrapper(Car c)   &#123;<span class="keyword">this</span>.c = c;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 即将待操作的对象作为 wrapper 类的成员变量</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(CarWrapper cw1, CarWrapper cw2)</span> </span>&#123;</span><br><span class="line">        Car temp = cw1.c;</span><br><span class="line">        cw1.c = cw2.c;</span><br><span class="line">        cw2.c = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Car c1 = <span class="keyword">new</span> Car(<span class="number">101</span>, <span class="number">1</span>);</span><br><span class="line">        Car c2 = <span class="keyword">new</span> Car(<span class="number">202</span>, <span class="number">2</span>);</span><br><span class="line">        CarWrapper cw1 = <span class="keyword">new</span> CarWrapper(c1);</span><br><span class="line">        CarWrapper cw2 = <span class="keyword">new</span> CarWrapper(c2);</span><br><span class="line">        swap(cw1, cw2);</span><br><span class="line">        cw1.c.print();</span><br><span class="line">        cw2.c.print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 <li><p>解决默认方法冲突的规则</p>
 <ol>
 <li><strong>超类优先</strong>。若超类提供了一个具体的方法，接口中的标签相同的默认方法会被忽略。</li>
@@ -376,6 +395,9 @@
 <p>Resource 继承了 <code>AutoCloseable</code> 接口，实现了 <code>close()</code> 方法，则在 try 语句退出时，会自动调用 <code>res.close()</code>。</p>
 <p>若有 <code>catch</code> 、 <code>finally</code> 字句，则在关闭资源之后执行。</p>
 </li>
+<li><p>不要在 <code>finally</code> 语句中使用 <code>return</code>。当 <code>try</code> 语句和 <code>finally</code> 语句都有 <code>return</code> 时，<code>try</code> 语句中的 <code>return</code> 会被忽略。</p>
+<p>因为 <code>try</code> 中的 <code>return</code> 会先暂存在一个本地变量中，执行完 <code>finally</code> 再返回，而若 <code>finally</code> 也有 <code>return</code>，这个本地变量的值就会被 <code>finally</code> 中的 <code>return</code> 替换。</p>
+</li>
 </ul>
 <h1 id="第五章-泛型与集合"><a href="#第五章-泛型与集合" class="headerlink" title="第五章 泛型与集合"></a>第五章 泛型与集合</h1><ul>
 <li><p>泛型类相当于普通类的工厂。常使用 E 表示集合的元素类型，&lt;K,  V&gt; 表示键值对，T 或 U 表示任意类型。</p>
@@ -412,8 +434,40 @@
 </li>
 <li><p>动态数组的选用：不需要同步时，用 <code>ArrayList</code>；需要同步时，用<code>vector</code>。</p>
 </li>
+<li><p><code>HashSet</code>(无序，唯一): 基于 <code>HashMap</code> 实现的，底层采用 <code>HashMap</code> 来保存元素。</p>
+</li>
 <li><p>对于 Map，要迭代处理 key 和 value，用 <code>forEach()</code>，提供一个接受键和值的 lambda 表达式</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map.forEach((k, v) -&gt; System.out.println(k, v))</span><br></pre></td></tr></table></figure></li>
+<li><p><code>Queue</code> 是单端队列，只能从一端插入元素，另一端删除元素，根据<strong>因为容量问题而导致操作失败后处理方式的不同</strong>可以分为两类方法：一种在操作失败后会抛出异常，另一种则会返回特殊值。</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>抛出异常</th>
+<th>返回特殊值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>插入队尾</td>
+<td>add(E e)</td>
+<td>offer(E e)</td>
+</tr>
+<tr>
+<td>删除队首</td>
+<td>remove()</td>
+<td>poll()</td>
+</tr>
+<tr>
+<td>查询队首元素</td>
+<td>element()</td>
+<td>peek()</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><code>Deque</code> 提供有 <code>push()</code> 和 <code>pop()</code> 等其他方法，可用于模拟栈。</p>
+</li>
+<li><p><code>ArrayDeque</code> 是基于可变长的数组和双指针来实现，不支持存储 <code>NULL</code> 数据，当被用作栈时比 <code>Stack</code> 快，当被用作队列时比 <code>queue</code> 快。</p>
+</li>
 </ul>
 <h1 id="第六章-并发"><a href="#第六章-并发" class="headerlink" title="第六章 并发"></a>第六章 并发</h1><ul>
 <li><p>用 <code>ReentrantLock</code>保护代码块，必须在 finally 字句中释放锁，否则若临界区代码抛出异常，别的进程将会被阻塞</p>
@@ -664,10 +718,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
               </li>
              
@@ -677,6 +727,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
