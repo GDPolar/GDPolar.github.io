@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://GDPolar.github.io">
-  <title>Archives: 2021 | GDPolar&#39;s Blog</title>
+  <title>Docker修改安装及镜像路径 | GDPolar&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="GDPolar&#39;s Blog">
-<meta property="og:url" content="https://gdpolar.github.io/archives/2021/index.html">
+  <meta name="description" content="1 问题描述在 Windows 中，Docker 的默认安装路径及镜像都位于 C 盘，使得本不富裕的 C 盘雪上加霜 &#x2F;(ㄒoㄒ)&#x2F;~~。 在 Setting -&gt; Resource -&gt; Advanced 中修改 Disk image location 以及使用 wsl 来打包导出分别会卡住和报错，且未找到解决办法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker修改安装及镜像路径">
+<meta property="og:url" content="https://gdpolar.github.io/2023/04/30/Docker%E6%9B%B4%E6%94%B9%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84/index.html">
 <meta property="og:site_name" content="GDPolar&#39;s Blog">
+<meta property="og:description" content="1 问题描述在 Windows 中，Docker 的默认安装路径及镜像都位于 C 盘，使得本不富裕的 C 盘雪上加霜 &#x2F;(ㄒoㄒ)&#x2F;~~。 在 Setting -&gt; Resource -&gt; Advanced 中修改 Disk image location 以及使用 wsl 来打包导出分别会卡住和报错，且未找到解决办法。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-30T12:24:59.000Z">
+<meta property="article:modified_time" content="2023-05-04T06:01:06.804Z">
 <meta property="article:author" content="GDPolar">
+<meta property="article:tag" content="疑难杂症">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="GDPolar&#39;s Blog" type="application/atom+xml">
@@ -32,7 +37,7 @@
 
   
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -190,98 +195,189 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Docker更改安装路径" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/24/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2021-04-24T03:22:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-24</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        <!-- 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/24/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">微机原理期末复习</a>
+    <h1 class="article-title" itemprop="name">
+      Docker修改安装及镜像路径
     </h1>
   
+ -->
+        <center><p>
+  
+    <h1 class="article-title_my" itemprop="name">
+      Docker修改安装及镜像路径
+    </h1>
+  
+</p></center>
+        
+        <a href="/2023/04/30/Docker%E6%9B%B4%E6%94%B9%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84/" class="archive-article-date">
+  	<time datetime="2023-04-30T12:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1 问题描述"></a>1 问题描述</h1><p>在 Windows 中，Docker 的默认安装路径及镜像都位于 C 盘，使得本不富裕的 C 盘雪上加霜 /(ㄒoㄒ)/~~。</p>
+<p>在 Setting -&gt; Resource -&gt; Advanced 中修改 Disk image location 以及使用 wsl 来打包导出分别会卡住和报错，且未找到解决办法。</p>
+<span id="more"></span>
 
-        <div class="article-info info-on-right">
-          
+<h1 id="2-修改安装路径"><a href="#2-修改安装路径" class="headerlink" title="2 修改安装路径"></a>2 修改安装路径</h1><p>由于注册表等其他因素的影响，直接将文件从 C:\Program Files\Docker 暴力搬家对于非绿色软件可能会产生未知的风险。</p>
+<p>故采用软链接的方式</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2069618">Windows 中的硬链接、软链接、符号链接、快捷方式</a></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mklink /j &quot;C:\Program Files\Docker&quot; &quot;E:\[目标目录]&quot;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-修改镜像位置"><a href="#3-修改镜像位置" class="headerlink" title="3 修改镜像位置"></a>3 修改镜像位置</h1><h2 id="3-1-下载工具"><a href="#3-1-下载工具" class="headerlink" title="3.1 下载工具"></a>3.1 下载工具</h2><p>Github 上大佬开发的一款 <a target="_blank" rel="noopener" href="https://github.com/DDoSolitary/LxRunOffline/releases">WSL 管理工具</a>，此处选择 MSVC 编译的版本</p>
+<h2 id="3-2-准备工作"><a href="#3-2-准备工作" class="headerlink" title="3.2 准备工作"></a>3.2 准备工作</h2><h3 id="3-2-1-重启-LxssManager"><a href="#3-2-1-重启-LxssManager" class="headerlink" title="3.2.1 重启 LxssManager"></a>3.2.1 重启 LxssManager</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net stop LxssManager</span><br><span class="line">net start LxssManager</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-2-查看信息"><a href="#3-2-2-查看信息" class="headerlink" title="3.2.2 查看信息"></a>3.2.2 查看信息</h3><p>解压后进入目录，使用命令 <code>lxrunoffline list</code> 查看子系统的名字</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files\Docker\d641e73e0b9c1f5aaf1cca07f0415724-LxRunOffline-v3.5.0-msvc&gt;lxrunoffline list</span><br><span class="line">docker-desktop</span><br><span class="line">docker-desktop-data</span><br></pre></td></tr></table></figure>
+
+<p>使用命令 <code>lxrunoffline get-dir -n docker-desktop</code> 查看路径</p>
+<h2 id="3-3-执行"><a href="#3-3-执行" class="headerlink" title="3.3 执行"></a>3.3 执行</h2><p>使用 <code>lxrunoffline move -n 【名字】 -d E:\【目标目录】</code> 命令进行迁移</p>
+<h1 id="4、检查"><a href="#4、检查" class="headerlink" title="4、检查"></a>4、检查</h1><p>进入 C:\Program Files 看到 Docker 文件夹软链接</p>
+<p>使用命令 <code>lxrunoffline get-dir -n docker-desktop</code> 查看是否成功迁移</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lxrunoffline get-dir -n docker-desktop</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">期末复习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">疑难杂症</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://gdpolar.github.io/2023/04/30/Docker%E6%9B%B4%E6%94%B9%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/01/12/%E8%AE%A1%E7%BB%84%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2021-01-12T07:33:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2023/04/29/%E8%AE%A1%E7%BB%84%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计组期末复习</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/01/12/%E8%AE%A1%E7%BB%84%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">计组期末复习</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">期末复习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">1 问题描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84"><span class="toc-number">2.</span> <span class="toc-text">2 修改安装路径</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E4%BF%AE%E6%94%B9%E9%95%9C%E5%83%8F%E4%BD%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">3 修改镜像位置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 下载工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-%E9%87%8D%E5%90%AF-LxssManager"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1 重启 LxssManager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-%E6%9F%A5%E7%9C%8B%E4%BF%A1%E6%81%AF"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2 查看信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E6%89%A7%E8%A1%8C"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 执行</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E3%80%81%E6%A3%80%E6%9F%A5"><span class="toc-number">4.</span> <span class="toc-text">4、检查</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -305,8 +401,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
@@ -383,6 +479,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">疑难杂症</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
               </li>
              
@@ -399,19 +499,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">疑难杂症</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -419,11 +511,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安卓</a>
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -432,6 +524,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">

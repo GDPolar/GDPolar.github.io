@@ -37,7 +37,7 @@
 
   
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -223,7 +223,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>JS基本数据类型<span id="more"></span></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;js/scrpit.js&quot;</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">        <span class="comment">//script标签用src属性引入外部js文件后，标签内部的js代码会被忽略</span></span></span><br><span class="line"><span class="javascript">    	alert(<span class="string">&quot;此处不会弹窗&quot;</span>)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;js/scrpit.js&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="comment">//script标签用src属性引入外部js文件后，标签内部的js代码会被忽略</span></span></span><br><span class="line"><span class="language-javascript">    	<span class="title function_">alert</span>(<span class="string">&quot;此处不会弹窗&quot;</span>)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -240,42 +240,42 @@
 <li><p>typeof 运算符的返回类型为字符串，值包括 ‘undefined’ 、’boolean’、’string’、 ‘number’、’object’   和’function’</p>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">NaN</span>); <span class="comment">// &quot;number&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">Array</span>()); <span class="comment">// &quot;object&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">null</span>);<span class="comment">// 由于历史原因，null 类型进行 typeof 操作符后，结果是 &quot;object&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="keyword">typeof</span> <span class="literal">null</span>); <span class="comment">// &quot;string&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> <span class="title class_">NaN</span>); <span class="comment">// &quot;number&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> <span class="keyword">new</span> <span class="title class_">Array</span>()); <span class="comment">// &quot;object&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> <span class="literal">null</span>);<span class="comment">// 由于历史原因，null 类型进行 typeof 操作符后，结果是 &quot;object&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> <span class="keyword">typeof</span> <span class="literal">null</span>); <span class="comment">// &quot;string&quot;</span></span><br></pre></td></tr></table></figure>
 
 
 
 <ul>
 <li>String() 转换为 String 类型</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">213</span>;</span><br><span class="line"><span class="built_in">String</span>(a);  <span class="comment">// 此时 String(a) 等价于 a.toString()，底层调用是一样的</span></span><br><span class="line"></span><br><span class="line">a = <span class="literal">null</span>;</span><br><span class="line"><span class="built_in">String</span>(a);  <span class="comment">// 无 a.toString() 方法</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">213</span>;</span><br><span class="line"><span class="title class_">String</span>(a);  <span class="comment">// 此时 String(a) 等价于 a.toString()，底层调用是一样的</span></span><br><span class="line"></span><br><span class="line">a = <span class="literal">null</span>;</span><br><span class="line"><span class="title class_">String</span>(a);  <span class="comment">// 无 a.toString() 方法</span></span><br></pre></td></tr></table></figure>
 
 
 
 <ul>
 <li>Number() 转化为 Number 类型</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;0.123&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(a)); <span class="comment">// 转化为相应的 number 类型数据</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(b)); <span class="comment">// 空串 --&gt; 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="string">&quot;123k&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(c)); <span class="comment">// NaN</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> d = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(d)); <span class="comment">// true --&gt; 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> e = <span class="literal">null</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(e)); <span class="comment">// null --&gt; 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> f = <span class="literal">undefined</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(f)); <span class="comment">// undefined --&gt; NaN</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;0.123&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(a)); <span class="comment">// 转化为相应的 number 类型数据</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(b)); <span class="comment">// 空串 --&gt; 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="string">&quot;123k&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(c)); <span class="comment">// NaN</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> d = <span class="literal">true</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(d)); <span class="comment">// true --&gt; 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> e = <span class="literal">null</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(e)); <span class="comment">// null --&gt; 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> f = <span class="literal">undefined</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(f)); <span class="comment">// undefined --&gt; NaN</span></span><br></pre></td></tr></table></figure>
 
 
 
 <ul>
 <li>parseInt(string: string, radix?: number)</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;010&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(a,<span class="number">8</span>)); <span class="comment">// 指定进制 radix 转化为 number</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;010&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseInt</span>(a,<span class="number">8</span>)); <span class="comment">// 指定进制 radix 转化为 number</span></span><br></pre></td></tr></table></figure>
 
 
 
 <ul>
 <li>Boolean() 转化为 Boolean 类型</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Booleanl(a)); <span class="comment">// 除了 0、NaN、null、空串&quot;&quot; 外，其余的 Boolean() 都返回 true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Booleanl</span>(a)); <span class="comment">// 除了 0、NaN、null、空串&quot;&quot; 外，其余的 Boolean() 都返回 true</span></span><br></pre></td></tr></table></figure>
 
 
 
 <ul>
 <li>任何值与字符串相加，都返回字符串。其他的加法、减法、乘除法都转化 number，再进行运算</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">NaN</span> + <span class="string">&quot;1&quot;</span>); <span class="comment">// &quot;NaN1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span> + <span class="literal">null</span>);  <span class="comment">// 3</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span> + <span class="literal">undefined</span>);  <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">100</span> - <span class="string">&quot;1&quot;</span>); <span class="comment">// 99</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span> * <span class="literal">null</span>);  <span class="comment">// 0 </span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">NaN</span> + <span class="string">&quot;1&quot;</span>); <span class="comment">// &quot;NaN1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">3</span> + <span class="literal">null</span>);  <span class="comment">// 3</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">3</span> + <span class="literal">undefined</span>);  <span class="comment">// NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">100</span> - <span class="string">&quot;1&quot;</span>); <span class="comment">// 99</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">3</span> * <span class="literal">null</span>);  <span class="comment">// 0 </span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <!--more-->
 
@@ -286,15 +286,15 @@
 <p>两值相或时，第一个值为 true，则返回第一个值；第一个值为 false，则返回第二个值。</p>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span> &amp;&amp; <span class="number">5</span>);	<span class="comment">// 5</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">NaN</span> &amp;&amp; <span class="number">0</span>);	<span class="comment">// NaN</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span> || <span class="number">5</span>);	<span class="comment">// 3</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;&quot;</span> || <span class="number">0</span>);	<span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">3</span> &amp;&amp; <span class="number">5</span>);	<span class="comment">// 5</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">NaN</span> &amp;&amp; <span class="number">0</span>);	<span class="comment">// NaN</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">3</span> || <span class="number">5</span>);	<span class="comment">// 3</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;&quot;</span> || <span class="number">0</span>);	<span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>比较运算时，自动转化为 number 类型。任何值与 NaN 进行比较运算，都返回 fasle</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> &gt; <span class="string">&quot;&quot;</span>);	<span class="comment">// 等价于1 &gt; 0，返回 true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> &lt;= <span class="string">&quot;hello&quot;</span>); <span class="comment">// 等价于 0 &lt;= NaN，返回 false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span> &gt; <span class="string">&quot;&quot;</span>);	<span class="comment">// 等价于1 &gt; 0，返回 true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">null</span> &lt;= <span class="string">&quot;hello&quot;</span>); <span class="comment">// 等价于 0 &lt;= NaN，返回 false</span></span><br></pre></td></tr></table></figure>
 
 <p>​    特别地，当两字符串相比较时，即比较 Unicode 码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;2.a&quot;</span> &gt; <span class="string">&quot;2.b&quot;</span>);	<span class="comment">// false，因为 a 为 97，b 为 98</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;1a&quot;</span> &gt; <span class="string">&quot;10asd&quot;</span>);<span class="comment">// true，因为 a 为 97，0 为 48</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;2.a&quot;</span> &gt; <span class="string">&quot;2.b&quot;</span>);	<span class="comment">// false，因为 a 为 97，b 为 98</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;1a&quot;</span> &gt; <span class="string">&quot;10asd&quot;</span>);<span class="comment">// true，因为 a 为 97，0 为 48</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>进行 == 比较运算时</p>
@@ -302,7 +302,7 @@
 <p>（2）如果两个值类型不同，也有可能相等，需根据以下规则进行类型转换在比较：</p>
 <p>​        1）如果一个是 null，一个是 undefined，那么相等</p>
 <p>​        2）如果一个是字符串，一个是数值，把字符串转换成数值之后再进行比较</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> == <span class="string">&quot;1&quot;</span>);	<span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> == <span class="string">&quot;1a&quot;</span>);	<span class="comment">// false，等价于 1 == NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="literal">undefined</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span> == <span class="string">&quot;1&quot;</span>);	<span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span> == <span class="string">&quot;1a&quot;</span>);	<span class="comment">// false，等价于 1 == NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">null</span> == <span class="literal">undefined</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>​    特别地，NaN 不与任何值相同（包括它自己），用 isNaN() 来判断</p>
 
@@ -548,6 +548,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">疑难杂症</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
               </li>
              
@@ -564,19 +568,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">疑难杂症</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -584,11 +580,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安卓</a>
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -597,6 +593,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">

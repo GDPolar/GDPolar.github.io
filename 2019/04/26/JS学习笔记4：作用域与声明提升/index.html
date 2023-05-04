@@ -37,7 +37,7 @@
 
   
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -224,18 +224,18 @@
       
         <ul>
 <li><p>全局作用域中有一个全局对象 window，代表一个浏览器的窗口，由浏览器创建。在全局作用域中声明变量实际是为 window 对象添加属性。因此可把全局作用域理解为特殊的最大的函数作用域。<span id="more"></span></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a);	<span class="comment">// 由于 a 未定义，报错</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a);	<span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a);	<span class="comment">// 1</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a);	<span class="comment">// 由于 a 未定义，报错</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">window</span>.<span class="property">a</span>);	<span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">window</span>.<span class="property">a</span>);	<span class="comment">// 1</span></span><br></pre></td></tr></table></figure></li>
 <li><p>var 关键字定义的函数及变量的声明都将被提升到函数的最顶部，而使用函数声明形式创建的函数会在所有代码执行之前被创建。 </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">f1(); <span class="comment">// x= 5, f= function ()&#123;&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;x= &quot;</span> + x); <span class="comment">// x = undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;f= &quot;</span> + f); <span class="comment">// f = undefined</span></span><br><span class="line">x = <span class="number">5</span>; </span><br><span class="line">f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;x= &quot;</span> + x); <span class="comment">// x = 5</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;f= &quot;</span> + f); <span class="comment">// f = function ()&#123;&#125;</span></span><br><span class="line"><span class="keyword">var</span> x, f; </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;	<span class="comment">// 在所有代码执行之前被创建</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;x= &quot;</span> + x + <span class="string">&quot;,f= &quot;</span> + f);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">f2(); <span class="comment">// undefined</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">f1</span>(); <span class="comment">// x= 5, f= function ()&#123;&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;x= &quot;</span> + x); <span class="comment">// x = undefined</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;f= &quot;</span> + f); <span class="comment">// f = undefined</span></span><br><span class="line">x = <span class="number">5</span>; </span><br><span class="line">f = <span class="keyword">function</span> (<span class="params"></span>)&#123;&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;x= &quot;</span> + x); <span class="comment">// x = 5</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;f= &quot;</span> + f); <span class="comment">// f = function ()&#123;&#125;</span></span><br><span class="line"><span class="keyword">var</span> x, f; </span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f1</span>(<span class="params"></span>) &#123;	<span class="comment">// 在所有代码执行之前被创建</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;x= &quot;</span> + x + <span class="string">&quot;,f= &quot;</span> + f);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title function_">f2</span>(); <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f2</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>函数内使用未声明的变量即为上一层的的变量</p>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">f3(); <span class="comment">// 1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f3</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);	<span class="comment">// 此时的 a 为 f3() 函数体的上一级，即 为window.a</span></span><br><span class="line">    a = <span class="number">3</span>;	<span class="comment">// 此处的 a 未使用 var 关键字，视为普通的赋值，又因为 f3() 中未定义 a，所以此时的 a 为上一层的 a，即window.a，修改的是全局的 a</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="title function_">f3</span>(); <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f3</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a);	<span class="comment">// 此时的 a 为 f3() 函数体的上一级，即 为window.a</span></span><br><span class="line">    a = <span class="number">3</span>;	<span class="comment">// 此处的 a 未使用 var 关键字，视为普通的赋值，又因为 f3() 中未定义 a，所以此时的 a 为上一层的 a，即window.a，修改的是全局的 a</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>在每次函数调用时都会将 this 作为一个隐含的参数传入，this 指向函数执行的上下文对象</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;Lisi&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name);	<span class="comment">// 此处相当于 window.name</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);	</span><br><span class="line">&#125;</span><br><span class="line">fun1();	<span class="comment">// &quot;Lisi&quot;</span></span><br><span class="line">fun2(); <span class="comment">// &quot;Lisi&quot;</span></span><br><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">    <span class="attr">name</span> : <span class="string">&quot;San&quot;</span>,</span><br><span class="line">    <span class="attr">sayName1</span> : fun1,</span><br><span class="line">    <span class="attr">sayName2</span> : fun2</span><br><span class="line">&#125;;</span><br><span class="line">obj1.sayName1(); <span class="comment">// &quot;Lisi&quot;</span></span><br><span class="line">obj1.sayName2(); <span class="comment">// &quot;San&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;Lisi&quot;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fun1</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(name);	<span class="comment">// 此处相当于 window.name</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fun2</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span>);	</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fun1</span>();	<span class="comment">// &quot;Lisi&quot;</span></span><br><span class="line"><span class="title function_">fun2</span>(); <span class="comment">// &quot;Lisi&quot;</span></span><br><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">    name : <span class="string">&quot;San&quot;</span>,</span><br><span class="line">    sayName1 : fun1,</span><br><span class="line">    sayName2 : fun2</span><br><span class="line">&#125;;</span><br><span class="line">obj1.<span class="title function_">sayName1</span>(); <span class="comment">// &quot;Lisi&quot;</span></span><br><span class="line">obj1.<span class="title function_">sayName2</span>(); <span class="comment">// &quot;San&quot;</span></span><br></pre></td></tr></table></figure>
 
 
       
@@ -480,6 +480,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">疑难杂症</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
               </li>
              
@@ -496,19 +500,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">疑难杂症</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,11 +512,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安卓</a>
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,6 +525,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
