@@ -16,7 +16,7 @@
 <meta property="og:description" content="1 问题描述在 Windows 中，Docker 的默认安装路径及镜像都位于 C 盘，使得本不富裕的 C 盘雪上加霜 &#x2F;(ㄒoㄒ)&#x2F;~~。 在 Setting -&gt; Resource -&gt; Advanced 中修改 Disk image location 以及使用 wsl 来打包导出分别会卡住和报错，且未找到解决办法。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-30T12:24:59.000Z">
-<meta property="article:modified_time" content="2023-05-04T06:01:06.804Z">
+<meta property="article:modified_time" content="2023-05-04T08:37:53.199Z">
 <meta property="article:author" content="GDPolar">
 <meta property="article:tag" content="疑难杂症">
 <meta name="twitter:card" content="summary">
@@ -229,7 +229,7 @@
 <h1 id="2-修改安装路径"><a href="#2-修改安装路径" class="headerlink" title="2 修改安装路径"></a>2 修改安装路径</h1><p>由于注册表等其他因素的影响，直接将文件从 C:\Program Files\Docker 暴力搬家对于非绿色软件可能会产生未知的风险。</p>
 <p>故采用软链接的方式</p>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2069618">Windows 中的硬链接、软链接、符号链接、快捷方式</a></p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/NTFS%E7%AC%A6%E5%8F%B7%E9%93%BE%E6%8E%A5">NTFS符号链接</a></p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mklink /j &quot;C:\Program Files\Docker&quot; &quot;E:\[目标目录]&quot;</span><br></pre></td></tr></table></figure>
 
@@ -471,11 +471,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">刷题总结</a>
+                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -483,7 +479,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS学习</a>
+                <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">刷题总结</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -523,11 +523,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+                <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安卓</a>
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
              
               <li class="article-tag-list-item">
