@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/npm/gdpooo@0.0.1/rawimg/0041.webp">
 <meta property="article:published_time" content="2022-09-11T12:24:59.000Z">
-<meta property="article:modified_time" content="2024-03-04T14:53:49.285Z">
+<meta property="article:modified_time" content="2024-03-24T13:47:22.869Z">
 <meta property="article:author" content="GDPolar">
 <meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
@@ -55,7 +55,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2024-03-04 22:53:49'
+  postUpdate: '2024-03-24 21:47:22'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -608,7 +608,241 @@
 <p>Spring 默认提供了一个StringRedisTemplate 类，它的 key 和 value 的序列化方式默认就是 String 方式。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">RedisStringTemplateTest</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Resource</span></span><br><span class="line">	<span class="keyword">private</span> StringRedisTemplate stringRedisTemplate;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="keyword">void</span> <span class="title function_">testSaveUser</span><span class="params">()</span> <span class="keyword">throws</span> JsonProcessingException &#123;</span><br><span class="line">		<span class="comment">// 1.创建一个 Json 序列化对象</span></span><br><span class="line">		<span class="type">ObjectMapper</span> <span class="variable">objectMapper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectMapper</span>();</span><br><span class="line">		<span class="comment">// 2.将要存入的对象通过 Json 序列化对象转换为字符串</span></span><br><span class="line">		<span class="type">String</span> <span class="variable">userJson1</span> <span class="operator">=</span> objectMapper.writeValueAsString(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;Vz&quot;</span>, <span class="number">21</span>));</span><br><span class="line">		<span class="comment">// 3.通过 StringRedisTemplate 将数据存入 Redis</span></span><br><span class="line">		stringRedisTemplate.opsForValue().set(<span class="string">&quot;user:100&quot;</span>,userJson1);</span><br><span class="line">		<span class="comment">// 4.通过 key 取出 value</span></span><br><span class="line">		<span class="type">String</span> <span class="variable">userJson2</span> <span class="operator">=</span> stringRedisTemplate.opsForValue().get(<span class="string">&quot;user:100&quot;</span>);</span><br><span class="line">		<span class="comment">// 5.取出的值是 String 类型的 Json 字符串，通过 Json 序列化对象来转换为 Java 对象</span></span><br><span class="line">		<span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> objectMapper.readValue(userJson2, User.class);</span><br><span class="line">		<span class="comment">// 6.打印结果</span></span><br><span class="line">		System.out.println(<span class="string">&quot;user = &quot;</span> + user);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-</article><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://gdpolar.top/post/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Redis学习笔记&amp;url=https://gdpolar.top/post/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&amp;pic=https://cdn.jsdelivr.net/npm/gdpooo@0.0.1/rawimg/0041.webp" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="rm.copyPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Redis/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Redis<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/gdpooo@0.0.3/rawimg/0003.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://npm.elemecdn.com/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://npm.elemecdn.com/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div></div><div class="post-copyright"><i class="anzhiyufont anzhiyu-icon-copyright"></i><div class="post-copyright__author"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://gdpolar.top/post/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">原创</a><a class="post-copyright-title"><span>Redis学习笔记</span></a></div><div class="post-copyright-info-box"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"></span><a class="link" href="https://gdpolar.top">GDPolar</a></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a class="link" href="https://gdpolar.top/post/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">https://gdpolar.top/post/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</a></span><span class="copy-button" onclick="rm.copyPageUrl()"><i class="anzhiyufont anzhiyu-icon-copy"></i></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://gdpolar.top" target="_blank">GDPolar's Blog</a>！</span></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/post/MongoDB%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/gdpooo@0.0.1/rawimg/0040.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">MongoDB入门笔记</div></div></a></div><div class="next-post pull-right"><a href="/post/Java%E5%B7%A9%E5%9B%BA%E5%9F%BA%E7%A1%80/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/gdpooo@0.0.1/rawimg/0031.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java朝花夕拾</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="toc-number">3.1.</span> <span class="toc-text">通用操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String"><span class="toc-number">3.2.</span> <span class="toc-text">String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hash"><span class="toc-number">3.3.</span> <span class="toc-text">Hash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List"><span class="toc-number">3.4.</span> <span class="toc-text">List</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set"><span class="toc-number">3.5.</span> <span class="toc-text">Set</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SortedSet"><span class="toc-number">3.6.</span> <span class="toc-text">SortedSet</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">4.</span> <span class="toc-text">Java 客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Jedis"><span class="toc-number">4.1.</span> <span class="toc-text">Jedis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringDataRedis"><span class="toc-number">4.2.</span> <span class="toc-text">SpringDataRedis</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By GDPolar</div><div id="workboard"><img class="workSituationImg boardsign" src="undefined" alt="undefined" title="undefined"/><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="基于Hexo_v6.3.0" title="基于Hexo_v6.3.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="基于Hexo_v6.3.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/docs/" style="margin-inline:5px" data-title="使用AnZhiYu主题" title="使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="由Github托管" title="由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div></footer></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://cdn.jsdelivr.net/npm/gdpooo@0.0.3/rawimg/0004.webp"/><div class="loading-image-dot"></div><div id="loading-percentage">0%</div></div></div><script>const loadingPercentage = document.getElementById("loading-percentage");
+<h1 id="底层数据结构"><a href="#底层数据结构" class="headerlink" title="底层数据结构"></a>底层数据结构</h1><h2 id="动态字符串-SDS"><a href="#动态字符串-SDS" class="headerlink" title="动态字符串 SDS"></a>动态字符串 SDS</h2><p>用来保存单个字符串。</p>
+<p>底层结构体定义如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">_attribute_</span>((_packed__)）sdshdr8 &#123;</span><br><span class="line">	<span class="type">uint8_t</span> len; <span class="comment">// buf 已保存的字符串字节数，不包含结束标示</span></span><br><span class="line">    <span class="type">uint8_t</span> alloc; <span class="comment">// buf 已申请的总的字节数，不包含结束标示</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> flags;  <span class="comment">// 不同 SDS 的头类型，用来控制 SDS 的头大小</span></span><br><span class="line">    <span class="type">char</span> buf[]; <span class="comment">// 实际存储数据</span></span><br><span class="line">;</span><br></pre></td></tr></table></figure>
+
+<p>内存预分配扩容规则：</p>
+<ul>
+<li>如果新字符串小于 1M，新空间为旧串加新串的长度的 2 倍 + 1（1 用作 \0）</li>
+<li>如果新字符串大于 1M，新空间为旧串加新串的长度 + 1M + 1（1 用作 \0）</li>
+</ul>
+<p>eg：</p>
+<p>一个内容为 “he” 的 SDS</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>len : 2</td>
+<td>alloc : 2</td>
+<td>flags : 1</td>
+<td>h</td>
+<td>e</td>
+<td>\0</td>
+</tr>
+</tbody></table>
+<p>要追加一段字符串 “llo”，旧串加新串的长度为 5，新空间为 5 * 2 + 1 = 11</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>len : 5</td>
+<td>alloc : 10</td>
+<td>flags : 1</td>
+<td>h</td>
+<td>e</td>
+<td>l</td>
+<td>l</td>
+<td>o</td>
+<td>\0</td>
+<td>（空）</td>
+<td>（空）</td>
+<td>（空）</td>
+<td>（空）</td>
+<td>（空）</td>
+</tr>
+</tbody></table>
+<h2 id="IntSet"><a href="#IntSet" class="headerlink" title="IntSet"></a>IntSet</h2><p>Redis 中 Set 的一种实现方式，基于整数数组实现，长度可变、元素唯一、升序。</p>
+<p>底层结构体定义如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">intset</span> &#123;</span><br><span class="line">	<span class="type">uint32_t</span> encoding; <span class="comment">// 编码方式，支持存放 16 位、32 位、64 位整数</span></span><br><span class="line">    <span class="type">uint32_t</span> length; <span class="comment">// 元素个数</span></span><br><span class="line">    <span class="type">int8_t</span> contents[]; <span class="comment">// 整数数组，保存集合数据，根据编码方式对指定位置的元素进行快速寻址，插入新元素时使用二分搜索</span></span><br><span class="line">&#125; intset;</span><br></pre></td></tr></table></figure>
+
+<p>当插入的元素超出了当前编码格式的范围，自动升级编码方式，按新的编码方式进行原地扩容（倒序），然后将新元素放入队首或队尾，最后修改 encoding 属性。</p>
+<h2 id="Dict"><a href="#Dict" class="headerlink" title="Dict"></a>Dict</h2><p>实现 KV 映射，由三部分组成：DictHashTable、DictEntry、Dict：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">dictht</span> &#123;</span><br><span class="line">    dictEntry **table; <span class="comment">// 数组中保存指向 entry 的指针 </span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">long</span> size;  <span class="comment">// 哈希表大小 </span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">long</span> sizemask;  <span class="comment">// 总等于 size - 1，用于计算待放入数据的位置</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">long</span> used; <span class="comment">// entry 个数，有可能大于 size</span></span><br><span class="line">&#125; ldictht;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">dictEntry</span> &#123;</span><br><span class="line">	<span class="type">void</span> *key; <span class="comment">// 键</span></span><br><span class="line">        <span class="keyword">union</span> &#123;</span><br><span class="line"> 			<span class="type">void</span> *val; </span><br><span class="line">        	uint64_tu64; </span><br><span class="line">            <span class="type">int64_t</span> s64; </span><br><span class="line">            <span class="type">double</span> d;</span><br><span class="line">        &#125; v; <span class="comment">// 值 </span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">dictEntry</span> *next;  <span class="comment">// 下一个 Entry 的指针 </span></span><br><span class="line">&#125; dictEntry;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">dict</span> &#123;&#125;</span><br><span class="line">	dictType* type; <span class="comment">// dict 类型，内置不同的 hash 函数 </span></span><br><span class="line">	<span class="type">void</span>* privdata; <span class="comment">// 私有数据，在做特殊 hash 运算时用</span></span><br><span class="line">	dictht ht[<span class="number">2</span>]; <span class="comment">//一个 Dict 包含两个哈希表，其中一个是当前数据，另一个一般是空，rehash 时使用</span></span><br><span class="line">	<span class="type">long</span> rehashidx;<span class="comment">// rehash 的进度，-1 表示未进行 </span></span><br><span class="line">	<span class="type">int16_t</span> pauserehash；<span class="comment">// rehash 是否暂停，1 则暂停，0 则继续</span></span><br><span class="line">&#125; dict;</span><br></pre></td></tr></table></figure>
+
+<p>添加 KV 对时，先根据 key 计算出哈希值 h，然后 h &amp; sizemask 计算得到该存储的索引位置。若发生哈希冲突，则用头插法插入链表。</p>
+<p>根据负载因子（LoadFactor = user/size）状态，触发哈希表扩容 rehash，扩容后大小为第一个大于 used + 1 的 2^n：</p>
+<ul>
+<li>LoadFactor &gt;= 1 且未执行 BGSAVE 或 BGREWRITEAOF 等后台进程</li>
+<li>LoadFactor &gt; 5，立马执行</li>
+</ul>
+<p>每次进行删除操作时，若负载因子 &lt; 0.1，进行哈希表收缩 rehash，收缩后大小为第一个大于 used 的 2^n，且不小于 4。</p>
+<p>扩容或收缩导致哈希表的 size 和 sizemask 变化，而 key 的查询与 sizemask 有关。因此必须对哈希表中的每一个 key 重新计算索引，插入新的哈希表，这个过程称为 <strong>rehash</strong>：</p>
+<ol>
+<li>计算新 hash 表的 realeSize，值取决于当前要做的是扩容还是收缩：<ul>
+<li>扩容，则新 size 为第一个大于等于 dict.ht[o].used +1 的 2^n</li>
+<li>收缩，则新 size 为第一个大于等于 dict.ht[0].used 的 2^n（不小于4）</li>
+</ul>
+</li>
+<li>按照新的 realeSize 申请内存空间，创建 dictht，并赋值给 dict.ht[1]</li>
+<li>设置 dict.rehashidx=0，标示开始 rehash</li>
+<li>每次执行新增、查询、修改、删除操作时，都检查一下 dict.rehashidx 是否大于-1，如果是则将 dict.ht[0].table[rehashidx] 的 entry 链表 rehash 到 dict.ht[1]，并将 rehashidx++。直至 dict.ht[0] 的所有数据都 rehash 到 dict.ht[1]（渐进式 rehash）</li>
+<li>将 dict.ht[1] 赋值给 dict.ht[0]，给 dict.ht[1] 初始化为空哈希表，释放原来的 dict.ht[0] 的内存</li>
+</ol>
+<h2 id="ZipList"><a href="#ZipList" class="headerlink" title="ZipList"></a>ZipList</h2><p>压缩列表，保存字符串和整数，可看作连续存储的”双向链表“，但列表的节点间并不是通过指针相连，而是记录上一节点和本节点长度用于计算邻接节点位置，相比指针节省内存空间，若数据过多导致链表过长，会影响性能以及导致申请连续内存效率很低。</p>
+<p>结构如下，注意所有存储长度的数值均采用小端字节序存储，即低位字节在前，高位字节在后：</p>
+<table>
+<thead>
+<tr>
+<th>本节点总字节数（4 字节）</th>
+<th>从起始地址到 tail 节点的偏移量（4 字节）</th>
+<th>entry 个数（2 字节）</th>
+<th>head 节点（不定）</th>
+<th></th>
+<th></th>
+<th>tail 节点</th>
+<th>结束标识：0xff（1 字节）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>zlbytes</td>
+<td>zltail</td>
+<td>zllen</td>
+<td>entry</td>
+<td>entry</td>
+<td>…</td>
+<td>entry</td>
+<td>zlend</td>
+</tr>
+</tbody></table>
+<p>entry 的具体结构：</p>
+<table>
+<thead>
+<tr>
+<th>前一节点总字节数（1 字节或 5 字节）</th>
+<th>编码属性（1、2 或 5 字节）</th>
+<th>数据（字符串或整数，也可能不存在）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>previous_entry_length</td>
+<td>encoding</td>
+<td>content</td>
+</tr>
+</tbody></table>
+<p><strong>previous_entry_length</strong>：前一节点小于 254 字节，则用一个字节保存；前一节点大于等于 254，用 5 个字节保存，第一个字节为标识 0xfe，后 4 个字节保存长度。可能导致<strong>连锁更新</strong>问题，即连续多个长度为 250~253 字节之间的 entry 时，新增、或删除一个长度大于等于 254 的 entry，会导致一连串的 entry 的 previous_entry_length 所占空间的变动。</p>
+<p><strong>encoding</strong>：00、01、10 开头，表示 content 为字符串；11 开头，且欲存储的整数不属于 [1, 12]，表示 content 为整数。</p>
+<table>
+<thead>
+<tr>
+<th>编码</th>
+<th>长度</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>00######</td>
+<td>1 字节</td>
+<td>字符串长度小于等于 63 字节</td>
+</tr>
+<tr>
+<td>01###### ########</td>
+<td>2 字节</td>
+<td>字符串长度小于等于 16383 字节</td>
+</tr>
+<tr>
+<td>10000000 ######## ######## ######## ########</td>
+<td>5 字节</td>
+<td>字符串长度小于等于 2^32 - 1 字节</td>
+</tr>
+<tr>
+<td>11000000</td>
+<td>1 字节</td>
+<td>int16_t（2 字节）</td>
+</tr>
+<tr>
+<td>11010000</td>
+<td>1 字节</td>
+<td>int32_t（4 字节）</td>
+</tr>
+<tr>
+<td>11100000</td>
+<td>1 字节</td>
+<td>int64_t（8 字节）</td>
+</tr>
+<tr>
+<td>11110000</td>
+<td>1 字节</td>
+<td>24 位有符号整数（3 字节）</td>
+</tr>
+<tr>
+<td>11111110</td>
+<td>1 字节</td>
+<td>8 位有符号整数（1 字节）</td>
+</tr>
+<tr>
+<td>1111####（无 content 部分）</td>
+<td>1 字节</td>
+<td>数值直接保存在 #### 处，减 1 则为实际值</td>
+</tr>
+</tbody></table>
+<h2 id="QuickList"><a href="#QuickList" class="headerlink" title="QuickList"></a>QuickList</h2><p>节点为 ZipList 串成的真双向链表，每个节点有 pre 指针和 next 指针，可控制 ZipList 大小，且节点可压缩。</p>
+<p>结构如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">quicklist</span> &#123;</span><br><span class="line">    quicklistNode *head; <span class="comment">// 头节点指针 </span></span><br><span class="line">    quicklistNode*tail; <span class="comment">// 尾节点指针 </span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">long</span> count; <span class="comment">// 所有 ziplist 的 entry 的数量 </span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">long</span> len;  <span class="comment">// ziplists 总数量 </span></span><br><span class="line">    <span class="type">int</span> fiIl : QL_FILL_BITS; <span class="comment">// ziplist 的 entry上限，默认值 -2，表示不超过 8Kb</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> compress : QL_CoMP_BITS; <span class="comment">// 首尾不压缩的节点数量 </span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> bookmark_count: QL_BM_BITS;  <span class="comment">// 内存重分配时的书签数量及数组，一般用不到</span></span><br><span class="line">    quicklistBookmarkbookmarks[];</span><br><span class="line">&#125; quicklist;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">quicklistNode</span> &#123;</span><br><span class="line">	<span class="comment">// 前一个节点指针 </span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">quicklistNode</span> *prev; </span><br><span class="line">    <span class="comment">// 下一个节点指针 </span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">quicklistNode</span> *next; </span><br><span class="line">    <span class="comment">// 当前节点的 zipList 指针 </span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> *zl; </span><br><span class="line">    <span class="comment">//当前节点的 zipList 的字节大小 </span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> sz; </span><br><span class="line">    <span class="comment">//当前节点的 zipLis t的entry 个数 </span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> count : <span class="number">16</span>; </span><br><span class="line">    <span class="comment">//编码方式：1，zipList；2，lzf 压缩模式 </span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> encoding : <span class="number">2</span>; </span><br><span class="line">    <span class="comment">//数据容器类型（预留）：1，其它；2，ZipList </span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> container : <span class="number">2</span>; </span><br><span class="line">    <span class="comment">// 是否被解压缩。1：则说明被解压了，将来要重新压缩 </span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> recompress : <span class="number">1</span>; </span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> attempted_compress：<span class="number">1</span>;  <span class="comment">// 测试用 </span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> extra：<span class="number">10</span>; <span class="comment">// 预留字段</span></span><br><span class="line">&#125; quicklistNode;</span><br></pre></td></tr></table></figure>
+
+<h2 id="SkipList"><a href="#SkipList" class="headerlink" title="SkipList"></a>SkipList</h2><p>ZipList 和 QuickList 适合对队头队尾进行操作，SkipList 适合对中间元素进行操作。</p>
+<p>跳跃表是一个双向有序链表，每个节点都包含 score（用于排序）和 ele（存储 SDS 格式数据），节点按照 score 值排序，score 值一样则按照 ele 字典排序。每个节点都可以包含多层指针，层数是 1 到 32 之间，不同层指针到下一个节点的跨度不同，层级越高，跨度越大，增删改查效率与红黑树基本一致，实现却更简单。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2024/03/20/Ad8b9P2eWsH1a5U.png" alt="image-20240320172853274"></p>
+<p>待查找节点的 score 比当前节点 socre 大，则顺着当前等级的指针往后，否则，进入更深一层的指针。</p>
+<h2 id="RedisObject"><a href="#RedisObject" class="headerlink" title="RedisObject"></a>RedisObject</h2><p>Redis 中任意数据类的 Key 和 Value 都被封装为一个 RedisObject，格式如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">redisObject</span> &#123;</span><br><span class="line">	<span class="type">unsigned</span> type:<span class="number">4</span>; <span class="comment">// 对象类型，0~4 分别代表 string、hash、list、set、zset</span></span><br><span class="line">    <span class="type">unsigned</span> encoding:<span class="number">4</span>; <span class="comment">// 底层编码方式</span></span><br><span class="line">    <span class="type">unsigned</span> lru:LRU_BITS;  <span class="comment">// 24 位，表示对象最后一次被访问时间</span></span><br><span class="line">    <span class="type">int</span> refcount; <span class="comment">// 该对象被引用计数</span></span><br><span class="line">    <span class="type">void</span>* ptr; <span class="comment">// 实际存放数据的空间地址</span></span><br><span class="line">&#125; robj;</span><br></pre></td></tr></table></figure>
+
+<p>数据类型和编码方式对象关系如下：</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>编码方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OBJ_STRING</td>
+<td>raw（SDS 实现，ptr 指向 SDS） 、embstr（SDS 长度小于 44 字节，SDS 紧跟于 ptr 顺序后面，内存中连续存储）、int（long 类型的整数的字符串，ptr 中存数据）</td>
+</tr>
+<tr>
+<td>OBJ_LIST</td>
+<td>v3.2 前：LinkedList、ZipList；v3.2 后：QuickList</td>
+</tr>
+<tr>
+<td>OBJ_SET</td>
+<td>Intset（数据都是整数且数量不超过 set-max-intset-entries 时，默认 512）、HT</td>
+</tr>
+<tr>
+<td>OBJ_ZSET</td>
+<td>ZipList（元素数量不超过 zset_max_ziplist_entries，默认 128 且 元素都小于 zset_max_ziplist_value，默认 64，score 和 element 作为连续的两个 entry） <br />HT（实现唯一性、根据 member 查 score） 和 SkipList（实现有序性）</td>
+</tr>
+<tr>
+<td>OBJ_HASH</td>
+<td>ZipList、HT</td>
+</tr>
+</tbody></table>
+<h1 id="Redis-内存回收"><a href="#Redis-内存回收" class="headerlink" title="Redis 内存回收"></a>Redis 内存回收</h1></article><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://gdpolar.top/post/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Redis学习笔记&amp;url=https://gdpolar.top/post/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&amp;pic=https://cdn.jsdelivr.net/npm/gdpooo@0.0.1/rawimg/0041.webp" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="rm.copyPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Redis/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Redis<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/gdpooo@0.0.3/rawimg/0003.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://npm.elemecdn.com/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://npm.elemecdn.com/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div></div><div class="post-copyright"><i class="anzhiyufont anzhiyu-icon-copyright"></i><div class="post-copyright__author"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://gdpolar.top/post/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">原创</a><a class="post-copyright-title"><span>Redis学习笔记</span></a></div><div class="post-copyright-info-box"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"></span><a class="link" href="https://gdpolar.top">GDPolar</a></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a class="link" href="https://gdpolar.top/post/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">https://gdpolar.top/post/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</a></span><span class="copy-button" onclick="rm.copyPageUrl()"><i class="anzhiyufont anzhiyu-icon-copy"></i></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://gdpolar.top" target="_blank">GDPolar's Blog</a>！</span></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/post/MongoDB%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/gdpooo@0.0.1/rawimg/0040.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">MongoDB入门笔记</div></div></a></div><div class="next-post pull-right"><a href="/post/Java%E5%B7%A9%E5%9B%BA%E5%9F%BA%E7%A1%80/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/gdpooo@0.0.1/rawimg/0031.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java朝花夕拾</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="toc-number">3.1.</span> <span class="toc-text">通用操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String"><span class="toc-number">3.2.</span> <span class="toc-text">String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hash"><span class="toc-number">3.3.</span> <span class="toc-text">Hash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List"><span class="toc-number">3.4.</span> <span class="toc-text">List</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set"><span class="toc-number">3.5.</span> <span class="toc-text">Set</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SortedSet"><span class="toc-number">3.6.</span> <span class="toc-text">SortedSet</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">4.</span> <span class="toc-text">Java 客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Jedis"><span class="toc-number">4.1.</span> <span class="toc-text">Jedis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringDataRedis"><span class="toc-number">4.2.</span> <span class="toc-text">SpringDataRedis</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">5.</span> <span class="toc-text">底层数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2-SDS"><span class="toc-number">5.1.</span> <span class="toc-text">动态字符串 SDS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IntSet"><span class="toc-number">5.2.</span> <span class="toc-text">IntSet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dict"><span class="toc-number">5.3.</span> <span class="toc-text">Dict</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ZipList"><span class="toc-number">5.4.</span> <span class="toc-text">ZipList</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#QuickList"><span class="toc-number">5.5.</span> <span class="toc-text">QuickList</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SkipList"><span class="toc-number">5.6.</span> <span class="toc-text">SkipList</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RedisObject"><span class="toc-number">5.7.</span> <span class="toc-text">RedisObject</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis-%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6"><span class="toc-number">6.</span> <span class="toc-text">Redis 内存回收</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By GDPolar</div><div id="workboard"><img class="workSituationImg boardsign" src="undefined" alt="undefined" title="undefined"/><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="基于Hexo_v6.3.0" title="基于Hexo_v6.3.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="基于Hexo_v6.3.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/docs/" style="margin-inline:5px" data-title="使用AnZhiYu主题" title="使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="由Github托管" title="由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div></footer></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://cdn.jsdelivr.net/npm/gdpooo@0.0.3/rawimg/0004.webp"/><div class="loading-image-dot"></div><div id="loading-percentage">0%</div></div></div><script>const loadingPercentage = document.getElementById("loading-percentage");
 let loadingPercentageTimer = setInterval(function() {
   var progressBar = document.querySelector(".pace-progress");
   if (!progressBar) return
